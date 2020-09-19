@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.sist.admin.user.vo.SelectDataVO;
 import kr.co.sist.admin.user.vo.SelectUserDetailVO;
+import kr.co.sist.admin.user.vo.SelectUserListVO;
 import kr.co.sist.admin.user.vo.UpdateUserResignVO;
 import kr.co.sist.admin.user.vo.UpdateUserVO;
 
@@ -22,7 +22,7 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/select_user_list.do", method=GET)
-	public String selectUserList(String currentPage, SelectDataVO sdVO , Model model) {
+	public String selectUserList(SelectUserListVO sulVO, Model model) {
 		return "";
 	}//selectUserList
 	

@@ -12,8 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.user.domain.UserDetailDomain;
 import kr.co.sist.admin.user.domain.UserListDomain;
-import kr.co.sist.admin.user.vo.UserListRangeVO;
-import kr.co.sist.admin.user.vo.SelectDataVO;
+import kr.co.sist.admin.user.vo.SelectUserListVO;
 
 public class UserListDAO {
 	
@@ -59,7 +58,7 @@ public class UserListDAO {
 	 * @param sdVO
 	 * @return
 	 */
-	public int selectUserCount(SelectDataVO sdVO) {
+	public int selectUserCount(SelectUserListVO sulVO) {
 		int cnt = 0;
 		
 		return cnt;
@@ -71,7 +70,7 @@ public class UserListDAO {
 	 * @param olrVO
 	 * @return
 	 */
-	public List<UserListDomain> selectUserList(SelectDataVO sdVO, UserListRangeVO olrVO) {
+	public List<UserListDomain> selectUserList(SelectUserListVO sulVO) {
 		List<UserListDomain> list = new ArrayList<UserListDomain>();
 		
 		return list;

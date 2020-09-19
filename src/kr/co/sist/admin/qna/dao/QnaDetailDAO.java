@@ -65,7 +65,7 @@ public class QnaDetailDAO {
 	 * @param qna_no
 	 * @return
 	 */
-	public int updateQnaDelete(int qna_no) {
+	public int deleteQna(int qna_no) {
 		int cnt = 0;
 		
 		return cnt;

@@ -12,8 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
-import kr.co.sist.admin.order.vo.OrderListRangeVO;
-import kr.co.sist.admin.order.vo.SelectDataVO;
+import kr.co.sist.admin.order.vo.SelectOrderListVO;
 
 public class OrderListDAO {
 	
@@ -59,7 +58,7 @@ public class OrderListDAO {
 	 * @param sdVO
 	 * @return
 	 */
-	public int selectOrderCount(SelectDataVO sdVO) {
+	public int selectOrderCount(SelectOrderListVO solVO) {
 		int cnt = 0;
 		
 		return cnt;
@@ -71,7 +70,7 @@ public class OrderListDAO {
 	 * @param olrVO
 	 * @return
 	 */
-	public List<OrderListDomain> selectOrderList(SelectDataVO sdVO, OrderListRangeVO olrVO) {
+	public List<OrderListDomain> selectOrderList(SelectOrderListVO solVO) {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
 		
 		return list;

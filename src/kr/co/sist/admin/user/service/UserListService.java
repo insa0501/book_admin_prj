@@ -6,8 +6,7 @@ import java.util.List;
 import kr.co.sist.admin.user.domain.UserDetailDomain;
 import kr.co.sist.admin.user.domain.UserListDomain;
 import kr.co.sist.admin.user.vo.PageNationVO;
-import kr.co.sist.admin.user.vo.UserListRangeVO;
-import kr.co.sist.admin.user.vo.SelectDataVO;
+import kr.co.sist.admin.user.vo.SelectUserListVO;
 
 public class UserListService {
 
@@ -17,7 +16,7 @@ public class UserListService {
 	 * @param ulrVO
 	 * @return
 	 */
-	public List<UserListDomain> searchUserList(SelectDataVO sdVO, UserListRangeVO ulrVO) {
+	public List<UserListDomain> searchUserList(SelectUserListVO sulVO) {
 		List<UserListDomain> list = new ArrayList<UserListDomain>();
 		
 		return list;
@@ -70,8 +69,8 @@ public class UserListService {
 	 * 시작번호.
 	 * @return
 	 */
-	public int startNum(int currentPage, int pageScale) {
-		int startNum= currentPage*pageScale-pageScale+1;
+	public int startNum(SelectUserListVO sulVO, int pageScale) {
+		int startNum= sulVO.getCurrentPage()*pageScale-pageScale+1;
 		
 		return startNum;
 	}//startNum

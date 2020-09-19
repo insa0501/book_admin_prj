@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.sist.admin.order.vo.SelectDataVO;
+import kr.co.sist.admin.order.vo.SelectOrderListVO;
 import kr.co.sist.admin.order.vo.UpdateOrderVO;
 
 @Controller
@@ -20,7 +20,7 @@ public class AdminOrderController {
 	 * @return
 	 */
 	@RequestMapping(value="/select_order_list.do", method=GET)
-	public String selectOrderList(String currentPage, SelectDataVO sdVO , Model model) {
+	public String selectOrderList(SelectOrderListVO solVO , Model model) {
 		return "";
 	}//selectOrderList
 	

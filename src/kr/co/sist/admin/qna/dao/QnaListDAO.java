@@ -12,8 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.qna.domain.QnaDetailDomain;
 import kr.co.sist.admin.qna.domain.QnaListDomain;
-import kr.co.sist.admin.qna.vo.QnaListRangeVO;
-import kr.co.sist.admin.qna.vo.SelectDataVO;
+import kr.co.sist.admin.qna.vo.SelectQnaListVO;
 
 public class QnaListDAO {
 	
@@ -59,7 +58,7 @@ public class QnaListDAO {
 	 * @param sdVO
 	 * @return
 	 */
-	public int selectQnaCount(SelectDataVO sdVO) {
+	public int selectQnaCount(SelectQnaListVO sqlVO) {
 		int cnt = 0;
 		
 		return cnt;
@@ -71,7 +70,7 @@ public class QnaListDAO {
 	 * @param qlrVO
 	 * @return
 	 */
-	public List<QnaListDomain> selectQnaList(SelectDataVO sdVO, QnaListRangeVO qlrVO) {
+	public List<QnaListDomain> selectQnaList(SelectQnaListVO sqlVO) {
 		List<QnaListDomain> list = new ArrayList<QnaListDomain>();
 		
 		return list;

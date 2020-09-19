@@ -5,9 +5,8 @@ import java.util.List;
 
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
-import kr.co.sist.admin.order.vo.OrderListRangeVO;
 import kr.co.sist.admin.order.vo.PageNationVO;
-import kr.co.sist.admin.order.vo.SelectDataVO;
+import kr.co.sist.admin.order.vo.SelectOrderListVO;
 
 public class OrderListService {
 
@@ -17,7 +16,7 @@ public class OrderListService {
 	 * @param olrVO
 	 * @return
 	 */
-	public List<OrderListDomain> searchOrderList(SelectDataVO sdVO, OrderListRangeVO olrVO) {
+	public List<OrderListDomain> searchOrderList(SelectOrderListVO solVO) {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
 		
 		return list;
@@ -70,8 +69,8 @@ public class OrderListService {
 	 * 시작번호.
 	 * @return
 	 */
-	public int startNum(int currentPage, int pageScale) {
-		int startNum= currentPage*pageScale-pageScale+1;
+	public int startNum(SelectOrderListVO solVO, int pageScale) {
+		int startNum= solVO.getCurrentPage()*pageScale-pageScale+1;
 		
 		return startNum;
 	}//startNum

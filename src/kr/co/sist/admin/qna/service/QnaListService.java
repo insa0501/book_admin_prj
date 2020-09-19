@@ -6,8 +6,7 @@ import java.util.List;
 import kr.co.sist.admin.qna.domain.QnaDetailDomain;
 import kr.co.sist.admin.qna.domain.QnaListDomain;
 import kr.co.sist.admin.qna.vo.PageNationVO;
-import kr.co.sist.admin.qna.vo.QnaListRangeVO;
-import kr.co.sist.admin.qna.vo.SelectDataVO;
+import kr.co.sist.admin.qna.vo.SelectQnaListVO;
 
 public class QnaListService {
 
@@ -17,7 +16,7 @@ public class QnaListService {
 	 * @param olrVO
 	 * @return
 	 */
-	public List<QnaListDomain> searchQnaList(SelectDataVO sdVO, QnaListRangeVO olrVO) {
+	public List<QnaListDomain> searchQnaList(SelectQnaListVO sqlVO) {
 		List<QnaListDomain> list = new ArrayList<QnaListDomain>();
 		
 		return list;
@@ -70,8 +69,8 @@ public class QnaListService {
 	 * 시작번호.
 	 * @return
 	 */
-	public int startNum(int currentPage, int pageScale) {
-		int startNum= currentPage*pageScale-pageScale+1;
+	public int startNum(SelectQnaListVO sqlVO, int pageScale) {
+		int startNum= sqlVO.getCurrentPage()*pageScale-pageScale+1;
 		
 		return startNum;
 	}//startNum
