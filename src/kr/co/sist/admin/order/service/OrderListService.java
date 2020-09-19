@@ -37,7 +37,7 @@ public class OrderListService {
 	 * 전체 원글의 수 : DB사용
 	 * @return
 	 */
-	public int totalCount() {
+	public int totalCount(SelectOrderListVO solVO) {
 		int totalCnt=0; 
 		
 		return totalCnt;

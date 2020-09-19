@@ -37,7 +37,7 @@ public class QnaListService {
 	 * 전체 원글의 수 : DB사용
 	 * @return
 	 */
-	public int totalCount() {
+	public int totalCount(SelectQnaListVO sqlVO) {
 		int totalCnt=0; 
 		
 		return totalCnt;

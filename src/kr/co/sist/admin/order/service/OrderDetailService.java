@@ -9,7 +9,7 @@ public class OrderDetailService {
 	 * @param uoVO
 	 * @return
 	 */
-	public boolean changeOrder(UpdateOrderVO uoVO) {
+	public boolean changeOrderData(UpdateOrderVO uoVO) {
 		boolean flag = false;
 		
 		return flag;
