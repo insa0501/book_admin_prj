@@ -54,18 +54,34 @@ public class QnaListDAO {
 		return ss;
 	}//getSqlSession
 	
+	/**
+	 * 문의 총 개수 구하기
+	 * @param sdVO
+	 * @return
+	 */
 	public int selectQnaCount(SelectDataVO sdVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}//selectQnaCount
 	
+	/**
+	 * 문의정보 리스트
+	 * @param sdVO
+	 * @param qlrVO
+	 * @return
+	 */
 	public List<QnaListDomain> selectQnaList(SelectDataVO sdVO, QnaListRangeVO qlrVO) {
 		List<QnaListDomain> list = new ArrayList<QnaListDomain>();
 		
 		return list;
 	}//selectQnaList
 	
+	/**
+	 * 문의상세정보
+	 * @param qna_no
+	 * @return
+	 */
 	public QnaDetailDomain selectQnaDetail(int qna_no) {
 		QnaDetailDomain qdDomain = null;
 		

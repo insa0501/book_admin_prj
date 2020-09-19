@@ -54,18 +54,34 @@ public class OrderListDAO {
 		return ss;
 	}//getSqlSession
 	
+	/**
+	 * 주문정보 총 개수 구하기
+	 * @param sdVO
+	 * @return
+	 */
 	public int selectOrderCount(SelectDataVO sdVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}//selectOrderCount
 	
+	/**
+	 * 주문정보 리스트
+	 * @param sdVO
+	 * @param olrVO
+	 * @return
+	 */
 	public List<OrderListDomain> selectOrderList(SelectDataVO sdVO, OrderListRangeVO olrVO) {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
 		
 		return list;
 	}//selectOrderList
 	
+	/**
+	 * 주문상세정보
+	 * @param order_no
+	 * @return
+	 */
 	public OrderDetailDomain selectOrderDetail(int order_no) {
 		OrderDetailDomain odDomain = null;
 		

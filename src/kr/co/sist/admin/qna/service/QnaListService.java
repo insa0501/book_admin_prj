@@ -11,17 +11,28 @@ import kr.co.sist.admin.qna.vo.SelectDataVO;
 
 public class QnaListService {
 
-	public List<QnaListDomain> viewQnaList(SelectDataVO sdVO, QnaListRangeVO olrVO) {
+	/**
+	 * 문의정보 리스트
+	 * @param sdVO
+	 * @param olrVO
+	 * @return
+	 */
+	public List<QnaListDomain> searchQnaList(SelectDataVO sdVO, QnaListRangeVO olrVO) {
 		List<QnaListDomain> list = new ArrayList<QnaListDomain>();
 		
 		return list;
-	}//viewQnaList
+	}//searchQnaList
 	
-	public QnaDetailDomain viewQnaDetail(int qna_no) {
+	/**
+	 * 문의상세정보
+	 * @param qna_no
+	 * @return
+	 */
+	public QnaDetailDomain searchQnaDetail(int qna_no) {
 		QnaDetailDomain odDomain = null;
 		
 		return odDomain;
-	}//viewQnaDetail
+	}//searchQnaDetail
 	
 	/**
 	 * 전체 원글의 수 : DB사용

@@ -54,18 +54,34 @@ public class UserListDAO {
 		return ss;
 	}//getSqlSession
 	
+	/**
+	 * 회원정보 총 개수 구하기
+	 * @param sdVO
+	 * @return
+	 */
 	public int selectUserCount(SelectDataVO sdVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}//selectUserCount
 	
+	/**
+	 * 회원정보 리스트
+	 * @param sdVO
+	 * @param olrVO
+	 * @return
+	 */
 	public List<UserListDomain> selectUserList(SelectDataVO sdVO, UserListRangeVO olrVO) {
 		List<UserListDomain> list = new ArrayList<UserListDomain>();
 		
 		return list;
 	}//selectUserList
 	
+	/**
+	 * 회원상세정보
+	 * @param user_id
+	 * @return
+	 */
 	public UserDetailDomain selectUserDetail(String user_id) {
 		UserDetailDomain udDomain = null;
 		

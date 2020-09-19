@@ -49,12 +49,22 @@ public class QnaDetailDAO {
 		return ss;
 	}//getSqlSession
 	
+	/**
+	 * 문의 답변 달기
+	 * @param uqaVO
+	 * @return
+	 */
 	public int updateQnaAnswer(UpdateQnaAnswerVO uqaVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}//updateQnaAnswer
 	
+	/**
+	 * 문의 삭제
+	 * @param qna_no
+	 * @return
+	 */
 	public int updateQnaDelete(int qna_no) {
 		int cnt = 0;
 		

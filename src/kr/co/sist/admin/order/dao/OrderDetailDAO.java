@@ -49,12 +49,22 @@ public class OrderDetailDAO {
 		return ss;
 	}//getSqlSession
 	
+	/**
+	 * 주문정보 변경
+	 * @param uoVO
+	 * @return
+	 */
 	public int updateOrder(UpdateOrderVO uoVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}//updateOrder
 	
+	/**
+	 * 주문정보 삭제
+	 * @param order_no
+	 * @return
+	 */
 	public int deleteOrder(int order_no) {
 		int cnt = 0;
 		

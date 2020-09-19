@@ -11,17 +11,28 @@ import kr.co.sist.admin.order.vo.SelectDataVO;
 
 public class OrderListService {
 
-	public List<OrderListDomain> viewOrderList(SelectDataVO sdVO, OrderListRangeVO olrVO) {
+	/**
+	 * 주문정보 리스트
+	 * @param sdVO
+	 * @param olrVO
+	 * @return
+	 */
+	public List<OrderListDomain> searchOrderList(SelectDataVO sdVO, OrderListRangeVO olrVO) {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
 		
 		return list;
-	}//ViewOrderList
+	}//searchOrderList
 	
-	public OrderDetailDomain viewOrderDetail(int order_no) {
+	/**
+	 * 주문상세정보
+	 * @param order_no
+	 * @return
+	 */
+	public OrderDetailDomain searchOrderDetail(int order_no) {
 		OrderDetailDomain odDomain = null;
 		
 		return odDomain;
-	}//viewOrderDetail
+	}//searchOrderDetail
 	
 	/**
 	 * 전체 원글의 수 : DB사용

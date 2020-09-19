@@ -11,17 +11,28 @@ import kr.co.sist.admin.user.vo.SelectDataVO;
 
 public class UserListService {
 
-	public List<UserListDomain> viewUserList(SelectDataVO sdVO, UserListRangeVO ulrVO) {
+	/**
+	 * 회원정보 리스트
+	 * @param sdVO
+	 * @param ulrVO
+	 * @return
+	 */
+	public List<UserListDomain> searchUserList(SelectDataVO sdVO, UserListRangeVO ulrVO) {
 		List<UserListDomain> list = new ArrayList<UserListDomain>();
 		
 		return list;
-	}//viewUserList
+	}//searchUserList
 	
-	public UserDetailDomain viewUserDetail(String user_id) {
+	/**
+	 * 회원상세정보
+	 * @param user_id
+	 * @return
+	 */
+	public UserDetailDomain searchUserDetail(String user_id) {
 		UserDetailDomain udDomain = null;
 		
 		return udDomain;
-	}//viewUserDetail
+	}//searchUserDetail
 	
 	/**
 	 * 전체 원글의 수 : DB사용

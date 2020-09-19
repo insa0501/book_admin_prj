@@ -50,12 +50,22 @@ public class UserDetailDAO {
 		return ss;
 	}//getSqlSession
 	
+	/**
+	 * È¸¿øÁ¤º¸ º¯°æ
+	 * @param uoVO
+	 * @return
+	 */
 	public int updateUser(UpdateUserVO uoVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}//updateUser
 	
+	/**
+	 * È¸¿ø Å»Åð
+	 * @param uurVO
+	 * @return
+	 */
 	public int updateUserResign(UpdateUserResignVO uurVO) {
 		int cnt = 0;
 		
