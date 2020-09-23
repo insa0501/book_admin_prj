@@ -5,7 +5,7 @@ import kr.co.sist.admin.book.vo.BookModifyVO;
 
 public class BookDetailService {
 	/**
-	 * ë„ì„œë¥¼ ì¶”ê°€í•˜ëŠ” ì¼
+	 * µµ¼­¸¦ Ãß°¡ÇÏ´Â ÀÏ
 	 * @param bmVO
 	 */
 	public void addBook(BookModifyVO bmVO) {
@@ -13,7 +13,7 @@ public class BookDetailService {
 	}
 	
 	/**
-	 * ë„ì„œì •ë³´ë¥¼ ë³€ê²½í•˜ëŠ” ì¼
+	 * µµ¼­ Á¤º¸¸¦ º¯°æÇÏ´Â ÀÏ
 	 * @param bmVO
 	 * @return
 	 */
@@ -23,7 +23,7 @@ public class BookDetailService {
 	}
 	
 	/**
-	 * ë„ì„œì˜ isbnì„ ë°›ê³  í•´ë‹¹ ë„ì„œì˜ ìƒì„¸ì •ë³´ë¥¼ ë³´ì—¬ì£¼ëŠ” ì¼
+	 * ÇØ´ç µµ¼­ÀÇ »ó¼¼Á¤º¸¸¦ ¾ò´Â ÀÏ
 	 * @param book_isbn
 	 * @return
 	 */

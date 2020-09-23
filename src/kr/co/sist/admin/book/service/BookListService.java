@@ -4,28 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.sist.admin.book.domain.BookListDomain;
-import kr.co.sist.admin.book.domain.PageNationDomain;
-import kr.co.sist.admin.book.vo.BookRangeVO;
-import kr.co.sist.admin.book.vo.SelectDataVO;
+import kr.co.sist.admin.book.vo.PageNationVO;
+import kr.co.sist.admin.book.vo.SelectBookListVO;
 
 public class BookListService {
 	/**
-	 * 도서 리스트를 얻는 일
+	 * 도서 리스트를 얻는 일 
 	 * @param brVO
 	 * @param sdVO
 	 * @return
 	 */
-	public List<BookListDomain> selectBookList(BookRangeVO brVO, SelectDataVO sdVO) {
+	public List<BookListDomain> selectBookList(SelectBookListVO sblVO) {
 		List<BookListDomain> list = new ArrayList<BookListDomain>();
 		return list;
 	}//selectBookList
 	
 	/**
-	 * 하단에 페이지를 나누는 일
+	 * 하단의 페이지를 나누는 일
 	 * @param pnd
 	 * @return
 	 */
-	public String pageNation(PageNationDomain pnd) {
+	public String pageNation(PageNationVO pnv) {
 		String pageNation = "";
 		return pageNation;
 	}//pageNation
@@ -62,7 +61,7 @@ public class BookListService {
 	}
 	
 	/**
-	 * 현재페이지에 보여줄 시작 번호
+	 * 한페이지에 보여줄 시작 번호
 	 * @param currentPage
 	 * @param pageScale
 	 * @return
@@ -73,7 +72,7 @@ public class BookListService {
 	}
 	
 	/**
-	 * 현재페이지에 보여줄 마지막 번호
+	 * 한페이지에 보여줄 마지막 번호
 	 * @param startNum
 	 * @param pageScale
 	 * @return
