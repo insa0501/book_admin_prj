@@ -1,20 +1,19 @@
 package kr.co.sist.admin.book.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartRequest;
 
 import kr.co.sist.admin.book.vo.BookModifyVO;
-import kr.co.sist.admin.book.vo.SelectDataVO;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import kr.co.sist.admin.book.vo.SelectBookListVO;
 
 @Controller
 public class AdminBookController {
 	@RequestMapping(value="/book_list.do", method=GET)
-	public String selectBookList(String currentPage,SelectDataVO sdVO , Model model) {
+	public String selectBookList(SelectBookListVO sblVO , Model model) {
 		return "";
 	}
 	@RequestMapping(value="/add_book.do", method=GET)

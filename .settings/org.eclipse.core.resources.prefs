@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/kr/co/sist/admin/book/dao/AdminBookDAO.java=UTF-8
+encoding//src/kr/co/sist/admin/book/service/BookListService.java=UTF-8
 encoding//src/properties/database.properties=UTF-8

@@ -1,11 +1,11 @@
-package kr.co.sist.admin.book.domain;
+package kr.co.sist.admin.book.vo;
 
-public class PageNationDomain {
+public class PageNationVO {
 	String url;
 	int currentPage, totalPage;
-	public PageNationDomain() {
+	public PageNationVO() {
 	}
-	public PageNationDomain(String url, int currentPage, int totalPage) {
+	public PageNationVO(String url, int currentPage, int totalPage) {
 		this.url = url;
 		this.currentPage = currentPage;
 		this.totalPage = totalPage;

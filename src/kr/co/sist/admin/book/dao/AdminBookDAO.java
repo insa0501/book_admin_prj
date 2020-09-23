@@ -6,8 +6,7 @@ import java.util.List;
 import kr.co.sist.admin.book.domain.BookDetailDomain;
 import kr.co.sist.admin.book.domain.BookListDomain;
 import kr.co.sist.admin.book.vo.BookModifyVO;
-import kr.co.sist.admin.book.vo.BookRangeVO;
-import kr.co.sist.admin.book.vo.SelectDataVO;
+import kr.co.sist.admin.book.vo.SelectBookListVO;
 
 public class AdminBookDAO {
 	private static AdminBookDAO abDAO;
@@ -15,7 +14,7 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * 싱글턴을 위한 Method
+	 * 싱글턴을 객체를 위한 method
 	 * @return
 	 */
 	public static AdminBookDAO getInstance() {
@@ -26,23 +25,23 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * 도서의 전체 갯수를 반환하는 일
+	 * 검색데이터와 현재페이지, 범위를 받아 보여줄 도서의 갯수를 받아오는 일
 	 * @param sdVO
 	 * @return
 	 */
-	public int selectBookCnt(SelectDataVO sdVO) {
+	public int selectBookCnt(SelectBookListVO sblVO) {
 		int cnt = 0;
 		
 		return cnt;
 	}
 	
 	/**
-	 * 조회된 도서 리스트 정보를 반환하는 일
+	 * 검색데이터와 현재페이지, 범위를 받아 보여주는 도서를 받아오는 일
 	 * @param brVO
 	 * @param sdVO
 	 * @return
 	 */
-	public List<BookListDomain> selectBookList(BookRangeVO brVO, SelectDataVO sdVO){
+	public List<BookListDomain> selectBookList(SelectBookListVO sblVO){
 		List<BookListDomain> list = new ArrayList<BookListDomain>();
 		
 		return list;
@@ -68,7 +67,7 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * 도서의 isbn을 받아 해당 도서의 상세정보를 얻는 일
+	 * 도서의 isbn을 받아 해당 도서의 상세정보를 보여주는 일
 	 * @param book_isbn
 	 * @return
 	 */
