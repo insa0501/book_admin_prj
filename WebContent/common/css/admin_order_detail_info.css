@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+#container {
+	width: 900px;
+	height: 770px;
+	position: relative;
+    margin: 0px auto;
+	top:120px;
+}
+
+#orderDetailInfo {
+	width: 800px;
+	margin: 0px auto;
+}
+
+.orderDataTab {
+	margin: 0px auto;
+	width: 600px;
+	position: relative;
+	border: 1px solid #666666;
+	border-collapse: collapse;
+	margin-top: 5px;
+}
+.paymentInfoTab {
+	margin: 0px auto;
+	width: 610px;
+	margin-top: 5px; 
+}
+ 
+
+.bookInfoTab{
+	width: 550px;
+	margin: 0px auto;
+	margin-top: 5px; 
+	
+}
+
+.orderDataLabel,.paymentInfoLabel,.bookInfoLabel{
+	margin-left: 90px;
+	margin-top: 45px;
+}
+ 
+
+#buttonGrop {
+	display: flex;
+	width: 260px;
+	justify-content: space-between;
+	margin-top: 40px;
+	margin-left: 300px;
+}
+
+#updateBtn {
+	width: 70px;
+	height:35px;
+	background-color: #cecece;
+     
+}
+
+#closeBtn {
+	width: 70px;
+	height:35px;
+	background-color: #cecece;
+	 
+}
+
+#deleteBtn {
+	width: 70px;
+	height:35px;
+	background-color: #cecece;
+ 
+}
+
+.colTh{
+	border: 1px solid #666666;
+	background-color: #cecece;
+	border-collapse: collapse;
+	width: 180px;
+}
+
+.colTh1{
+	border: 1px solid #666666;
+	background-color: #cecece;
+	border-collapse: collapse;
+	width: 150px;
+}
+
+#order_addr1{
+	width: 300px;
+}
+#order_addr2{
+	width: 300px;
+	
+}
+
+tr {
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+th {
+	width: 80px;
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+select {
+	width: 100%;
+}
+
+#preview {
+	width: 120px;
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ <!---->
+
+body, form, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4 {
+	margin: 0px;
+	padding: 0px
+}
+
+fieldset, img {
+	border: 0 none
+}
+
+dl, ul, ol, li {
+	list-style: none
+}
+
+input, select, textarea {
+	vertical-align: middle
+}
+
+body, th, td, input, select, textarea, button {
+	font-size: 13px;
+	line-height: 1.7;
+	font-family: 'Malgun Gothic', '맑은 고딕', dotum, '돋움', sans-serif;
+	color: #333;
+}
+
+a {
+	color: #333;
+	text-decoration: none
+}
+
+a:hover {
+	color: #118eff;
+	text-decoration: underline
+}
+
+address {
+	font-style: normal;
+	font-weight: normal
+}
+
+.inputBox {
+	border: 1px solid #CBCBCB;
+	height: 30px;
+	background-color: #FFFFFF;
+}
+
+.btn {
+	border: 1px solid #CBCBCB;
+	height: 34px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+.btnLoc {
+	border: 1px solid #CBCBCB;
+	height: 34px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+ 
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
