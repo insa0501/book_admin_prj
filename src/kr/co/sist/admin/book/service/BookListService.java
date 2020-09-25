@@ -3,6 +3,7 @@ package kr.co.sist.admin.book.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.sist.admin.book.dao.AdminBookDAO;
 import kr.co.sist.admin.book.domain.BookListDomain;
 import kr.co.sist.admin.book.vo.PageNationVO;
 import kr.co.sist.admin.book.vo.SelectBookListVO;
@@ -33,9 +34,10 @@ public class BookListService {
 	 * 도서의 전체 갯수
 	 * @return
 	 */
-	public int totalCount() {
+	public int totalCount(SelectBookListVO sblVO) {
 		int totalCount = 0;
-		
+		AdminBookDAO abDAO = AdminBookDAO.getInstance();
+		totalCount = abDAO.selectBookCnt(sblVO);
 		return totalCount;
 	}//totalCount
 	

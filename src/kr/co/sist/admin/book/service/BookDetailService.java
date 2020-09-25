@@ -19,6 +19,7 @@ public class BookDetailService {
 	 */
 	public int changeBook(BookModifyVO bmVO) {
 		int result = 0;
+		
 		return result;
 	}
 	

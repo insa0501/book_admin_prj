@@ -18,7 +18,6 @@
   </environments>
   <!-- 실행할 쿼리문을 가진 XML -->
   <mappers>
-    <mapper resource="kr/co/sist/mapper/examMapper.xml"/>
-    <mapper resource="kr/co/sist/mapper/TestMyBatisMapper.xml"/>
+    <mapper resource="kr/co/sist/admin/mapper/AdminBookMapper.xml"/>
   </mappers>
 </configuration>
