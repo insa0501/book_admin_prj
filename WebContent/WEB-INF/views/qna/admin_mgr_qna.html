@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문의관리</title>
+    <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
+    <!--Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <!--CSS-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/mgr.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/mgr_common_header_footer.css" />
+    <!-- JS -->
+  </head>
+  <body>
+    <!-- header -->
+    <link rel="import" href="mgr_common/html/mgr_header.html" />
+    <!-- header end -->
+    <!--main section-->
+    <section class="section_main">
+      <div class="content_wrap">
+        <div class="content_title">문의관리</div>
+        <div class="search">
+          <div class="select_type">
+            <select class="custom-select">
+              <option value="1">회원아이디</option>
+              <option value="2">문의내용</option>
+              <option value="3">답변유무</option>
+            </select>
+          </div>
+
+          <div class="keyword">
+            <input class="form-control form-control-lg" type="text" />
+          </div>
+          <div class="search_btn">
+            <button type="button" class="btn btn-dark">검색</button>
+          </div>
+        </div>
+        <div class="search_result">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">문의번호</th>
+                <th scope="col">아이디</th>
+                <th scope="col">제목</th>
+                <th scope="col">분류</th>
+                <th scope="col">등록일</th>
+                <th scope="col">답변유무</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>200909-1</td>
+                <td>user1</td>
+                <td>배송이 아직도 안왔어요</td>
+                <td>배송/주문</td>
+                <td>2020-09-09</td>
+                <td>대기중</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>200909-2</td>
+                <td>user2</td>
+                <td>원하는 책이 없어요</td>
+                <td>도서</td>
+                <td>2020-09-09</td>
+                <td>답변완료</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <!--main end-->
+    <!-- footer -->
+    <link rel="import" href="mgr_common/html/mgr_footer.html" />
+  </body>
+</html>

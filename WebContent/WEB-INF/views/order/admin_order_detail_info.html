@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel = "stylesheet" type="text/css" href="http://localhost/jsp_prj/mgr_common/css/order_detail_info.css">
+<link rel = "stylesheet" type="text/css" href="http://localhost/jsp_prj/mgr_common/css/common_header_footer.css">
+ 
+<title>Insert title here</title>
+<style type="text/css">
+
+ 
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+ <script src="header.js"></script>
+ 
+<script type="text/javascript">
+
+ $(function () {
+	
+ });//ready
+
+
+
+</script>
+</head>
+<body>
+<!-- header -->
+<section class="section_header">
+  <div class="header_nav nav-up" id="header_nav">
+    <div class="nav_logo">BOOKS</div>
+    <ul class="nav_menu">
+      <li class="nav_">도서관리</li>
+      <li class="nav_">주문관리</li>
+      <li class="nav_">회원관리</li>
+      <li class="nav_">문의관리</li>
+    </ul>
+    <div class="nav_user_icons">
+      <span><i class="fas fa-sign-in-alt"></i></span>
+      <!-- <span><i class="far fa-user"></i></span> -->
+    </div>
+  </div>
+</section>
+<!-- header end -->
+
+
+  <div id="container">
+     
+     <div id="orderDetailInfo">
+     
+      <form action="" method="post" id="orderDetailFrm" name="orderDetailFrm"  enctype="multipart/form-data">
+       <div><h2>주문상세정보</h2></div> 
+       
+         <div class="orderData">
+         <!-- 여기서 수정은 배송 현황만 가능 -->
+           <table class="orderDataTab">
+           <div class="orderDataLabel"><h3>&nbsp;주문 정보</h3></div>
+              <tr >
+                 <th class="colTh"> 주문번호 </th><td><input type="text" name="order_no" id="order_no" readonly="readonly"></td>
+                 <th class="colTh"> 주문 일자</th><td><input type="text" name="order_date" id="order_date"></td>
+              </tr>
+              <tr>
+                 <th class="colTh"> 주문자 ID </th><td><input type="text" name="user_id" id="user_id"></td>
+                 <th class="colTh"> 연락처 </th><td><input type="text" name="order_phone" id="order_phone"></td>
+              </tr>
+              
+              
+              <tr>
+                 <th class="colTh">배송현황</th>
+                      <td><select name="order_status" id="order_status">
+                           <option value="배송중">배송중</option>
+                           <option value="배송완료">배송완료</option>
+                          </select> 
+                      </td>
+                 <th class="colTh">결제</th><td> 비씨카드(1234-****-5678)</td><!-- 코딩시 카드사(카드번호 조회) -->
+                           
+              </tr>
+              <tr>
+                 <th class="colTh">우편번호</th><td><input type="text" name="order_zipcode" id="order_zipcode"></td>
+                 <th class="colTh">주문자 ip</th><td><input type="text" name="user_ip" id="upser_ip"></td>
+                 
+              </tr>
+              <tr>
+                 <th class="colTh">주소</th><td colspan="3"><input type="text" name="order_addr1" id="order_addr1" ></td>
+              </tr>
+              <tr>
+                 <th class="colTh">상세주소</th><td colspan="3"><input type="text" name="order_addr2" id="order_addr2"></td>
+                 
+              </tr>
+           </table>
+           </div> 
+       
+           
+           <div id="paymentInfo">
+             <table class="paymentInfoTab">
+             <div class="paymentInfoLabel"><h3>결제 정보</h3></div>
+              <tr>
+                 <th class="colTh"> 주문정보 </th><td><input type="text" name="order_price" id="order_price"></td>
+                 <th class="colTh"> 배송비 </th><td><input type="text" name="delivery_charge" id="delivery_charge"></td>
+              </tr>
+             </table>
+           </div>
+              
+           <div id="bookInfo">
+              <div class="bookInfoLabel"><h3>도서 정보</h3></div>
+             <table class="bookInfoTab"> 
+              <tr>
+                 <th class="colTh1"> isbn </th><th class="colTh1"> 도서명 </th><th class="colTh1"> 수량 </th><th class="colTh1"> 판매가 </th>
+              </tr>
+              <tr>
+                 <td><input type="text" name="book_isbn" id="book_isbn"> </td><td><input type="text" name="book_name" id="book_name"> </td>
+                 <td><input type="text" name="order_book_cnt" id="order_book_cnt"> </td><td><input type="text" name="book_price" id="book_price"> </td>
+               </tr>
+             </table>
+          </div>
+            
+              <div id="buttonGrop">
+			    <input type="button" value="확인"   id="closeBtn" name="closeBtn"/>
+                <input type="submit" value="수정"   id="updateBtn" name="updateBtn"/>
+			    <input type="button" value="삭제"   id="deleteBtn" name="deleteBtn"/>
+              </div>
+            
+       </form>      
+     
+    </div>
+
+  </div>
+   
+  <!-- footer -->
+ <section class="footer">
+  <div class="footer_text">
+    @copyright 2조 <br />
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+    Necessitatibus tenetur temporibus, enim nostrum soluta deleniti? <br />
+    Veritatis maiores consequuntur magni
+  </div>
+</section>
+  
+
+
+</body>
+</html>

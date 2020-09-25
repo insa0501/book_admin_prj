@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+.section_main {
+  width: 90vw;
+  padding-top: 80px;
+  height: 1000px;
+}
+
+.content_title {
+  width: 75%;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.select_type .keyword {
+  padding-right: 10px;
+}
+
+.content_wrap {
+  width: 70%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.search_result {
+  width: 100%;
+  padding-top: 20px;
+  height: 600px;
+}
+
+table th {
+  text-align: center;
+}
+
+/* 문의관리 CSS */

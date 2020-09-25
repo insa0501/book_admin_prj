@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문의상세</title>
+    <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
+        <!--Bootstrap-->
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous"
+      />
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"
+      ></script>
+      <!--CSS-->
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+      />
+      <link rel="stylesheet" href="../css/reset.css" />
+      <link rel="stylesheet" href="../css/main.css" />
+      <link rel="stylesheet" href="../css/mgr_qna_detail.css" />
+      <link rel="stylesheet" href="../css/mgr_common_header_footer.css" />
+  </head>
+  <body>
+        <!-- header -->
+        <section class="section_header">
+          <div class="header_nav nav-up" id="header_nav">
+            <div class="nav_logo">BOOKS</div>
+            <ul class="nav_menu">
+              <li class="nav_">도서관리</li>
+              <li class="nav_">주문관리</li>
+              <li class="nav_">회원관리</li>
+              <li class="nav_">문의관리</li>
+            </ul>
+            <div class="nav_user_icons">
+              <span><i class="fas fa-sign-in-alt"></i></span>
+              <!-- <span><i class="far fa-user"></i></span> -->
+            </div>
+          </div>
+        </section>
+        <!-- header end -->
+    <section class="main_section">
+      <div class="main_title">문의상세 및 답변</div>
+      <div class="main_content">
+        <table>
+          <tr>
+            <td class="column">문의번호</td>
+            <td class="content">1</td>
+            <td class="column">등록시간</td>
+            <td class="content">2020-09-11 11:22:34</td>
+          </tr>
+          <tr>
+            <td class="column">아이디</td>
+            <td class="content">user1</td>
+            <td class="column">ip</td>
+            <td class="content">321.321.321.33</td>
+          </tr>
+          <tr>
+            <td class="column">분류</td>
+            <td class="content">상품</td>
+            <td class="column">답변일자</td>
+            <td class="content">2020-09-22 10:22:11</td>
+          </tr>
+          <tr>
+            <td class="column">문의내용</td>
+            <td class="que_content" colspan="3">
+                <div class="q_title">제목</div>
+                <input type="text" class="q_title_input" readonly="readonly" /><br>
+                <div class="q_content">내용</div>
+                <input type="text" class="q_content_input" readonly="readonly" />
+            </td>
+          </tr>
+        </table>
+
+        <div class="answer_content">
+            <div class="a_title">답변</div>
+            <input type="text" class="a_content"/>
+        </div>
+        <div class="btn_group" id="btn_group">
+          <button type="button" class="btn btn-dark" id="reply">수정/답변</button>
+          <button type="button" class="btn btn-dark" id="del">삭제</button>
+          <button type="button" class="btn btn-dark" id="accept">확인</button>
+        </div>
+    </section>
+        <!-- footer -->
+        <section class="footer">
+          <div class="footer_text">
+            @copyright 2조 <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+            Necessitatibus tenetur temporibus, enim nostrum soluta deleniti? <br />
+            Veritatis maiores consequuntur magni
+          </div>
+        </section>
+  </body>
+</html>

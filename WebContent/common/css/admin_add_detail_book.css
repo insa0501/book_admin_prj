@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+#container {
+	width: 900px;
+	height: 770px;
+	position: relative;
+	margin: 0px auto;
+	top:140px;
+	
+	
+}
+
+#bookaddBody {
+	width: 750px;
+	display: flex;
+	justify-content: center;
+	
+}
+
+.addBookInfo{
+	width: 850px;
+}
+ 
+.checkBoxGrop {
+	float: right;
+}
+
+.bookImgDiv {
+	width:200px;
+	margin-top: 10px;
+	float: left;
+}
+ 
+.bookData{
+	float: right;
+}
+.bookDataTab {
+	position: relative;
+	border: 1px solid #666666;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+.colTh{
+	border: 1px solid #666666;
+	background-color: #cecece;
+	border-collapse: collapse;
+}
+
+tr {
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+th {
+	width: 80px;
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+select {
+	width: 100%;
+}
+
+#preview {
+	width: 120px;
+}
+
+.bookInfoDiv {
+	position: absolute;
+	margin-top: 250px;
+}
+
+#book_info {
+	width: 720px;
+	height: 120px;
+	margin-top: 10px;
+	margin-left: 10px
+}
+
+ 
+#buttonGrop {
+	display: flex;
+	width: 150px;
+	justify-content: space-between;
+	margin-top: 25px;
+	margin-left: 300px;
+}
+
+#addBookBtn {
+	width: 70px;
+	height:35px;
+	background-color: #cecece;
+}
+
+#closeBtn {
+	width: 70px;
+	height:35px;
+	background-color: #cecece;
+}
+
+#updateBtn {
+	width: 70px;
+	height:35px;
+	background-color: #cecece;
+}
+
+
+textarea {
+	width: 720px;
+	height: 100px;
+}
+ 
+ 
+ <!---->
+
+body, form, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4 {
+	margin: 0px;
+	padding: 0px
+}
+
+fieldset, img {
+	border: 0 none
+}
+
+dl, ul, ol, li {
+	list-style: none
+}
+
+input, select, textarea {
+	vertical-align: middle
+}
+
+body, th, td, input, select, textarea, button {
+	font-size: 13px;
+	line-height: 1.7;
+	font-family: 'Malgun Gothic', '맑은 고딕', dotum, '돋움', sans-serif;
+	color: #333;
+}
+
+a {
+	color: #333;
+	text-decoration: none
+}
+
+a:hover {
+	color: #118eff;
+	text-decoration: underline
+}
+
+address {
+	font-style: normal;
+	font-weight: normal
+}
+
+.inputBox {
+	border: 1px solid #CBCBCB;
+	height: 30px;
+	background-color: #FFFFFF;
+}
+
+.btn {
+	border: 1px solid #CBCBCB;
+	height: 34px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+.btnLoc {
+	border: 1px solid #CBCBCB;
+	height: 34px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+ 
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
