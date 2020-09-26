@@ -15,13 +15,9 @@
     <!--CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css" />
-    <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/mgr.css" />
+    <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_mgr.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel = "stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
-    <style type="text/css">
-    	.beta1{margin-top: 120px;}
-    	.beta2_font{ font-size: 24px; font-weight: bold;}
-    </style>
     <!-- JS -->
     <script type="text/javascript">
     
@@ -55,9 +51,9 @@
     </section>
     <!-- header end -->
     <!--main section-->
-    <section class="section_main beta1">
+    <section class="section_main">
       <div class="content_wrap">
-        <div class="content_title beta2_font">도서관리</div>
+        <div class="content_title">도서관리</div>
         
         <form action="http://localhost/book_admin_prj/book_list.do" method="GET" name="search_frm" id="search_frm" >
         <div class="search">

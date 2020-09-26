@@ -22,7 +22,7 @@ public class UserListDAO {
 	private UserListDAO() {
 	}//UserListDAO
 	
-	private static UserListDAO getInstance() {
+	public static UserListDAO getInstance() {
 		if(ulDAO ==null) {
 			ulDAO = new UserListDAO();
 		}//end if
@@ -32,7 +32,7 @@ public class UserListDAO {
 	private SqlSessionFactory getSqlSessionFactory() throws IOException {
 		if(ssf==null) {
 			//1. xml과 연결
-			String xmlConfig = "kr/co/sist/dao/mybatis_config.xml";	///////////////////////////////////////////    수정필요!!!!
+			String xmlConfig="kr/co/sist/admin/mybatis_config.xml";
 			Reader reader = Resources.getResourceAsReader(xmlConfig);
 			//2. MyBatis Framework 생성
 			ssf = new SqlSessionFactoryBuilder().build(reader);
@@ -60,7 +60,11 @@ public class UserListDAO {
 	 */
 	public int selectUserCount(SelectUserListVO sulVO) {
 		int cnt = 0;
+		SqlSession ss = getSqlSession();
 		
+		cnt = ss.selectOne("kr.co.sist.admin.user.userCnt", sulVO);
+		
+		ss.close();
 		return cnt;
 	}//selectUserCount
 	
@@ -72,7 +76,11 @@ public class UserListDAO {
 	 */
 	public List<UserListDomain> selectUserList(SelectUserListVO sulVO) {
 		List<UserListDomain> list = new ArrayList<UserListDomain>();
+		SqlSession ss = getSqlSession();
 		
+		list = ss.selectList("kr.co.sist.admin.user.userList", sulVO);
+		
+		ss.close();
 		return list;
 	}//selectUserList
 	
