@@ -19,5 +19,9 @@
   <!-- 실행할 쿼리문을 가진 XML -->
   <mappers>
     <mapper resource="kr/co/sist/admin/mapper/AdminBookMapper.xml"/>
+    <mapper resource="kr/co/sist/admin/mapper/AdminLoginMapper.xml"/>
+    <mapper resource="kr/co/sist/admin/mapper/AdminOrderMapper.xml"/>
+    <mapper resource="kr/co/sist/admin/mapper/AdminUserMapper.xml"/>
+    <mapper resource="kr/co/sist/admin/mapper/AdminQnaMapper.xml"/>
   </mappers>
 </configuration>

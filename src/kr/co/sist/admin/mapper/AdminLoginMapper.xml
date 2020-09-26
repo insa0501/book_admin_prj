@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin.login">
+  <select id="adminLogin" parameterType="kr.co.sist.admin.login.vo.AdminLoginVO" resultType="String">
+    select admin_id
+    from   admin 
+    where  admin_id = #{ admin_id } and admin_pass = #{ admin_pass }
+  </select>
+  <update id="updateAdminPass" parameterType="kr.co.sist.admin.login.vo.UpdateAdminPassVO">
+  	update admin 
+  	set    admin_pass = #{ admin_pass }
+  	where  admin_id = #{ admin_id }
+  </update>
+</mapper>

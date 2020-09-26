@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin.order">
+  <select id="orderList" resultType="kr.co.sist.admin.order.domain.OrderListDomain">
+	select ol.ORDER_NO,ol.ORDER_DATE,ol.USER_ID,ol.ORDER_PRICE,ol.ORDER_STATUS, sel.book_name
+	from   order_list ol,  (select ol.order_no, listagg(bk.book_name, '/') within group(order by bk.book_name) book_name
+				from   order_book ob, order_list ol, book bk
+				where  (ob.book_isbn=bk.book_isbn and ob.order_no=ol.order_no)
+				group by ol.order_no) sel
+	where ol.order_no = sel.order_no
+  </select>
+  <!-- ORDER_NO,ORDER_DATE,USER_ID,ORDER_NAME,ORDER_ZIPCODE,ORDER_ADDR1,ORDER_ADDR2,ORDER_PHONE,ORDER_PRICE,ORDER_STATUS,USER_IP -->
+</mapper>
