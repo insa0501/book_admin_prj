@@ -58,8 +58,10 @@ public class AdminLoginDAO {
 	 * @return admin_id
 	 * @throws SQLException
 	 */
-	public String selectAdminId(AdminLoginVO alVO) throws SQLException{
+	public String selectAdminId(AdminLoginVO alVO) {
 		String admin_id = "";
+		
+		admin_id = getSqlSession().selectOne("kr.co.sist.admin.login.adminLogin", alVO);
 		
 		return admin_id;
 	} // selectAdminId
@@ -70,9 +72,19 @@ public class AdminLoginDAO {
 	 * @return 
 	 * @throws SQLException
 	 */
-	public int updateAdminPass(UpdateAdminPassVO uapVO) throws SQLException {
+	public int updateAdminPass(UpdateAdminPassVO uapVO) {
 		int cnt = 0;
 		
+		cnt = getSqlSession().update("kr.co.sist.admin.login.updateAdminPass", uapVO);
+		
 		return cnt;
-	}
+	} //updateAdminPass
+	
+	public static void main(String[] args) {
+		AdminLoginVO a = new AdminLoginVO();
+		a.setAdmin_id("admin1");
+		a.setAdmin_pass("1234");
+		
+		System.out.println(new AdminLoginDAO().selectAdminId(a));
+	} 
 } // class

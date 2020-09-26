@@ -21,7 +21,7 @@ public class AdminOrderController {
 	 */
 	@RequestMapping(value="/select_order_list.do", method=GET)
 	public String selectOrderList(SelectOrderListVO solVO , Model model) {
-		return "";
+		return "order/admin_mgr_order";
 	}//selectOrderList
 	
 	/**

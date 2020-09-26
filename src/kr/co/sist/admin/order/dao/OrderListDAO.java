@@ -32,7 +32,7 @@ public class OrderListDAO {
 	private SqlSessionFactory getSqlSessionFactory() throws IOException {
 		if(ssf==null) {
 			//1. xml과 연결
-			String xmlConfig = "kr/co/sist/dao/mybatis_config.xml";	///////////////////////////////////////////    수정필요!!!!
+			String xmlConfig = "kr/co/sist/admin/mybatis_config.xml";
 			Reader reader = Resources.getResourceAsReader(xmlConfig);
 			//2. MyBatis Framework 생성
 			ssf = new SqlSessionFactoryBuilder().build(reader);
@@ -61,6 +61,8 @@ public class OrderListDAO {
 	public int selectOrderCount(SelectOrderListVO solVO) {
 		int cnt = 0;
 		
+		
+		
 		return cnt;
 	}//selectOrderCount
 	
@@ -70,8 +72,12 @@ public class OrderListDAO {
 	 * @param olrVO
 	 * @return
 	 */
-	public List<OrderListDomain> selectOrderList(SelectOrderListVO solVO) {
+	//SelectOrderListVO solVO
+	public List<OrderListDomain> selectOrderList() {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
+		
+		SqlSession ss = getSqlSession();
+		list = ss.selectList("kr.co.sist.admin.order.orderList");
 		
 		return list;
 	}//selectOrderList
@@ -87,4 +93,7 @@ public class OrderListDAO {
 		return odDomain;
 	}//selectOrderDetail
 	
+	public static void main(String[] args) {
+		System.out.println(new OrderListDAO().selectOrderList());
+	}
 }//class

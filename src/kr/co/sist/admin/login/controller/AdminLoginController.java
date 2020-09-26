@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.co.sist.admin.login.service.AdminLoginService;
 import kr.co.sist.admin.login.vo.AdminLoginVO;
 import kr.co.sist.admin.login.vo.UpdateAdminPassVO;
 
@@ -20,10 +21,11 @@ public class AdminLoginController {
 	 * 관리자 로그인 (관리자 메인)
 	 * @return 관리자 로그인 처리
 	 */
-	@RequestMapping(value="/admin_index.do", method=POST)
-	public String adminLoginForm() {
+	@RequestMapping(value="/admin_index.do", method={GET,POST})
+	public String adminLoginForm(HttpSession session) {
 		
-		return "";
+		System.out.println("adminLoginForm " + (String)session.getAttribute("admin_id"));
+		return "login/admin_login";
 	} // adminLoginForm()
 	
 	/**
@@ -33,11 +35,46 @@ public class AdminLoginController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin_login_process.do", method=POST)
+	@RequestMapping(value="/admin_login_process.do", method= {GET,POST} )
 	public String adminLogin(HttpSession session, AdminLoginVO alVO, Model model) {
 		
-		return "";
+		String url = "forward:admin_index.do";
+		
+		String ssCheck = (String) session.getAttribute("admin_id");
+		System.out.println("ssCheck " + ssCheck);
+		
+		AdminLoginService als = new AdminLoginService();
+		String admin_id = als.adminLogin(alVO);
+		
+		model.addAttribute("login_flag", "fail");
+		
+		if (admin_id != null) {
+			session.setAttribute("admin_id", admin_id);
+			model.addAttribute("admin_id", admin_id);
+			model.addAttribute("login_flag", "success");
+		} // end if
+		
+		/*
+		 * if (admin_id != null) {
+		 * 
+		 * session.setAttribute("admin_id", admin_id); model.addAttribute("admin_id",
+		 * admin_id);
+		 * 
+		 * url = "redirect:book_list.do"; } // end if
+		 */		
+		if (ssCheck != null) {	
+			//url = "redirect:book_list.do";				
+			url = "redirect:select_order_list.do";				
+		} // end if
+		
+		System.out.println(url);
+		return url;
 	} // adminLogin()
+	
+	@RequestMapping(value="/admin_book.do", method=POST)
+	public String skipLogin() {
+		return "book/admin_mgr_book";
+	} //skipLogin
 	
 	/**
 	 * 관리자 로그아웃
@@ -55,7 +92,7 @@ public class AdminLoginController {
 	 */
 	@RequestMapping(value="/admin_pass_check_form.do", method=GET)
 	public String adminPassCheck() {
-		return "";
+		return "login/admin_change_pw";
 	} // adminPassCheck
 	
 	/**
