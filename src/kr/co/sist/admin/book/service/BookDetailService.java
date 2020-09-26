@@ -1,5 +1,6 @@
 package kr.co.sist.admin.book.service;
 
+import kr.co.sist.admin.book.dao.AdminBookDAO;
 import kr.co.sist.admin.book.domain.BookDetailDomain;
 import kr.co.sist.admin.book.vo.BookModifyVO;
 
@@ -8,8 +9,9 @@ public class BookDetailService {
 	 * 도서를 추가하는 일
 	 * @param bmVO
 	 */
-	public void addBook(BookModifyVO bmVO) {
-		
+	public int  addBook(BookModifyVO bmVO) {
+		AdminBookDAO abDAO = AdminBookDAO.getInstance();
+		return abDAO.insertBook(bmVO);
 	}
 	
 	/**
@@ -19,7 +21,8 @@ public class BookDetailService {
 	 */
 	public int changeBook(BookModifyVO bmVO) {
 		int result = 0;
-		
+		AdminBookDAO abDAO = AdminBookDAO.getInstance();
+		result = abDAO.updateBook(bmVO);
 		return result;
 	}
 	
@@ -30,7 +33,8 @@ public class BookDetailService {
 	 */
 	public BookDetailDomain selectBookDetail(String book_isbn) {
 		BookDetailDomain bdd = null;
-		
+		AdminBookDAO abDAO = AdminBookDAO.getInstance();
+		bdd = abDAO.selectBookDetail(book_isbn);
 		return bdd;
 	}
 }

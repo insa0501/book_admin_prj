@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin.book">
+<select id="bookCnt" parameterType="kr.co.sist.admin.book.vo.SelectBookListVO" resultType="int">
+	select count(*) cnt 
+	from book
+	<if test="selectData != null">
+	where ${selectType} like '%'||#{selectData}||'%'
+	</if>
+</select>
+
+<select id="bookList" parameterType="kr.co.sist.admin.book.vo.SelectBookListVO" resultType="kr.co.sist.admin.book.domain.BookListDomain">
+select book_isbn, book_name, book_company, book_writer, book_country, book_price, to_char(book_date, 'yyyy-mm-dd') book_date, book_stock, book_activity
+from(select book_isbn, book_name, book_company, book_writer, book_country, book_price, book_date, book_stock, book_activity, rownum r_num
+		from(select book_isbn, book_name, book_company, book_writer, book_country, book_price, book_date, book_stock, book_activity
+				from book
+				<if test="selectData != null">
+				where ${selectType} like '%'||#{selectData}||'%'
+				</if>
+				order by book_date desc))
+where r_num between #{startNum} and #{endNum}
+</select>
+
+<select id="bookDetail" parameterType="String" resultType="kr.co.sist.admin.book.domain.BookDetailDomain">
+select book_isbn, book_name, book_country, book_type_no, book_writer, book_company, to_char(book_date, 'yyyy-mm-dd') book_date,
+			book_input_date, book_info, book_best, book_activity, book_img,book_price, book_stock
+from book
+where book_isbn=#{book_isbn}
+</select>
+
+<insert id="bookInsert" parameterType="kr.co.sist.admin.book.vo.BookModifyVO" >
+insert into book
+( book_isbn, book_name, book_country, book_type_no, book_writer, 
+		book_company, book_date, book_info,
+		book_best, book_activity, book_img, 
+		book_price, book_stock, book_input_date,admin_id  )
+values ( #{book_isbn}, #{book_name}, #{book_country}, #{book_type_no}, #{book_writer}, 
+		#{book_company}, to_date(#{book_date}, 'yyyy-mm-dd'), #{book_info}, 
+		#{book_best},#{book_activity} , #{book_img},
+		#{book_price},#{book_stock}, sysdate, 'test')
+</insert>
+
+<update id="bookUpdate" parameterType="kr.co.sist.admin.book.vo.BookModifyVO" >
+update book set
+	book_isbn = #{book_isbn},
+	book_name = #{book_name}, 
+	book_country = #{book_country}, 
+	book_type_no = #{book_type_no}, 
+	book_writer = #{book_writer}, 
+	book_company = #{book_company}, 
+	book_date = to_date(#{book_date},'yyyy-mm-dd'), 
+	book_info = #{book_info},
+	book_best = #{book_best}, 
+	book_activity = #{book_activity}, 
+	book_img = #{book_img}, 
+	book_price = #{book_price}, 
+	book_stock = #{book_stock}
+where book_isbn = #{book_isbn}
+</update>
+
+</mapper>

@@ -67,16 +67,10 @@ public class AdminBookDAO {
 		SqlSession ss = getSqlSession();
 		
 		cnt = ss.selectOne("kr.co.sist.admin.book.bookCnt", sblVO);
+		ss.close();
 		return cnt;
 	}
-	/*
-	public static void main(String[] args) {
-		SelectBookListVO sblVO = new SelectBookListVO();
-		int cnt = AdminBookDAO.getInstance().selectBookCnt(sblVO);
-		System.out.println(cnt);
-	}//main
-	
-	*/
+
 	/**
 	 * 검색데이터와 현재페이지, 범위를 받아 보여주는 도서를 받아오는 일
 	 * @param brVO
@@ -86,6 +80,8 @@ public class AdminBookDAO {
 	public List<BookListDomain> selectBookList(SelectBookListVO sblVO){
 		List<BookListDomain> list = new ArrayList<BookListDomain>();
 		SqlSession ss = getSqlSession();
+		list = ss.selectList("kr.co.sist.admin.book.bookList",sblVO);
+		ss.close();
 		return list;
 	}
 	
@@ -93,9 +89,14 @@ public class AdminBookDAO {
 	 * 도서를 추가하는 일
 	 * @param bmVO
 	 */
-	public void insertBook(BookModifyVO bmVO) {
+	public int insertBook(BookModifyVO bmVO) {
+		int cnt=0;
 		SqlSession ss = getSqlSession();
-	}
+		cnt=ss.insert("kr.co.sist.admin.book.bookInsert",bmVO);
+		ss.commit();
+		ss.close();
+		return cnt;
+	}//insertBook
 	
 	/**
 	 * 도서 정보를 변경하는 일
@@ -105,6 +106,10 @@ public class AdminBookDAO {
 	public int updateBook(BookModifyVO bmVO) {
 		int cnt = 0;
 		SqlSession ss = getSqlSession();
+		cnt = ss.update("kr.co.sist.admin.book.bookUpdate", bmVO);
+		
+		ss.commit();
+		ss.close();
 		return cnt;
 	}
 	
@@ -116,7 +121,17 @@ public class AdminBookDAO {
 	public BookDetailDomain selectBookDetail(String book_isbn) {
 		BookDetailDomain bdd = null;
 		SqlSession ss = getSqlSession();
+		
+		bdd = ss.selectOne("kr.co.sist.admin.book.bookDetail", book_isbn);
+		
+		ss.close();
 		return bdd;
-	}
+	}//selectBookDetail
+	
+	public static void main(String[] args) {
+		String book_isbn = "9788-9745-6529-9";
+		BookDetailDomain book = AdminBookDAO.getInstance().selectBookDetail(book_isbn);
+		System.out.println(book.getBook_name());
+	}//main
 	
 }
