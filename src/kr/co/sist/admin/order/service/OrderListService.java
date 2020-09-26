@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
+import kr.co.sist.admin.order.vo.OrderSearchVO;
 import kr.co.sist.admin.order.vo.PageNationVO;
 import kr.co.sist.admin.order.vo.SelectOrderListVO;
 
@@ -18,6 +19,7 @@ public class OrderListService {
 	 */
 	public List<OrderListDomain> searchOrderList(SelectOrderListVO solVO) {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
+				
 		
 		return list;
 	}//searchOrderList
@@ -37,8 +39,11 @@ public class OrderListService {
 	 * 전체 원글의 수 : DB사용
 	 * @return
 	 */
-	public int totalCount(SelectOrderListVO solVO) {
+	//SelectOrderListVO solVO
+	public int totalCount(OrderSearchVO osVO) {
 		int totalCnt=0; 
+		
+		
 		
 		return totalCnt;
 	}//totalCount
@@ -98,7 +103,7 @@ public class OrderListService {
 		int endPage=0; //페이지 이동을 위한 폼의 표시될 마지막 번호 
 		int curPage=0; //페이지 폼의 링크를 눌렀을 때의 이동과 폼에 표시될 페이지번호를 저장할 변수
 
-		pageNumber = 10; //페이지 이동을 위한 폼에 한번에 10개의 번호를 표시.
+		pageNumber = 5; //페이지 이동을 위한 폼에 한번에 10개의 번호를 표시.
 
 		startPage = ((pnVO.getCurrentPage() - 1) / pageNumber) * pageNumber + 1;
 		endPage = (((startPage - 1) + pageNumber) / pageNumber) * pageNumber;

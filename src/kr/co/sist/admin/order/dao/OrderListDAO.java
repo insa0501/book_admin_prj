@@ -5,6 +5,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.Session;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,6 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
+import kr.co.sist.admin.order.vo.OrderSearchVO;
 import kr.co.sist.admin.order.vo.SelectOrderListVO;
 
 public class OrderListDAO {
@@ -58,10 +61,12 @@ public class OrderListDAO {
 	 * @param sdVO
 	 * @return
 	 */
-	public int selectOrderCount(SelectOrderListVO solVO) {
+	// SelectOrderListVO solVO
+	public int selectOrderCount(OrderSearchVO osVO) {
 		int cnt = 0;
 		
-		
+		SqlSession ss = getSqlSession();
+		cnt = ss.selectList("kr.co.sist.admin.order.orderList", osVO).size();
 		
 		return cnt;
 	}//selectOrderCount
@@ -94,6 +99,9 @@ public class OrderListDAO {
 	}//selectOrderDetail
 	
 	public static void main(String[] args) {
-		System.out.println(new OrderListDAO().selectOrderList());
+		OrderSearchVO osVO = new OrderSearchVO();
+		osVO.setSelectType("2");
+		osVO.setSelectData("¹ÝÂ¦");
+		System.out.println(new OrderListDAO().selectOrderCount(osVO));
 	}
 }//class

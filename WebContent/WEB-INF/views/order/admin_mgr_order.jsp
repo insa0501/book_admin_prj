@@ -60,7 +60,7 @@
         <div class="content_title">주문관리</div>
         <div class="search">
           <div class="select_type">
-            <select class="custom-select">
+            <select name="selectType" class="custom-select">
               <option value="1">ISBN</option>
               <option value="2">도서명</option>
               <option value="3">저자</option>
