@@ -19,6 +19,24 @@
     <link rel="stylesheet" href="common/css/common_header_footer.css" />
     <!--JS-->
     <script src="common/js/res.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	$("#accept").click(function(){
+    		location.href="http://localhost/book_admin_prj/user_list.do";
+    	});//click
+    	$("#res_fin").click(function(){
+    		if(confirm("정말로 탈퇴하시겠습니까?")){
+    			$("#delete_frm").submit();
+    		}//end if
+    	});//click
+    	$("#edit").click(function(){
+    		if( confirm("정말로 변경하시겠습니까?")){
+    			$("#update_frm").submit();
+    		}//end if
+    	});//click
+    	
+    });//ready
+    </script>
   </head>
   <body>
     <!-- header -->
@@ -43,34 +61,43 @@
     <section class="main_section">
       <div class="main_title">회원상세정보</div>
       <div class="main_content">
+      <form name="update_frm" id="update_frm" action="http://localhost/book_admin_prj/update_user.do" method="POST">
         <table>
           <tr>
             <td class="column">아이디</td>
-            <td class="content">user1</td>
+            <td class="content"><c:out value="${user_detail.user_id }"/><input type="hidden" value="${user_detail.user_id }"/>
+            </td>
             <td class="column">상태</td>
-            <td class="content">회원</td>
+            <td class="content"><c:out value="${user_detail.user_status eq 'Y' ? '회원' : '탈퇴'  }"/></td>
           </tr>
           <tr>
             <td class="column">이름</td>
-            <td class="content"><input type="text" class="name" /></td>
+            <td class="content"><input type="text" class="name" name="user_name" value="${user_detail.user_name }" /></td>
             <td class="column">전화번호</td>
-            <td class="content"><input type="text" class="phone" /></td>
+            <td class="content"><input type="text" class="phone" name="user_phone" value="${user_detail.user_phone }" /></td>
           </tr>
           <tr>
             <td class="column">ip</td>
-            <td class="content" colspan="3">321.321.321.33</td>
+            <td class="content" colspan="3"><c:out value="${user_detail.user_ip }"/></td>
           </tr>
           <tr>
             <td class="column">주소</td>
             <td class="content" colspan="3">
-              <input type="text" class="addr" id="zipcode" />
+              <input type="text" class="addr" id="zipcode" readonly="readonly" name="user_zipcode" value="${user_detail.user_zipcode }" />
               <input type="button" value="우편번호검색" /><br />
-              <input type="text" class="addr" id="addr1" />
-              <input type="text" class="addr" id="addr2" />
+              <input type="text" class="addr" id="addr1" readonly="readonly" name="user_addr1" value="${user_detail.user_addr1 }" />
+              <input type="text" class="addr" id="addr2" name="user_addr2" value="${user_detail.user_addr2 }" />
             </td>
           </tr>
         </table>
-
+		<div class="btn_group" id="btn_group">
+          <button type="button" class="btn btn-dark" id="edit">수정</button>
+          <button type="button" class="btn btn-dark" id="res_str">탈퇴</button>
+          <button type="button" class="btn btn-dark" id="accept">확인</button>
+        </div>
+		</form>
+		
+		<form name="delete_frm" action="http://localhost/book_admin_prj/delete_user.do" method="POST">
         <div class="res_content" id="res_content">
           <div class="res_title">탈퇴사유</div>
           <textarea class="res_data"></textarea>
@@ -81,11 +108,9 @@
             <button type="button" class="btn btn-dark" id="cancel">취소</button>
           </div>
         </div>
-        <div class="btn_group" id="btn_group">
-          <button type="button" class="btn btn-dark" id="edit">수정</button>
-          <button type="button" class="btn btn-dark" id="res_str">탈퇴</button>
-          <button type="button" class="btn btn-dark" id="accept">확인</button>
-        </div>
+        </form>
+        
+        
       </div>
     </section>
     <!-- footer -->

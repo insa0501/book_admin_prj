@@ -22,6 +22,20 @@
     <style type="text/css">
     	td{ text-align: center; border-bottom: 1px solid #d9d9d9;}
     </style>
+    <script type="text/javascript">
+    $(function(){
+    	$("search").click(function(){
+    		$("frm").submit();
+    	});//click
+    	
+    	$("selectData").keydown(function(key){
+    		if( key.which == 13 || key.keyCode == 13 ){
+    			$("frm").submit();
+    		}
+    	})//keydown
+    });//ready
+    </script>
+    ${changeFlag eq 1 ? '<script>alert("유저 정보가 변경되었습니다.");</script>' : '' }
   </head>
   <body>
     <!-- header -->
@@ -45,22 +59,27 @@
     <section class="section_main">
       <div class="content_wrap">
         <div class="content_title">회원 관리</div>
+        
+        <form action="user_list.do" method="GET" name="frm">
         <div class="search">
           <div class="select_type">
-            <select class="custom-select">
-              <option value="1">아이디</option>
-              <option value="2">이름</option>
-              <option value="3">전화번호</option>
+            <select class="custom-select" name="selectType">
+              <option value="user_id">아이디</option>
+              <option value="user_name">이름</option>
+              <option value="user_phone">전화번호</option>
+              <option value="user_addr1">주소</option>
+              <option value="user_status">상태</option>
             </select>
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" type="text" />
+            <input class="form-control form-control-lg" type="text" id="selectData" name="selectData"/>
           </div>
           <div class="search_btn">
-            <button type="button" class="btn btn-dark">검색</button>
+            <button type="button" class="btn btn-dark" id="search">검색</button>
           </div>
         </div>
+        </form>
         <div class="search_result">
           <table class="table">
             <thead class="thead-light">
@@ -78,11 +97,15 @@
             </c:if>
             <c:forEach var="ul" items="${user_list }">
             	<tr>
-            		<td><c:out value="${ul.user_id }"/></td>
+            		<td>
+            			<a href="user_detail.do?user_id=${ul.user_id }&user_status=${ul.user_status}">
+            			<c:out value="${ul.user_id }"/>
+            			</a>
+            		</td>
             		<td><c:out value="${ul.user_name }"/></td>
             		<td><c:out value="${ul.user_phone }"/></td>
             		<td><c:out value="${ul.user_addr1 }"/></td>
-            		<td><c:out value="${ul.user_status }"/></td>
+            		<td><c:out value="${ul.user_status eq 'Y' ?'회원'  :'탈퇴' }"/></td>
             	</tr>
             </c:forEach>
             </tbody>

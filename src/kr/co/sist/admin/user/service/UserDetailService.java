@@ -1,5 +1,6 @@
 package kr.co.sist.admin.user.service;
 
+import kr.co.sist.admin.user.dao.UserDetailDAO;
 import kr.co.sist.admin.user.vo.UpdateUserResignVO;
 import kr.co.sist.admin.user.vo.UpdateUserVO;
 
@@ -10,10 +11,12 @@ public class UserDetailService {
 	 * @param uuVO
 	 * @return
 	 */
-	public boolean changeUserData(UpdateUserVO uuVO) {
-		boolean flag = false;
+	public int changeUserData(UpdateUserVO uuVO) {
+		int cnt = 0;
+		UserDetailDAO udd = UserDetailDAO.getInstance();
+		cnt = udd.updateUser(uuVO);
 		
-		return flag;
+		return cnt;
 	}//changeUser
 	
 	/**
@@ -23,6 +26,7 @@ public class UserDetailService {
 	 */
 	public boolean resignUser(UpdateUserResignVO uurVO) {
 		boolean flag = false;
+		UserDetailDAO udd = UserDetailDAO.getInstance();
 		
 		return flag;
 	}//resignUser

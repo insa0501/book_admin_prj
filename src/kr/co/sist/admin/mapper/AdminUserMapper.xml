@@ -20,5 +20,29 @@ from(select user_id, user_name, user_phone, user_addr1, user_status, rownum r_nu
 where r_num between #{startNum} and #{endNum}
 </select>
 
+<select id="userDetail" parameterType="String" resultType="kr.co.sist.admin.user.domain.UserDetailDomain">
+select user_id, user_name, user_phone, user_zipcode, user_addr1, user_addr2, user_ip, user_status
+from member
+where user_id = #{user_id}
+</select>
+<select id="userResDetail" parameterType="String" resultType="kr.co.sist.admin.user.domain.UserResDetailDomain">
+select user_id, user_ip, user_status, user_resign_date
+from member
+where  user_id=#{user_id}
+</select>
+<select id="userResData" parameterType="String" resultType="String">
+select user_resdata
+from resign_data
+where user_id = #{user_id}
+</select>
+<update id="userUpdate" parameterType="kr.co.sist.admin.user.vo.UpdateUserVO" >
+update member set
+	user_name = #{user_name},
+	user_phone = #{user_phone}, 
+	user_zipcode = #{user_zipcode}, 
+	user_addr1 = #{user_addr1}, 
+	user_addr2 = #{user_addr2}
+where user_id = #{user_id}
+</update>
 
 </mapper>

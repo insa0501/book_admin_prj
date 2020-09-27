@@ -1,23 +1,29 @@
 package kr.co.sist.admin.user.domain;
 
 public class UserDetailDomain {
-	private String user_name, user_phone, user_ip, user_zipcode, user_addr1, user_addr2,
-		user_hiredate, user_resdata, user_resign_date;
+	private String user_id, user_name, user_phone, user_ip,user_status, user_zipcode, user_addr1, user_addr2;
 
 	public UserDetailDomain() {
 	}
 
-	public UserDetailDomain(String user_name, String user_phone, String user_ip, String user_zipcode, String user_addr1,
-			String user_addr2, String user_hiredate, String user_resdata, String user_resign_date) {
+	public UserDetailDomain(String user_id, String user_name, String user_phone, String user_ip, String user_status,
+			String user_zipcode, String user_addr1, String user_addr2) {
+		this.user_id = user_id;
 		this.user_name = user_name;
 		this.user_phone = user_phone;
 		this.user_ip = user_ip;
+		this.user_status = user_status;
 		this.user_zipcode = user_zipcode;
 		this.user_addr1 = user_addr1;
 		this.user_addr2 = user_addr2;
-		this.user_hiredate = user_hiredate;
-		this.user_resdata = user_resdata;
-		this.user_resign_date = user_resign_date;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUser_name() {
@@ -44,6 +50,14 @@ public class UserDetailDomain {
 		this.user_ip = user_ip;
 	}
 
+	public String getUser_status() {
+		return user_status;
+	}
+
+	public void setUser_status(String user_status) {
+		this.user_status = user_status;
+	}
+
 	public String getUser_zipcode() {
 		return user_zipcode;
 	}
@@ -67,30 +81,6 @@ public class UserDetailDomain {
 	public void setUser_addr2(String user_addr2) {
 		this.user_addr2 = user_addr2;
 	}
-
-	public String getUser_hiredate() {
-		return user_hiredate;
-	}
-
-	public void setUser_hiredate(String user_hiredate) {
-		this.user_hiredate = user_hiredate;
-	}
-
-	public String getUser_resdata() {
-		return user_resdata;
-	}
-
-	public void setUser_resdata(String user_resdata) {
-		this.user_resdata = user_resdata;
-	}
-
-	public String getUser_resign_date() {
-		return user_resign_date;
-	}
-
-	public void setUser_resign_date(String user_resign_date) {
-		this.user_resign_date = user_resign_date;
-	}
 	
-	
+
 }

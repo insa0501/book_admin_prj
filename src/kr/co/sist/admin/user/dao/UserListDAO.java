@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.user.domain.UserDetailDomain;
 import kr.co.sist.admin.user.domain.UserListDomain;
+import kr.co.sist.admin.user.domain.UserResDetailDomain;
 import kr.co.sist.admin.user.vo.SelectUserListVO;
 
 public class UserListDAO {
@@ -85,14 +86,50 @@ public class UserListDAO {
 	}//selectUserList
 	
 	/**
-	 * 회원상세정보
+	 * 회원 상세 정보
 	 * @param user_id
 	 * @return
 	 */
 	public UserDetailDomain selectUserDetail(String user_id) {
 		UserDetailDomain udDomain = null;
+		SqlSession ss = getSqlSession();
 		
+		udDomain = ss.selectOne("kr.co.sist.admin.user.userDetail",user_id);
+		
+		ss.close();
 		return udDomain;
 	}//selectUserDetail
+	
+	/**
+	 * 탈퇴한 회원 상세 정보
+	 * @param user_id
+	 * @return
+	 */
+	public UserResDetailDomain selectResDetail(String user_id) {
+		UserResDetailDomain list = null;
+		SqlSession ss = getSqlSession();
+		list = ss.selectOne("kr.co.sist.admin.user.userResDetail",user_id);
+		ss.close();
+		return list;
+	}
+	public List<String> selectResData(String user_id) {
+		List<String> list = null;
+		SqlSession ss = getSqlSession();
+		list = ss.selectList("kr.co.sist.admin.user.userResData",user_id);
+		ss.close();
+		return list;
+	}
+	
+	public static void main(String[] args) {
+		String user_id= "resign1";
+		List<String> list = UserListDAO.getInstance().selectResData(user_id);
+		int i = 0;
+		for(String res : list) {
+			System.out.println(list.get(i++));
+			
+		}
+		
+	}
+	
 	
 }//class

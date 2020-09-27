@@ -19,7 +19,7 @@ public class UserDetailDAO {
 	private UserDetailDAO() {
 	}//UserListDAO
 	
-	private static UserDetailDAO getInstance() {
+	public static UserDetailDAO getInstance() {
 		if(udDAO ==null) {
 			udDAO = new UserDetailDAO();
 		}//end if
@@ -29,7 +29,7 @@ public class UserDetailDAO {
 	private SqlSessionFactory getSqlSessionFactory() throws IOException {
 		if(ssf==null) {
 			//1. xml과 연결
-			String xmlConfig = "kr/co/sist/dao/mybatis_config.xml";	///////////////////////////////////////////    수정필요!!!!
+			String xmlConfig="kr/co/sist/admin/mybatis_config.xml";
 			Reader reader = Resources.getResourceAsReader(xmlConfig);
 			//2. MyBatis Framework 생성
 			ssf = new SqlSessionFactoryBuilder().build(reader);
@@ -55,9 +55,14 @@ public class UserDetailDAO {
 	 * @param uoVO
 	 * @return
 	 */
-	public int updateUser(UpdateUserVO uoVO) {
+	public int updateUser(UpdateUserVO uuVO) {
 		int cnt = 0;
-		
+		SqlSession ss = getSqlSession();
+		cnt = ss.update("kr.co.sist.admin.user.userUpdate", uuVO );
+		//트랜잭션 처리
+		ss.commit();
+		//SqlSession 끊기
+		ss.close();
 		return cnt;
 	}//updateUser
 	

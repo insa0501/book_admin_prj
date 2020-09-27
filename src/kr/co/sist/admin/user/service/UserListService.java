@@ -6,6 +6,7 @@ import java.util.List;
 import kr.co.sist.admin.user.dao.UserListDAO;
 import kr.co.sist.admin.user.domain.UserDetailDomain;
 import kr.co.sist.admin.user.domain.UserListDomain;
+import kr.co.sist.admin.user.domain.UserResDetailDomain;
 import kr.co.sist.admin.user.vo.PageNationVO;
 import kr.co.sist.admin.user.vo.SelectUserListVO;
 
@@ -31,9 +32,28 @@ public class UserListService {
 	 */
 	public UserDetailDomain searchUserDetail(String user_id) {
 		UserDetailDomain udDomain = null;
-		
+		UserListDAO ulDAO = UserListDAO.getInstance();
+		udDomain = ulDAO.selectUserDetail(user_id);
 		return udDomain;
 	}//searchUserDetail
+	/**
+	 * Å»ÅðÇÑ È¸¿ø »ó¼¼ Á¤º¸
+	 * @param user_id
+	 * @return
+	 */
+	public UserResDetailDomain searchUserResDetail(String user_id) {
+		UserResDetailDomain urdd = null;
+		UserListDAO ulDAO = UserListDAO.getInstance();
+		urdd = ulDAO.selectResDetail(user_id);
+		urdd.setUser_status("Å»Åð");
+		return urdd;
+	}//searchUserResDetail
+	public List<String> searchUserResData(String user_id) {
+		List<String> resData = null;
+		UserListDAO ulDAO = UserListDAO.getInstance();
+		resData = ulDAO.selectResData(user_id);
+		return resData;
+	}//searchUserResData
 	
 	/**
 	 * ÀüÃ¼ ¿ø±ÛÀÇ ¼ö : DB»ç¿ë

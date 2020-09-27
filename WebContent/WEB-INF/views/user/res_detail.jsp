@@ -15,10 +15,19 @@
     <!--CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="common/css/reset.css" />
-    <link rel="stylesheet" href="common/css/mgr_user_detail.css" />
+    <link rel="stylesheet" href="common/css/admin_mgr_user_detail.css" />
     <link rel="stylesheet" href="common/css/common_header_footer.css" />
     <!--JS-->
     <script src="common/js/res.js"></script>
+    
+    <script type="text/javascript">
+    $(function(){
+    	$("#accept").click(function(){
+    		location.href="http://localhost/book_admin_prj/user_list.do";
+    	});
+    });
+    </script>
+    
   </head>
   <body>
     <!-- header -->
@@ -47,20 +56,23 @@
         <table>
           <tr>
             <td class="column">아이디</td>
-            <td class="content">user1</td>
+            <td class="content"><c:out value="${user_detail.user_id }"/></td>
             <td class="column">상태</td>
-            <td class="content">탈퇴</td>
+            <td class="content"><c:out value="${user_detail.user_status }"/></td>
           </tr>
-          <tr>
+          <tr> 
             <td class="column">탈퇴일</td>
-            <td class="content">2020-10-22</td>
+            <td class="content"><c:out value="${user_detail.user_resign_date }"/></td>
             <td class="column">탈퇴ip</td>
-            <td class="content">123.123.123.22</td>
+            <td class="content"><c:out value="${user_detail.user_ip }"/></td>
           </tr>
           <tr>
             <td class="column">탈퇴사유</td>
             <td class="content" colspan="3">
-              너무 비싸서 사용을 안해서 어쩌고저쩌고
+            <c:set var="res_num" value="●"/>
+            <c:forEach var="rs" items="${res_list }">
+            	<c:out value="${res_num }"/><c:out value="${rs }"/>
+            </c:forEach>
             </td>
           </tr>
         </table>

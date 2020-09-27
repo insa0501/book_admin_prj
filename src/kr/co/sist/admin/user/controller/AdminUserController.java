@@ -1,6 +1,7 @@
 package kr.co.sist.admin.user.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.List;
 
@@ -8,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.sist.admin.user.domain.UserDetailDomain;
 import kr.co.sist.admin.user.domain.UserListDomain;
+import kr.co.sist.admin.user.domain.UserResDetailDomain;
+import kr.co.sist.admin.user.service.UserDetailService;
 import kr.co.sist.admin.user.service.UserListService;
 import kr.co.sist.admin.user.vo.PageNationVO;
 import kr.co.sist.admin.user.vo.SelectUserDetailVO;
@@ -71,6 +75,18 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="user_detail.do", method=GET)
 	public String selectUserDetail(SelectUserDetailVO sudVO, Model model) {
+		//업무로직을 구현한 클래스 객체
+		UserListService uls = new UserListService();
+		if("N".equals(sudVO.getUser_status())) {
+			UserResDetailDomain urdd = uls.searchUserResDetail(sudVO.getUser_id());
+			List<String> list = uls.searchUserResData(sudVO.getUser_id());
+			model.addAttribute("user_detail",urdd);
+			model.addAttribute("res_list",list);
+			return "user/res_detail";
+		}
+		
+		UserDetailDomain udd = uls.searchUserDetail(sudVO.getUser_id());
+		model.addAttribute("user_detail",udd);
 		return "user/detail";
 	}//selectUserDetail
 	
@@ -80,9 +96,20 @@ public class AdminUserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/update_user.do", method=GET)
+	@RequestMapping(value="/update_user.do", method=POST)
 	public String updateUser(UpdateUserVO uuVO, Model model) {
-		return "";
+		
+		System.out.println("----------------"+uuVO.getUser_addr1());
+		System.out.println(uuVO.getUser_addr2());
+		System.out.println("----------------"+uuVO.getUser_id());
+		System.out.println(uuVO.getUser_name());
+		System.out.println(uuVO.getUser_phone());
+		System.out.println(uuVO.getUser_zipcode());
+		//유저 상세정보 업무로직을 구현한 클래스 객체
+		UserDetailService uds = new UserDetailService();
+		int flag = uds.changeUserData(uuVO);
+		model.addAttribute("changeFlag",flag);
+		return "redirect:user_list.do";
 	}//updateUser
 	
 	/**
@@ -91,9 +118,9 @@ public class AdminUserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="user_resign.do", method=GET)
+	@RequestMapping(value="delete_user.do", method=GET)
 	public String updateUserResign(UpdateUserResignVO uurVO, Model model) {
-		return "user/res_detail";
+		return "redirect:user_list.do";
 	}//updateUserResign
 	
 }//class
