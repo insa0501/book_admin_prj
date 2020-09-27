@@ -35,6 +35,16 @@
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css" />
     <!-- JS -->
+    <script type="text/javascript">
+    	$(function() {
+    		$("#searchBtn").click(function(){
+    			if($("#selectData").val() == "") {
+    				alert("값이 입력되지 않았습니다.");
+    			} // end if
+    			orderFrm.submit();
+    		}) // click
+    	}) //ready
+    </script>
   </head>
   <body>
     <!-- header -->
@@ -58,6 +68,7 @@
     <section class="section_main">
       <div class="content_wrap">
         <div class="content_title">주문관리</div>
+        <form action="select_order_list.do" method="get" name="orderFrm">
         <div class="search">
           <div class="select_type">
             <select name="selectType" class="custom-select">
@@ -68,12 +79,13 @@
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" type="text" />
+            <input class="form-control form-control-lg" id="selectData" name="selectData" type="text" />
           </div>
           <div class="search_btn">
-            <button type="button" class="btn btn-dark">검색</button>
+            <button type="button" class="btn btn-dark" id="searchBtn" name="searchBtn">검색</button>
           </div>
         </div>
+        </form>
         <div class="search_result">
           <table class="table">
             <thead class="thead-light">
@@ -87,37 +99,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>라플라스의 마녀</td>
-                <td>user1</td>
-                <td>10,000</td>
-                <td>배송중</td>
-                <td>어제</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>젊은작가상 수상 작품집</td>
-                <td>user1</td>
-                <td>10,000</td>
-                <td>배송완료</td>
-                <td>오늘</td>
-              </tr>
+	            <c:forEach var="ol" items="${ order_list }">
+	            <c:if test="${ empty order_list }">
+	            	<tr><td>조회된 항목이 없습니다</td></tr>
+	            </c:if>
+	              <tr>
+	                <th scope="row"><c:out value="${ ol.order_no }"/></th>
+	                <td><c:out value="${ ol.book_name }"/></td>
+	                <td><c:out value="${ ol.user_id }"/></td>
+	                <td><c:out value="${ ol.order_price }"/></td>
+	                <td><c:out value="${ ol.order_status }"/></td>
+	                <td><c:out value="${ ol.order_date }"/></td>
+	              </tr>
+	            </c:forEach>
             </tbody>
           </table>
         </div>
       </div>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
+        	<c:out value="${ indexList }" escapeXml="false"/>
         </ul>
       </nav>
     </section>

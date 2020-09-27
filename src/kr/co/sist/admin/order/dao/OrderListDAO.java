@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
 import kr.co.sist.admin.order.vo.OrderSearchVO;
+import kr.co.sist.admin.order.vo.RangeVO;
 import kr.co.sist.admin.order.vo.SelectOrderListVO;
 
 public class OrderListDAO {
@@ -25,7 +26,7 @@ public class OrderListDAO {
 	private OrderListDAO() {
 	}//OrderListDAO
 	
-	private static OrderListDAO getInstance() {
+	public static OrderListDAO getInstance() {
 		if(olDAO ==null) {
 			olDAO = new OrderListDAO();
 		}//end if
@@ -62,11 +63,11 @@ public class OrderListDAO {
 	 * @return
 	 */
 	// SelectOrderListVO solVO
-	public int selectOrderCount(OrderSearchVO osVO) {
+	public int selectOrderListCount(SelectOrderListVO solVO) {
 		int cnt = 0;
 		
 		SqlSession ss = getSqlSession();
-		cnt = ss.selectList("kr.co.sist.admin.order.orderList", osVO).size();
+		cnt = ss.selectList("kr.co.sist.admin.order.orderList", solVO).size();
 		
 		return cnt;
 	}//selectOrderCount
@@ -78,11 +79,11 @@ public class OrderListDAO {
 	 * @return
 	 */
 	//SelectOrderListVO solVO
-	public List<OrderListDomain> selectOrderList() {
+	public List<OrderListDomain> selectOrderList(SelectOrderListVO solVO) {
 		List<OrderListDomain> list = new ArrayList<OrderListDomain>();
 		
 		SqlSession ss = getSqlSession();
-		list = ss.selectList("kr.co.sist.admin.order.orderList");
+		list = ss.selectList("kr.co.sist.admin.order.orderList", solVO);
 		
 		return list;
 	}//selectOrderList
@@ -99,9 +100,12 @@ public class OrderListDAO {
 	}//selectOrderDetail
 	
 	public static void main(String[] args) {
-		OrderSearchVO osVO = new OrderSearchVO();
-		osVO.setSelectType("2");
-		osVO.setSelectData("¹ÝÂ¦");
-		System.out.println(new OrderListDAO().selectOrderCount(osVO));
+		SelectOrderListVO solVO = new SelectOrderListVO();
+		solVO.setSelectType("2");
+		solVO.setSelectData("¹ÝÂ¦");
+		solVO.setCurrentPage(1);
+		solVO.setStartNum(1);
+		solVO.setEndNum(5);
+		System.out.println(new OrderListDAO().selectOrderListCount(solVO));
 	}
 }//class
