@@ -30,8 +30,8 @@ public class AdminUserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/user_list.do", method=GET)
-	public String selectUserList(SelectUserListVO sulVO, Model model) {
+	@RequestMapping(value="/user_list.do", method= {GET,POST})
+	public String selectUserList(SelectUserListVO sulVO, String changeFlag, String deleteFlag, Model model) {
 		//도서 리스트를 조회 업무로직을 구현한 클래스
 		UserListService uls = new UserListService();
 		//전체 게시물 수
@@ -62,6 +62,9 @@ public class AdminUserController {
 		
 		List<UserListDomain> list = uls.searchUserList(sulVO);
 		model.addAttribute("user_list",list);
+		
+		model.addAttribute("changeFlag", changeFlag);
+		model.addAttribute("deleteFlag", deleteFlag);
 		
 		
 		return "user/main";
@@ -98,18 +101,13 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/update_user.do", method=POST)
 	public String updateUser(UpdateUserVO uuVO, Model model) {
-		
-		System.out.println("----------------"+uuVO.getUser_addr1());
-		System.out.println(uuVO.getUser_addr2());
-		System.out.println("----------------"+uuVO.getUser_id());
-		System.out.println(uuVO.getUser_name());
-		System.out.println(uuVO.getUser_phone());
-		System.out.println(uuVO.getUser_zipcode());
 		//유저 상세정보 업무로직을 구현한 클래스 객체
 		UserDetailService uds = new UserDetailService();
 		int flag = uds.changeUserData(uuVO);
-		model.addAttribute("changeFlag",flag);
-		return "redirect:user_list.do";
+		model.addAttribute("user_changeFlag",flag);
+		
+		//return "redirect:user_list.do";
+		return "redirect:process_result.do";
 	}//updateUser
 	
 	/**
@@ -118,9 +116,14 @@ public class AdminUserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="delete_user.do", method=GET)
+	@RequestMapping(value="delete_user.do", method=POST)
 	public String updateUserResign(UpdateUserResignVO uurVO, Model model) {
-		return "redirect:user_list.do";
+		//유저 상세정보 업무로직을 구현한 클래스 객체
+		UserDetailService uds = new UserDetailService();
+		int flag = uds.resignUser(uurVO);
+		model.addAttribute("user_deleteFlag", flag);
+		
+		return "redirect:process_result.do";
 	}//updateUserResign
-	
+		
 }//class

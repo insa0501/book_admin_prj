@@ -24,10 +24,10 @@ public class UserDetailService {
 	 * @param uurVO
 	 * @return
 	 */
-	public boolean resignUser(UpdateUserResignVO uurVO) {
-		boolean flag = false;
+	public int resignUser(UpdateUserResignVO uurVO) {
+		int flag = 0;
 		UserDetailDAO udd = UserDetailDAO.getInstance();
-		
+		flag = udd.updateUserResign(uurVO);
 		return flag;
 	}//resignUser
 	

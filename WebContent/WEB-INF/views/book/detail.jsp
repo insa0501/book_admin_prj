@@ -58,6 +58,11 @@
 				alert("도서 정보를 설정해주세요.");
 				return;
 			}
+			reg_date = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/;
+			if( !reg_date.test($("#book_date").val()) ){
+				alert("날짜 형식을 확인해주세요\nex)xxxx-xx-xx");
+	 			return;
+			}
 			
 			$("#updateBook").submit();
 		});//click
@@ -183,7 +188,7 @@
                  <th class="colTh">재고량</th>
                  <td><input type="text" name="book_stock" id="book_stock" value="${book_detail.book_stock }" ></td>
                  <th class="colTh">도서 등록일</th>
-                 <td><input type="text" name="book_input_date" id="book_input_date" value="${book_detail.book_input_date }" ></td>
+                 <td><input type="text" name="book_input_date" id="book_input_date" value="${book_detail.book_input_date }" readonly="readonly" ></td>
                  
               </tr>
            </table>

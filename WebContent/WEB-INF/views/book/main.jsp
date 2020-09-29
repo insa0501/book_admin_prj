@@ -38,9 +38,9 @@
       <div class="header_nav nav-up" id="header_nav">
         <div class="nav_logo">BOOKS</div>
         <ul class="nav_menu">
-          <li class="nav_">도서관리</li>
+          <li class="nav_"><a href="http://localhost/book_admin_prj/book_list.do">도서관리</a></li>
           <li class="nav_">주문관리</li>
-          <li class="nav_">회원관리</li>
+          <li class="nav_"><a href="http://localhost/book_admin_prj/user_list.do">회원관리</a></li>
           <li class="nav_">문의관리</li>
         </ul>
         <div class="nav_user_icons">
@@ -66,7 +66,7 @@
               <option value="book_company" ${param.selectType eq 'book_company'? "selected='selected'" : ''  }>출판사</option>
               <option value="book_date" ${param.selectType eq 'book_date'? "selected='selected'" : ''  }>출간일</option>
               <option value="book_stock" ${param.selectType eq 'book_stock'? "selected='selected'" : ''  }>재고</option>
-              <option value="book_status" ${param.selectType eq 'book_status'? "selected='selected'" : ''  }>상태</option>
+              <option value="book_activity" ${param.selectType eq 'book_activity'? "selected='selected'" : ''  }>상태</option>
             </select>
           </div>
 

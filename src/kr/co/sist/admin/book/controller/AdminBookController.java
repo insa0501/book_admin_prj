@@ -108,12 +108,12 @@ public class AdminBookController {
 		//도서를 추가하는 일
 		if( book_isbn != null && !"".equals(book_isbn)) {
 			int cnt=bds.addBook(bmVO);
-			model.addAttribute("insertFlag", cnt);
+			model.addAttribute("book_insertFlag", cnt);
 		}
 		
 		
 		
-		return "redirect:book_list.do?page_flag=1";
+		return "redirect:process_result.do";
 	}
 	@RequestMapping(value="change_book.do", method=POST)
 	public String changeBook(HttpServletRequest request,Model model) throws IOException {
@@ -144,7 +144,6 @@ public class AdminBookController {
 		}
 		//img는 업로드된 파일명을 받는다.
 		String book_img = mr.getParameter("book_img");
-		System.out.println(book_img);
 		if( mr.getFilesystemName("upfile") != null && !"".equals(mr.getFilesystemName("upfile")) ) {
 			book_img = mr.getFilesystemName("upfile");
 		}
@@ -161,10 +160,10 @@ public class AdminBookController {
 		//도서를 추가하는 일
 		if( book_isbn != null && !"".equals(book_isbn)) {
 			int cnt=bds.changeBook(bmVO);
-			model.addAttribute("updateFlag", cnt);
+			model.addAttribute("book_updateFlag", cnt);
 		}
 				
-		return "redirect:book_list.do?page_flag=2";
+		return "redirect:process_result.do";
 	}
 	@RequestMapping(value="select_book_detail.do", method=GET)
 	public String selectBookDetail(String book_isbn, Model model) {

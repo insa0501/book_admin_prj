@@ -73,7 +73,13 @@ public class UserDetailDAO {
 	 */
 	public int updateUserResign(UpdateUserResignVO uurVO) {
 		int cnt = 0;
-		
+		SqlSession ss = getSqlSession();
+		cnt = ss.update("kr.co.sist.admin.user.userResignUpdate", uurVO.getResign_id() );
+		ss.insert("kr.co.sist.admin.user.userResignInsert",uurVO);
+		//Æ®·£Àè¼Ç Ã³¸®
+		ss.commit();
+		//SqlSession ²÷±â
+		ss.close();
 		return cnt;
 	}//updateUserResign
 	

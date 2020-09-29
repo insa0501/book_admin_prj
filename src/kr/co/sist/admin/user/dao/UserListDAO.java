@@ -62,7 +62,10 @@ public class UserListDAO {
 	public int selectUserCount(SelectUserListVO sulVO) {
 		int cnt = 0;
 		SqlSession ss = getSqlSession();
-		
+		if("user_status".equals(sulVO.getSelectType())) {
+			String setData = "È¸¿ø".equals(sulVO.getSelectData()) ? "Y" : "N";
+			sulVO.setSelectData(setData);
+		}
 		cnt = ss.selectOne("kr.co.sist.admin.user.userCnt", sulVO);
 		
 		ss.close();
@@ -118,17 +121,6 @@ public class UserListDAO {
 		list = ss.selectList("kr.co.sist.admin.user.userResData",user_id);
 		ss.close();
 		return list;
-	}
-	
-	public static void main(String[] args) {
-		String user_id= "resign1";
-		List<String> list = UserListDAO.getInstance().selectResData(user_id);
-		int i = 0;
-		for(String res : list) {
-			System.out.println(list.get(i++));
-			
-		}
-		
 	}
 	
 	

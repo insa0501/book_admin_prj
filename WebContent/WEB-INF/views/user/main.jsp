@@ -22,6 +22,8 @@
     <style type="text/css">
     	td{ text-align: center; border-bottom: 1px solid #d9d9d9;}
     </style>
+    ${changeFlag eq 1 ? '<script>alert("유저 정보가 변경되었습니다.");</script>' : '' }
+    ${deleteFlag eq 1 ? '<script>alert("탈퇴가 완료되었습니다.");</script>' : '' }
     <script type="text/javascript">
     $(function(){
     	$("search").click(function(){
@@ -35,7 +37,6 @@
     	})//keydown
     });//ready
     </script>
-    ${changeFlag eq 1 ? '<script>alert("유저 정보가 변경되었습니다.");</script>' : '' }
   </head>
   <body>
     <!-- header -->
@@ -43,9 +44,9 @@
       <div class="header_nav nav-up" id="header_nav">
         <div class="nav_logo">BOOKS</div>
         <ul class="nav_menu">
-          <li class="nav_">도서관리</li>
+          <li class="nav_"><a href="http://localhost/book_admin_prj/book_list.do">도서관리</a></li>
           <li class="nav_">주문관리</li>
-          <li class="nav_">회원관리</li>
+          <li class="nav_"><a href="http://localhost/book_admin_prj/user_list.do">회원관리</a></li>
           <li class="nav_">문의관리</li>
         </ul>
         <div class="nav_user_icons">
@@ -64,16 +65,16 @@
         <div class="search">
           <div class="select_type">
             <select class="custom-select" name="selectType">
-              <option value="user_id">아이디</option>
-              <option value="user_name">이름</option>
-              <option value="user_phone">전화번호</option>
-              <option value="user_addr1">주소</option>
-              <option value="user_status">상태</option>
+              <option value="user_id" ${param.selectType eq 'user_id'? "selected='selected'" : ''  }>아이디</option>
+              <option value="user_name" ${param.selectType eq 'user_name'? "selected='selected'" : ''  }>이름</option>
+              <option value="user_phone" ${param.selectType eq 'user_phone'? "selected='selected'" : ''  }>전화번호</option>
+              <option value="user_addr1" ${param.selectType eq 'user_addr1'? "selected='selected'" : ''  }>주소</option>
+              <option value="user_status" ${param.selectType eq 'user_status'? "selected='selected'" : ''  }>상태</option>
             </select>
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" type="text" id="selectData" name="selectData"/>
+            <input class="form-control form-control-lg" type="text" id="selectData" name="selectData" value="${param.selectData }"/>
           </div>
           <div class="search_btn">
             <button type="button" class="btn btn-dark" id="search">검색</button>

@@ -44,5 +44,24 @@ update member set
 	user_addr2 = #{user_addr2}
 where user_id = #{user_id}
 </update>
+<update id="userResignUpdate" parameterType="String" >
+update member set
+	user_pass = '',
+	user_name = '', 
+	user_phone = '', 
+	user_zipcode = '', 
+	user_addr1 = '', 
+	user_addr2 = '', 
+	user_hiredate = '',
+	user_status = 'N',
+	user_resign_date = sysdate
+where user_id = #{resign_id}
+</update>
+<insert id="userResignInsert" parameterType="kr.co.sist.admin.user.vo.UpdateUserResignVO">
+insert into resign_data ( user_id, user_resdata )
+values ( #{resign_id}, #{user_resdata} )
+</insert>
+
+
 
 </mapper>
