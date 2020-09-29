@@ -6,27 +6,16 @@ import kr.co.sist.admin.order.vo.OrderBookVO;
 
 public class OrderDetailDomain {
 	private String order_date, order_status, user_id, order_phone, 
-					order_zipcode, order_addr1, order_addr2, order_ip;
+					order_zipcode, order_addr1, order_addr2, user_ip, card_info;
 	private int order_no, order_price;
-	private List<OrderBookVO> OrderBookList;
+	private List<OrderBookVO> orderBookList;
 	
-	public OrderDetailDomain() {
+	public String getCard_info() {
+		return card_info;
 	}
 
-	public OrderDetailDomain(String order_date, String order_status, String user_id,
-			String order_phone, String order_zipcode, String order_addr1, String order_addr2, String order_ip,
-			int order_no, int order_price, List<OrderBookVO> orderBookList) {
-		this.order_date = order_date;
-		this.order_status = order_status;
-		this.user_id = user_id;
-		this.order_phone = order_phone;
-		this.order_zipcode = order_zipcode;
-		this.order_addr1 = order_addr1;
-		this.order_addr2 = order_addr2;
-		this.order_ip = order_ip;
-		this.order_no = order_no;
-		this.order_price = order_price;
-		OrderBookList = orderBookList;
+	public void setCard_info(String card_info) {
+		this.card_info = card_info;
 	}
 
 	public int getOrder_no() {
@@ -93,12 +82,12 @@ public class OrderDetailDomain {
 		this.order_addr2 = order_addr2;
 	}
 
-	public String getOrder_ip() {
-		return order_ip;
+	public String getUser_ip() {
+		return user_ip;
 	}
 
-	public void setOrder_ip(String order_ip) {
-		this.order_ip = order_ip;
+	public void setUser_ip(String user_ip) {
+		this.user_ip = user_ip;
 	}
 
 	public int getOrder_price() {
@@ -110,13 +99,11 @@ public class OrderDetailDomain {
 	}
 
 	public List<OrderBookVO> getOrderBookList() {
-		return OrderBookList;
+		return orderBookList;
 	}
 
 	public void setOrderBookList(List<OrderBookVO> orderBookList) {
-		OrderBookList = orderBookList;
+		this.orderBookList = orderBookList;
 	}
 	
-	
-	
-}
+} // class

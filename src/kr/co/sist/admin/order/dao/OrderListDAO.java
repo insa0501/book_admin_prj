@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
+import kr.co.sist.admin.order.vo.OrderBookVO;
 import kr.co.sist.admin.order.vo.OrderSearchVO;
 import kr.co.sist.admin.order.vo.RangeVO;
 import kr.co.sist.admin.order.vo.SelectOrderListVO;
@@ -94,18 +95,29 @@ public class OrderListDAO {
 	 * @return
 	 */
 	public OrderDetailDomain selectOrderDetail(int order_no) {
-		OrderDetailDomain odDomain = null;
+		OrderDetailDomain odd = null;
 		
-		return odDomain;
+		SqlSession ss = getSqlSession();
+		odd = ss.selectOne("orderDetail", order_no);
+		
+		odd.setOrderBookList(ss.selectList("orderDetail_bookList", order_no));
+		
+		ss.close();
+		
+		return odd;
 	}//selectOrderDetail
 	
 	public static void main(String[] args) {
-		SelectOrderListVO solVO = new SelectOrderListVO();
-		solVO.setSelectType("2");
-		solVO.setSelectData("¹ÝÂ¦");
-		solVO.setCurrentPage(1);
-		solVO.setStartNum(1);
-		solVO.setEndNum(5);
-		System.out.println(new OrderListDAO().selectOrderListCount(solVO));
+//		SelectOrderListVO solVO = new SelectOrderListVO();
+//		solVO.setSelectType("2");
+//		solVO.setSelectData("¹ÝÂ¦");
+//		System.out.println(new OrderListDAO().selectOrderListCount(solVO));
+		OrderListDAO ol = new OrderListDAO();
+		OrderDetailDomain odd = ol.selectOrderDetail(2);
+		
+		for (OrderBookVO ob : odd.getOrderBookList()) {
+			System.out.println(ob.getBook_name());
+		} // end for
+		
 	}
 }//class

@@ -64,7 +64,7 @@ public class AdminLoginController {
 		 */		
 		if (ssCheck != null) {	
 			//url = "redirect:book_list.do";				
-			url = "redirect:select_order_list.do";				
+			url = "redirect:order_list.do";				
 		} // end if
 		
 		System.out.println(url);

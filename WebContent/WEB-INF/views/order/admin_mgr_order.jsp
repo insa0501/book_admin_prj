@@ -37,12 +37,23 @@
     <!-- JS -->
     <script type="text/javascript">
     	$(function() {
-    		$("#searchBtn").click(function(){
+    		
+    		function nullChk() {
     			if($("#selectData").val() == "") {
     				alert("값이 입력되지 않았습니다.");
     			} // end if
     			orderFrm.submit();
+    		} // nullChk()
+    		
+    		$("#searchBtn").click(function(){
+    			nullChk();	
     		}) // click
+    		$("#selectData").keydown(function() {
+    			if (window.event.which == 13) {
+    				nullChk();
+    			} // end if
+    		}) //keydown
+    		
     	}) //ready
     </script>
   </head>
@@ -68,18 +79,18 @@
     <section class="section_main">
       <div class="content_wrap">
         <div class="content_title">주문관리</div>
-        <form action="select_order_list.do" method="get" name="orderFrm">
+        <form action="order_list.do" method="get" name="orderFrm">
         <div class="search">
           <div class="select_type">
             <select name="selectType" class="custom-select">
-              <option value="1">ISBN</option>
-              <option value="2">도서명</option>
-              <option value="3">저자</option>
+              <option value="1" ${ param.selectType eq '1' ? "checked='checked'":"" }>주문번호</option>
+              <option value="2" ${ param.selectType eq '2' ? "checked='checked'":"" }>도서명</option>
+              <option value="3" ${ param.selectType eq '3' ? "checked='checked'":"" }>주문아이디</option>
             </select>
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" id="selectData" name="selectData" type="text" />
+            <input class="form-control form-control-lg" id="selectData" name="selectData" type="text" value="${ param.selectData }"/>
           </div>
           <div class="search_btn">
             <button type="button" class="btn btn-dark" id="searchBtn" name="searchBtn">검색</button>
@@ -105,7 +116,7 @@
 	            </c:if>
 	              <tr>
 	                <th scope="row"><c:out value="${ ol.order_no }"/></th>
-	                <td><c:out value="${ ol.book_name }"/></td>
+	                <td><a href="order_detail.do?order_no=${ ol.order_no }"><c:out value="${ ol.book_name }"/></a></td>
 	                <td><c:out value="${ ol.user_id }"/></td>
 	                <td><c:out value="${ ol.order_price }"/></td>
 	                <td><c:out value="${ ol.order_status }"/></td>

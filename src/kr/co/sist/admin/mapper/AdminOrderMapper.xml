@@ -26,9 +26,28 @@
 						</choose>
 					</if>
 					order by ol.order_no desc))
-	<if test="selectData neq null">
+	<if test="startNum neq 0">
 	where r_num between #{startNum} and #{endNum}
 	</if>
   </select>
+  <select id="orderDetail" resultType="kr.co.sist.admin.order.domain.OrderDetailDomain" parameterType="int">
+  	select ol.order_no, to_char(ol.order_date, 'yyyy-mm-dd hh24:mi') order_date, ol.user_id, ol.order_phone,
+  			ol.order_status, ol.order_zipcode, ol.order_addr1, ol.order_addr2, ol.user_ip,
+  			'(' ||pay.card_company || ') ' || pay.card_no1 || '-' || pay.card_no2 || '-' || pay.card_no3 || '-' || pay.card_no4 card_info
+	from   order_list ol, payment pay
+	where  (pay.order_no = ol.order_no) and ol.order_no = #{ order_no }
+  </select>
+  
+  <select id="orderDetail_bookList" resultType="kr.co.sist.admin.order.vo.OrderBookVO" parameterType="int">
+  	select ob.book_isbn, b.book_name, b.book_price, ob.order_book_cnt
+	from   order_book ob, book b
+	where  (ob.book_isbn = b.book_isbn) and ob.order_no = #{ order_no }
+  </select>
+  
+  <update id="orderDetail_update" parameterType="kr.co.sist.admin.order.vo.UpdateOrderVO">
+  	update order_list
+  	set    order_status = #{ order_status }
+  	where  order_no = #{ order_no }
+  </update>
   <!-- ORDER_NO,ORDER_DATE,USER_ID,ORDER_NAME,ORDER_ZIPCODE,ORDER_ADDR1,ORDER_ADDR2,ORDER_PHONE,ORDER_PRICE,ORDER_STATUS,USER_IP -->
 </mapper>

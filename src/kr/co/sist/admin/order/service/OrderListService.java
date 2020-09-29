@@ -33,9 +33,12 @@ public class OrderListService {
 	 * @return
 	 */
 	public OrderDetailDomain searchOrderDetail(int order_no) {
-		OrderDetailDomain odDomain = null;
+		OrderDetailDomain odd = null;
 		
-		return odDomain;
+		OrderListDAO olDAO = OrderListDAO.getInstance();
+		odd = olDAO.selectOrderDetail(order_no);
+		
+		return odd;
 	}//searchOrderDetail
 	
 	/**
