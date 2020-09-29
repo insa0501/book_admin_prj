@@ -18,7 +18,7 @@ public class OrderDetailDAO {
 	private OrderDetailDAO() {
 	}//OrderListDAO
 	
-	private static OrderDetailDAO getInstance() {
+	public static OrderDetailDAO getInstance() {
 		if(odDAO ==null) {
 			odDAO = new OrderDetailDAO();
 		}//end if
@@ -28,7 +28,7 @@ public class OrderDetailDAO {
 	private SqlSessionFactory getSqlSessionFactory() throws IOException {
 		if(ssf==null) {
 			//1. xml과 연결
-			String xmlConfig = "kr/co/sist/dao/mybatis_config.xml";	///////////////////////////////////////////    수정필요!!!!
+			String xmlConfig = "kr/co/sist/admin/mybatis_config.xml";	///////////////////////////////////////////    수정필요!!!!
 			Reader reader = Resources.getResourceAsReader(xmlConfig);
 			//2. MyBatis Framework 생성
 			ssf = new SqlSessionFactoryBuilder().build(reader);
@@ -57,6 +57,15 @@ public class OrderDetailDAO {
 	public int updateOrder(UpdateOrderVO uoVO) {
 		int cnt = 0;
 		
+		SqlSession ss = getSqlSession();
+		cnt = ss.update("orderDetail_update", uoVO);
+		
+		if (cnt == 1) {
+			ss.commit();
+		} // end if
+		
+		ss.close();
+		
 		return cnt;
 	}//updateOrder
 	
@@ -68,7 +77,25 @@ public class OrderDetailDAO {
 	public int deleteOrder(int order_no) {
 		int cnt = 0;
 		
+		SqlSession ss = getSqlSession();
+		cnt = ss.delete("order_delete", order_no);
+		
+		if (cnt == 1) {
+			ss.commit();
+		} // end if
+		
+		ss.close();
+		
 		return cnt;
 	}//deleteOrder
 	
+	public static void main(String[] args) {
+//		UpdateOrderVO uoVO = new UpdateOrderVO();
+//		uoVO.setOrder_no(3);
+//		uoVO.setOrder_status("1");
+//		
+		System.out.println(new OrderDetailDAO().getInstance().deleteOrder(4));
+		
+		
+	} // main
 }//class

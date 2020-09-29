@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.sist.admin.order.domain.OrderDetailDomain;
 import kr.co.sist.admin.order.domain.OrderListDomain;
+import kr.co.sist.admin.order.service.OrderDetailService;
 import kr.co.sist.admin.order.service.OrderListService;
 import kr.co.sist.admin.order.vo.OrderSearchVO;
 import kr.co.sist.admin.order.vo.PageNationVO;
@@ -84,7 +85,15 @@ public class AdminOrderController {
 	@RequestMapping(value="/update_order.do", method=POST)
 	public String updateOrder(UpdateOrderVO uoVO, Model model) {
 		
+		String msg = "fail";
 		
+		OrderDetailService ods = new OrderDetailService();
+		
+		if (ods.changeOrderData(uoVO)) {
+			msg = "success";
+		} // end if
+		
+		model.addAttribute("update_msg", msg);
 		
 		return "forward:order_detail.do";
 	}//updateOrder
@@ -95,9 +104,19 @@ public class AdminOrderController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="delete_order.do", method=GET)
+	@RequestMapping(value="/delete_order.do", method=GET)
 	public String deleteOrder(int order_no, Model model) {
-		return "";
+		String msg = "fail";
+		
+		OrderDetailService ods = new OrderDetailService();
+		
+		if (ods.removeOrder(order_no)) {
+			msg = "success";
+		} // end if
+		
+		model.addAttribute("update_msg", msg);
+		
+		return ""; // 주문관리 리스트로 이동하고 alert 띄울 예정 코드 고민중
 	}//deleteOrder
 	
 }

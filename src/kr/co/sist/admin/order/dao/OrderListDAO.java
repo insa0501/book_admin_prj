@@ -115,9 +115,6 @@ public class OrderListDAO {
 		OrderListDAO ol = new OrderListDAO();
 		OrderDetailDomain odd = ol.selectOrderDetail(2);
 		
-		for (OrderBookVO ob : odd.getOrderBookList()) {
-			System.out.println(ob.getBook_name());
-		} // end for
-		
+		System.out.println(new OrderListDAO().getInstance().selectOrderDetail(2).getOrder_price());
 	}
 }//class
