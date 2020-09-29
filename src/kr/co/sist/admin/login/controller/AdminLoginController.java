@@ -1,5 +1,10 @@
 package kr.co.sist.admin.login.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,11 +13,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import kr.co.sist.admin.login.service.AdminLoginService;
 import kr.co.sist.admin.login.vo.AdminLoginVO;
 import kr.co.sist.admin.login.vo.UpdateAdminPassVO;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class AdminLoginController {
@@ -81,9 +81,10 @@ public class AdminLoginController {
 	 * @param SessionStatus
 	 * @return 관리자 메인
 	 */
-	@RequestMapping(value="/admin_logout.do", method=POST)
-	public String adminLogout(SessionStatus ss) {
-		return "login_form";
+	@RequestMapping(value="/admin_logout.do", method=GET)
+	public String adminLogout(SessionStatus ss, HttpSession hs) {
+		hs.removeAttribute("admin_id");
+		return "login/admin_login";
 	} // adminLogout()
 	
 	/**
@@ -102,6 +103,6 @@ public class AdminLoginController {
 	 */
 	@RequestMapping(value="/change_admin_pass.do", method=POST)
 	public String changeAdminPass(UpdateAdminPassVO uapVO) {
-		return "";
+		return "redirect:admin_logout.do";
 	} // changeAdminPass
 } // class

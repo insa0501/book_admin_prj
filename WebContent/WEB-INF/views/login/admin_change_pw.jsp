@@ -10,26 +10,35 @@
     <title>관리자 비번 변경</title>
 
     <!-- bootstrap etc -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- css -->
-    <link rel="stylesheet" href="http://localhost/common/css/reset.css">
-    <link rel="stylesheet" href="http://localhost/common/css/common_header_footer.css">
-    <link rel="stylesheet" href="http://localhost/common/css/admin_change_pw.css">
+    <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css">
+    <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
+    <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_change_pw.css">
 
     <!-- JS -->
-    <script src="http://localhost/common/js/scroll.js"></script>
+    <script src="http://localhost/book_admin_prj/common/js/scroll.js"></script>
+    
+    <script type="text/javascript">
+    $(function(){
+    	$("#pwBtn").click(function(){
+    		var pass1 = $("#pass1").val();
+    		var pass2 = $("#pass2").val();
+    		
+    		if(pass1 != pass2){
+    			alert("비밀번호를 확인해주세요!");
+    			return;
+    		}
+    		$("#frm").submit();
+    		
+    	});//click
+    });//ready
+    </script>
 </head>
 
 <body>
@@ -58,10 +67,10 @@
         <div class="login_wrap">
             <div class="login_title">관리자 비밀번호 변경</div>
             <div class="login_input">
-                <form action="#void">
-                    <input type="text" class="input_new_pw" placeholder="새 비밀번호">
-                    <input type="button" class="find_btn" value="비밀번호 변경">
-                    <input type="text" class="input_new_pw2" placeholder="다시 입력해주세요">
+                <form action="http://localhost/book_admin_prj/change_admin_pass.do" method="POST" name="frm" id="frm" >
+                    <input type="text" id="pass1" name="admin_pass" class="input_new_pw" placeholder="새 비밀번호">
+                    <input type="button" id="pwBtn" class="find_btn" value="비밀번호 변경">
+                    <input type="text" id="pass2" class="input_new_pw2" placeholder="다시 입력해주세요">
                 </form>
             </div>
         </div>

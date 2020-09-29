@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<c:if test="${ sessionScope.admin_id ne null}">
     	<script type="text/javascript">
     		//location.replace("book_list.do");
-    		location.replace("select_order_list.do");
+    		location.replace("order_list.do");
     	</script>
     </c:if>
     <meta charset="UTF-8">

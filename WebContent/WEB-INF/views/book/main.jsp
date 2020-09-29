@@ -44,7 +44,8 @@
           <li class="nav_">문의관리</li>
         </ul>
         <div class="nav_user_icons">
-          <span><i class="fas fa-sign-in-alt"></i></span>
+        	<span><a href="http://localhost/book_admin_prj/admin_pass_check_form.do">비밀번호변경</a></span>
+          <span><a href="http://localhost/book_admin_prj/admin_logout.do"><i class="fas fa-sign-in-alt"></i></a></span>
           <!-- <span><i class="far fa-user"></i></span> -->
         </div>
       </div>
