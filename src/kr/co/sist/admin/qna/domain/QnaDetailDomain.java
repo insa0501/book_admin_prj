@@ -1,21 +1,21 @@
 package kr.co.sist.admin.qna.domain;
 
 public class QnaDetailDomain {
-	private String user_id, qna_subject, qna_content, qna_type, qna_answer, qna_input_date, qns_reply_date, qna_ip;
+	private String user_id, qna_subject, qna_content, qna_type, qna_answer, qna_input_date, qna_reply_date, qna_ip;
 	private int qna_no;
 	
 	public QnaDetailDomain() {
 	}
 
 	public QnaDetailDomain(String user_id, String qna_subject, String qna_content, String qna_type, String qna_answer,
-			String qna_input_date, String qns_reply_date, String qna_ip, int qna_no) {
+			String qna_input_date, String qna_reply_date, String qna_ip, int qna_no) {
 		this.user_id = user_id;
 		this.qna_subject = qna_subject;
 		this.qna_content = qna_content;
 		this.qna_type = qna_type;
 		this.qna_answer = qna_answer;
 		this.qna_input_date = qna_input_date;
-		this.qns_reply_date = qns_reply_date;
+		this.qna_reply_date = qna_reply_date;
 		this.qna_ip = qna_ip;
 		this.qna_no = qna_no;
 	}
@@ -68,12 +68,12 @@ public class QnaDetailDomain {
 		this.qna_input_date = qna_input_date;
 	}
 
-	public String getQns_reply_date() {
-		return qns_reply_date;
+	public String getQna_reply_date() {
+		return qna_reply_date;
 	}
 
-	public void setQns_reply_date(String qns_reply_date) {
-		this.qns_reply_date = qns_reply_date;
+	public void setQna_reply_date(String qna_reply_date) {
+		this.qna_reply_date = qna_reply_date;
 	}
 
 	public String getQna_ip() {

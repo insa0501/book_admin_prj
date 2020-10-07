@@ -19,21 +19,58 @@
 <script type="text/javascript">
 
  $(function () {
+	
 	$("#updateBtn").click(function(){
-		var status = $("#order_status").val();
 		
-		$("#order_status").val(status);
+		if (confirm("수정하시겠습니까?")) {
 		
-		orderDetailFrm.action="update_order.do";
-		orderDetailFrm.submit();
-	}) // click
+			$.ajax({
+				url:"update_order.do",
+				type:"POST",
+				data:"order_no=" + $("#order_no").val() + "&order_status=" + $("#order_status").val(),
+				dataType:"text",
+				error:function( xhr ){
+					console.log(xhr.status + " / " + xhr.statusText);				
+				}, //error
+				success:function( ){
+					alert("수정되었습니다.");
+					location.href="order_list.do";
+				} //success
+			}); // ajax
+		
+		} // end if 
+		
+	}) // updateBtn click
+	
+	$("#deleteBtn").click(function(){
+
+		if (confirm("삭제하시겠습니까?")) {
+
+			$.ajax({
+				url:"delete_order.do",
+				type:"GET",
+				data:"order_no=" + $("#order_no").val(),
+				dataType:"text",
+				error:function( xhr ){
+					console.log(xhr.status + " / " + xhr.statusText);				
+				}, //error
+				success:function( text_data ){
+					location.href="order_list.do";
+					alert("삭제되었습니다.");
+				} //success
+			}); // ajax
+			
+		} // end if 
+		
+	}) // deleteBtn click
+	
  });//ready
 
 </script>
 </head>
 <body>
 <!-- header -->
-<section class="section_header">
+<!-- <section class="section_header">
   <div class="header_nav nav-up" id="header_nav">
     <div class="nav_logo">BOOKS</div>
     <ul class="nav_menu">
@@ -44,10 +81,11 @@
     </ul>
     <div class="nav_user_icons">
       <span><i class="fas fa-sign-in-alt"></i></span>
-      <!-- <span><i class="far fa-user"></i></span> -->
+      <span><i class="far fa-user"></i></span>
     </div>
   </div>
-</section>
+</section> -->
+<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
 <!-- header end -->
 
 
@@ -55,7 +93,7 @@
      
      <div id="orderDetailInfo">
      
-      <form action="" method="post" id="orderDetailFrm" name="orderDetailFrm"> <!-- enctype="multipart/form-data" 업로드가 없어서 일단 주석처리 -->
+      <form method="post" id="orderDetailFrm" name="orderDetailFrm"> <!-- enctype="multipart/form-data" 업로드가 없어서 일단 주석처리 -->
        <div><h2>주문상세정보</h2></div> 
        
          <div class="orderData">

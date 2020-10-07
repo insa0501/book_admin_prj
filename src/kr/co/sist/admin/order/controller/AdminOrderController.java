@@ -5,6 +5,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +31,8 @@ public class AdminOrderController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/order_list.do", method=GET)
-	public String selectOrderList(SelectOrderListVO solVO, Model model) {
+	@RequestMapping(value="/order_list.do", method= {GET, POST})
+	public String selectOrderList(SelectOrderListVO solVO, Model model/* , HttpSession session */) {
 		OrderListService ols = new OrderListService();
 		
 		int totalCount = ols.totalCount(solVO); // 조회된 주문내역의 갯수
@@ -42,19 +44,22 @@ public class AdminOrderController {
 		int currentPage = solVO.getCurrentPage(); // 현재페이지
 		int startNum = ols.startNum(currentPage, pageScale);
 		int endNum = ols.endNum(startNum, pageScale);
+		String selectType = solVO.getSelectType();
+		String selectData = solVO.getSelectData();
+		
 		
 		
 		solVO.setStartNum(startNum); // 페이지의 주문내역 시작번호
 		solVO.setEndNum(endNum); // 끝번호
 		
-		PageNationVO pnVO = new PageNationVO("", currentPage, totalPage); // 페이징을 위한 VO에 값 설정
+		PageNationVO pnVO = new PageNationVO("", selectType, selectData, currentPage, totalPage); // 페이징을 위한 VO에 값 설정
 		
 		String indexList = ols.pageNation(pnVO); // 페이징 된 값을 저장
 		model.addAttribute("indexList", indexList);
 		
 		List<OrderListDomain> list = ols.searchOrderList(solVO); // DB내역을 조회하여 리스트에 저장
 		model.addAttribute("order_list", list);
-		
+		//session.setAttribute("currentPage", currentPage);
 		
 		return "order/admin_mgr_order";
 	}//selectOrderListwww
@@ -66,12 +71,13 @@ public class AdminOrderController {
 	 * @return
 	 */
 	@RequestMapping(value="/order_detail.do", method= {GET, POST})
-	public String selectOrderDetail(int order_no, Model model) {
+	public String selectOrderDetail(int order_no, Model model, HttpSession session) {
 		
 		OrderListService ols = new OrderListService();
 		OrderDetailDomain odd = ols.searchOrderDetail(order_no);
 		
 		model.addAttribute("order_info", odd);
+		model.addAttribute("currentPage", session.getAttribute("currentPage"));
 		
 		return "order/admin_order_detail_info";
 	}//selectOrderDetail
@@ -95,7 +101,7 @@ public class AdminOrderController {
 		
 		model.addAttribute("update_msg", msg);
 		
-		return "forward:order_detail.do";
+		return "redirect:order_list.do";
 	}//updateOrder
 	
 	/**
@@ -114,9 +120,9 @@ public class AdminOrderController {
 			msg = "success";
 		} // end if
 		
-		model.addAttribute("update_msg", msg);
+		model.addAttribute("delete_msg", msg);
 		
-		return ""; // 주문관리 리스트로 이동하고 alert 띄울 예정 코드 고민중
+		return "redirect:order_list.do";
 	}//deleteOrder
 	
 }

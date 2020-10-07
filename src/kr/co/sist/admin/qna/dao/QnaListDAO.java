@@ -22,7 +22,7 @@ public class QnaListDAO {
 	private QnaListDAO() {
 	}//QnaListDAO
 	
-	private static QnaListDAO getInstance() {
+	public static QnaListDAO getInstance() {
 		if(qlDAO ==null) {
 			qlDAO = new QnaListDAO();
 		}//end if
@@ -32,7 +32,7 @@ public class QnaListDAO {
 	private SqlSessionFactory getSqlSessionFactory() throws IOException {
 		if(ssf==null) {
 			//1. xml과 연결
-			String xmlConfig = "kr/co/sist/dao/mybatis_config.xml";///////////////////////////////////////////    수정필요!!!!
+			String xmlConfig = "kr/co/sist/admin/mybatis_config.xml";
 			Reader reader = Resources.getResourceAsReader(xmlConfig);
 			//2. MyBatis Framework 생성
 			ssf = new SqlSessionFactoryBuilder().build(reader);
@@ -61,6 +61,9 @@ public class QnaListDAO {
 	public int selectQnaCount(SelectQnaListVO sqlVO) {
 		int cnt = 0;
 		
+		SqlSession ss = getSqlSession();
+		cnt = ss.selectOne("kr.co.sist.admin.qna.qnaListCnt", sqlVO);
+		
 		return cnt;
 	}//selectQnaCount
 	
@@ -73,6 +76,9 @@ public class QnaListDAO {
 	public List<QnaListDomain> selectQnaList(SelectQnaListVO sqlVO) {
 		List<QnaListDomain> list = new ArrayList<QnaListDomain>();
 		
+		SqlSession ss = getSqlSession();
+		list = ss.selectList("kr.co.sist.admin.qna.qnaList", sqlVO);
+		
 		return list;
 	}//selectQnaList
 	
@@ -82,9 +88,12 @@ public class QnaListDAO {
 	 * @return
 	 */
 	public QnaDetailDomain selectQnaDetail(int qna_no) {
-		QnaDetailDomain qdDomain = null;
+		QnaDetailDomain qdd = null;
 		
-		return qdDomain;
+		SqlSession ss = getSqlSession();
+		qdd = ss.selectOne("kr.co.sist.admin.qna.qnaDetail", qna_no);
+		
+		return qdd;
 	}//selectQnaDetail
 	
 }//class

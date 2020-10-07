@@ -3,6 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.admin.order">
+  <select id="orderListCnt" resultType="int" parameterType="kr.co.sist.admin.order.vo.SelectOrderListVO">
+  	select count(*)
+	from (select ol.ORDER_NO, sel.book_name
+			from   order_list ol,  (select ol.order_no, listagg(bk.book_name, '/') within group(order by bk.book_name) book_name
+									from   order_book ob, order_list ol, book bk
+									where  (ob.book_isbn=bk.book_isbn and ob.order_no=ol.order_no)
+									group by ol.order_no) sel
+			where ol.order_no = sel.order_no
+		  	<if test="selectData neq null">
+				<choose>
+					<when test="selectType eq 1">
+						<trim prefix="and"> ol.order_no=#{ selectData } </trim>
+					</when>
+					<when test="selectType eq 2">
+						<trim prefix="and"> sel.book_name like '%'||#{ selectData }||'%' </trim>
+					</when>
+					<when test="selectType eq 3">
+						<trim prefix="and"> ol.user_id=#{ selectData } </trim>
+					</when>
+				</choose>
+			</if>
+			)
+  </select>
   <select id="orderList" resultType="kr.co.sist.admin.order.domain.OrderListDomain" parameterType="kr.co.sist.admin.order.vo.SelectOrderListVO">
   	select ORDER_NO, to_char(order_date, 'yyyy-mm-dd hh24:mi') ORDER_DATE, USER_ID, ORDER_PRICE, ORDER_STATUS, book_name
 	from (select ORDER_NO, ORDER_DATE, USER_ID, ORDER_PRICE, ORDER_STATUS, book_name, rownum r_num

@@ -18,7 +18,7 @@ public class QnaDetailDAO {
 	private QnaDetailDAO() {
 	}//qnaListDAO
 	
-	private static QnaDetailDAO getInstance() {
+	public static QnaDetailDAO getInstance() {
 		if(qdDAO ==null) {
 			qdDAO = new QnaDetailDAO();
 		}//end if
@@ -28,7 +28,7 @@ public class QnaDetailDAO {
 	private SqlSessionFactory getSqlSessionFactory() throws IOException {
 		if(ssf==null) {
 			//1. xml과 연결
-			String xmlConfig = "kr/co/sist/dao/mybatis_config.xml";	///////////////////////////////////////////    수정필요!!!!
+			String xmlConfig = "kr/co/sist/admin/mybatis_config.xml";
 			Reader reader = Resources.getResourceAsReader(xmlConfig);
 			//2. MyBatis Framework 생성
 			ssf = new SqlSessionFactoryBuilder().build(reader);
@@ -57,6 +57,16 @@ public class QnaDetailDAO {
 	public int updateQnaAnswer(UpdateQnaAnswerVO uqaVO) {
 		int cnt = 0;
 		
+		SqlSession ss = getSqlSession();
+		cnt = ss.update("kr.co.sist.admin.qna.addAnswer", uqaVO);
+		
+		
+		if (cnt == 1) {
+			ss.commit();
+		} // end if
+		
+		ss.close();
+		
 		return cnt;
 	}//updateQnaAnswer
 	
@@ -67,6 +77,15 @@ public class QnaDetailDAO {
 	 */
 	public int deleteQna(int qna_no) {
 		int cnt = 0;
+		
+		SqlSession ss = getSqlSession();
+		cnt = ss.delete("kr.co.sist.admin.qna.removeQna", qna_no);
+		
+		if (cnt == 1) {
+			ss.commit();
+		} // end if
+		
+		ss.close();
 		
 		return cnt;
 	}//updateQnaDelete

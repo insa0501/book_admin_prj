@@ -1,4 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.admin.qna">
+	<select id="qnaListCnt" resultType="int" parameterType="kr.co.sist.admin.qna.vo.SelectQnaListVO">
+		select count(*)
+		from   qna
+		<where>
+		  	<if test="selectData neq null">
+				<choose>
+					<when test="selectType eq 1">user_id = #{ selectData }</when>
+					<when test="selectType eq 2">qna_content like '%'||#{ selectData }||'%'</when>
+					<when test="selectType eq 3">
+						<if test="selectData.equals('N')">
+							qna_reply_date is null
+						</if>
+						<if test="selectData.equals('Y')">
+							qna_reply_date is not null
+						</if>
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+	<select id="qnaList" resultType="kr.co.sist.admin.qna.domain.QnaListDomain" parameterType="kr.co.sist.admin.qna.vo.SelectQnaListVO">
+		select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, 
+				to_char(QNA_INPUT_DATE, 'yyyy-mm-dd / hh24:mm') QNA_INPUT_DATE, 
+				nvl2(QNA_REPLY_DATE, '완료', '미완료') qna_status
+		from   qna
+		<where>
+		  	<if test="selectData neq null">
+				<choose>
+					<when test="selectType eq 1">user_id = #{ selectData }</when>
+					<when test="selectType eq 2">qna_content like '%'||#{ selectData }||'%'</when>
+					<when test="selectType eq 3">
+						<if test="selectData.equals('N')">
+							qna_reply_date is null
+						</if>
+						<if test="selectData.equals('Y')">
+							qna_reply_date is not null
+						</if>
+					</when>
+				</choose>
+			</if>
+		</where>
+		order by qna_no desc
+	</select>
+	<select id="qnaDetail" resultType="kr.co.sist.admin.qna.domain.QnaDetailDomain" parameterType="int">
+		select QNA_NO, USER_ID, QNA_SUBJECT, QNA_CONTENT, QNA_TYPE, QNA_ANSWER, 
+				to_char(qna_input_date, 'yyyy-mm-dd  hh24:mm') QNA_INPUT_DATE, 
+				to_char(qna_reply_date, 'yyyy-mm-dd  hh24:mm')QNA_REPLY_DATE, 
+				QNA_IP, ADMIN_ID
+		from   qna
+		where  qna_no = #{ qna_no }
+	</select>
+	<update id="addAnswer" parameterType="kr.co.sist.admin.qna.vo.UpdateQnaAnswerVO">
+		update qna
+		set    qna_answer = #{ qna_answer }, qna_reply_date = sysdate, admin_id = #{ admin_id }
+		where  qna_no = #{ qna_no }
+	</update>
+	<delete id="removeQna" parameterType="int">
+		delete 
+		from   qna
+		where  qna_no = #{ qna_no }
+	</delete>
 </mapper>

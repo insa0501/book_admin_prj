@@ -111,6 +111,8 @@ public class OrderListService {
 		int curPage=0; //페이지 폼의 링크를 눌렀을 때의 이동과 폼에 표시될 페이지번호를 저장할 변수
 		int currentPage = pnVO.getCurrentPage();
 		int totalPage = pnVO.getTotalPage();
+		String selectType = pnVO.getSelectType();
+		String selectData = pnVO.getSelectData();
 		
 		pageNumber = 5; //페이지 이동을 위한 폼번호 표시.
 
@@ -123,7 +125,7 @@ public class OrderListService {
 
 		if ( currentPage > pageNumber) {	//현재페이지가 폼에 표시된 번호보다 크다면
 			curPage = startPage - 1; 		//[<<]눌렀을 때 이동할 페이지 번호를 변수에 담고
-			indexList = indexList + "<li class='page-item'><a href='?currentPage="+curPage+"' class='page-link' tabindex='-1'>Previous</a></li>";		//[<<]를 a태그에 담아서 페이지이동 폼을 표현할 변수에 저장
+			indexList = indexList + "<li class='page-item'><a href='?currentPage="+curPage+(selectData!=null?"&selectType="+selectType+"&selectData="+selectData:"")+"' class='page-link' tabindex='-1'>Previous</a></li>";		//[<<]를 a태그에 담아서 페이지이동 폼을 표현할 변수에 저장
 		}else{	//현재페이지가 폼에 표시된 번호보다 크지 않다면
 			indexList = indexList + "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Previous</a></li>";		//[<<]만 담아서 페이지이동 폼을 표현할 변수에 저장
 		}//end else 
@@ -133,7 +135,7 @@ public class OrderListService {
 			if (curPage == currentPage) {	//페이지 이동용 임시 변수가 현재 페이지와 같은 경우
 				indexList = indexList + "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>"+currentPage+"</a></li>";	//폼 형태를 담은 변수에 [현재번호]를 추가
 			} else {	//페이지 이동용 임시 변수가 현재 페이지와 다른 경우
-				indexList = indexList +"<li class='page-item'><a href='?currentPage="+curPage+"' class='page-link'>"+curPage+"</a></li>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+				indexList = indexList +"<li class='page-item'><a href='?currentPage="+curPage+(selectData!=null?"&selectType="+selectType+"&selectData="+selectData:"")+"' class='page-link'>"+curPage+"</a></li>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
 			}//end else 
 				
 			curPage++;	//페이지 이동용 임시 변수를 증가시켜서 페이지이동 폼의 번호가 for문처럼 만들어지게 한다.
@@ -142,7 +144,7 @@ public class OrderListService {
 
 		if ( pnVO.getTotalPage() > endPage) {	//폼의 마지막 번호가 총페이지보다  작다면
 			curPage = endPage + 1;		//[>>]눌렀을 때 이동할 페이지 번호를 변수에 담고
-			indexList = indexList + "<li class='page-item'><a class='page-link' href='?current_page='+curPage+'' tabindex='-1'>Next</a></li>";		//[>>]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+			indexList = indexList + "<li class='page-item'><a class='page-link' href='?current_page='"+curPage+(selectData!=null?"&selectType="+selectType+"&selectData="+selectData:"")+"' tabindex='-1'>Next</a></li>";		//[>>]를 a태그에 담아서 폼 형태를 담은 변수에 추가
 		}else{	//폼의 마지막 번호가 총페이지보다  작지 않다면
 			indexList = indexList + "<li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Next</a></li>";		//[>>]만 담아서 페이지이동 폼을 표현할 변수에 저장
 		}//end else 

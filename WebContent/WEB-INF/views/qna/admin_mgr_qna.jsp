@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>주문관리</title>
+    <title>문의관리</title>
     <link rel="icon" type="image/png" href="http://localhost/book_admin_prj/images/icons/favicon.ico" />
     <!--Bootstrap-->
     <link
@@ -40,30 +40,48 @@
     </style>
     <!-- JS -->
     <script type="text/javascript">
-    	$(function() {
+    	$(function(){
+    		
     		function nullChk() {
     			if($("#selectData").val() == "") {
     				alert("값이 입력되지 않았습니다.");
     				return;
     			} // end if
-    			orderFrm.submit();
+    			//alert($("#selectType").val() + " / " + $("#selectData").val());
+    			qnaFrm.submit();
     		} // nullChk()
     		
     		$("#searchBtn").click(function(){
     			nullChk();	
     		}) // click
+    		
     		$("#selectData").keydown(function() {
     			if (window.event.which == 13) {
     				nullChk();
     			} // end if
     		}) //keydown
     		
-    	}) //ready
+    		
+    		$("#selectType").change(function(){
+   				var output = "<input class='form-control form-control-lg' type='text' id='selectData'/>";
+   				var keywordDiv = document.getElementById("keywordDiv");
+   				
+    			if($("#selectType").val() == 3) {
+    				
+    				output = "<select id='selectData' name='selectData' class='custom-select'>"
+    							+"<option value='N'>미완료</option>"
+    							+"<option value='Y'>완료</option>"
+    						+"</select>";
+    			} // end if
+   				keywordDiv.innerHTML = output;
+    		}) // change
+    		
+    	}) // ready
     </script>
   </head>
-	
   <body>
     <!-- header -->
+    <!-- <link rel="import" href="common/html/mgr_header.html" /> -->
     <!-- <section class="section_header">
       <div class="header_nav nav-up" id="header_nav">
         <div class="nav_logo">BOOKS</div>
@@ -84,49 +102,49 @@
     <!--main section-->
     <section class="section_main">
       <div class="content_wrap">
-        <div class="content_title">주문관리</div>
-        <form action="order_list.do" method="get" name="orderFrm">
-        <div class="search">
-          <div class="select_type">
-            <select name="selectType" class="custom-select">
-              <option value="1" ${ param.selectType eq '1' ? "selected='selected'":"" }>주문번호</option>
-              <option value="2" ${ param.selectType eq '2' ? "selected='selected'":"" }>도서명</option>
-              <option value="3" ${ param.selectType eq '3' ? "selected='selected'":"" }>주문아이디</option>
-            </select>
-          </div>
-
-          <div class="keyword">
-            <input class="form-control form-control-lg" id="selectData" name="selectData" type="text" value="${ param.selectData }"/>
-          </div>
-          <div class="search_btn">
-            <button type="button" class="btn btn-dark" id="searchBtn" name="searchBtn">검색</button>
-          </div>
-        </div>
+        <div class="content_title">문의관리</div>
+        <form action="qna_list.do" name="qnaFrm" method="get">
+	        <div class="search">
+	          <div class="select_type">
+	            <select id="selectType" name="selectType" class="custom-select">
+	              <option value="1" ${ param.selectType eq '1' ? "selected='selected'":"" }>회원아이디</option>
+	              <option value="2" ${ param.selectType eq '2' ? "selected='selected'":"" }>문의내용</option>
+	              <option value="3" ${ param.selectType eq '3' ? "selected='selected'":"" }>답변유무</option>
+	            </select>
+	          </div>
+	
+	          <div class="keyword" id="keywordDiv">
+	            <input type="text" class="form-control form-control-lg" id="selectData" name="selectData" value="${ param.selectData }"/>
+	          </div>
+	          <div class="search_btn">
+	            <button type="button" id="searchBtn" class="btn btn-dark">검색</button>
+	          </div>
+	        </div>
         </form>
         <div class="search_result">
           <table class="table">
             <thead class="thead-light">
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">책 제목</th>
-                <th scope="col">주문아이디</th>
-                <th scope="col">주문가격</th>
-                <th scope="col">배송현황</th>
-                <th scope="col">주문일자</th>
+                <th scope="col">문의번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">아이디</th>
+                <th scope="col">분류</th>
+                <th scope="col">등록일</th>
+                <th scope="col">답변유무</th>
               </tr>
             </thead>
             <tbody>
-	            <c:if test="${ empty order_list }">
+	            <c:if test="${ empty qna_list }">
 	            	<tr><td colspan="6" style="text-align:center;">조회된 항목이 없습니다</td></tr>
 	            </c:if>
-	            <c:forEach var="ol" items="${ order_list }">
+          	    <c:forEach var="ql" items="${ qna_list }">
 	              <tr>
-	                <th scope="row"><c:out value="${ ol.order_no }"/></th>
-	                <td><a href="order_detail.do?order_no=${ ol.order_no }"><c:out value="${ ol.book_name }"/></a></td>
-	                <td><c:out value="${ ol.user_id }"/></td>
-	                <td><c:out value="${ ol.order_price }"/></td>
-	                <td><c:out value="${ ol.order_status eq '0'?'주문완료': ol.order_status eq '1'? '배송중':'배송완료' }"/></td>
-	                <td><c:out value="${ ol.order_date }"/></td>
+	                <th scope="row"><c:out value="${ ql.qna_no }"/></th>
+	                <td><a href="qna_detail.do?qna_no=${ ql.qna_no }"><c:out value="${ ql.qna_subject }"/></a></td>
+	                <td><c:out value="${ ql.user_id }"/></td>
+	                <td><c:out value="${ ql.qna_type }"/></td>
+	                <td><c:out value="${ ql.qna_input_date}"/></td>
+	                <td><c:out value="${ ql.qna_status }"/></td>
 	              </tr>
 	            </c:forEach>
             </tbody>
@@ -135,7 +153,7 @@
       </div>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
-        	<c:out value="${ indexList }" escapeXml="false"/>
+          <c:out value="${ indexList }" escapeXml="false"/>
         </ul>
       </nav>
     </section>
