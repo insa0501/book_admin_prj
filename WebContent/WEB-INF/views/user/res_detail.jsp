@@ -31,21 +31,7 @@
   </head>
   <body>
     <!-- header -->
-    <section class="section_header">
-      <div class="header_nav nav-up" id="header_nav">
-        <div class="nav_logo">BOOKS</div>
-        <ul class="nav_menu">
-          <li class="nav_">도서관리</li>
-          <li class="nav_">주문관리</li>
-          <li class="nav_">회원관리</li>
-          <li class="nav_">문의관리</li>
-        </ul>
-        <div class="nav_user_icons">
-          <span><i class="fas fa-sign-in-alt"></i></span>
-          <!-- <span><i class="far fa-user"></i></span> -->
-        </div>
-      </div>
-    </section>
+	<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
     <!-- header end -->
     <!-- '회원'상태의 회원상세 페이지에서 탈퇴가 눌릴 경우 btn_group의 class 에 hidden이 추가 되어야함 -->
     <!-- 탈퇴처리 JavaScript는 res.js에서 -->

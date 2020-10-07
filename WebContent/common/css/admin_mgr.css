@@ -5,7 +5,7 @@
 .section_main {
   width: 90vw;
   padding-top: 80px;
-  height: 1000px;
+  min-height: 1000px;
 }
 
 .content_title {
@@ -29,15 +29,16 @@
   width: 70%;
   padding-top: 30px;
   padding-bottom: 30px;
+  min-height: 740px;
 }
 .search_result {
   width: 100%;
   padding-top: 20px;
-  height: 600px;
+  min-height: 600px;
 }
 
 table th {
   text-align: center;
 }
 
-/* 문의관리 CSS */
+/* 臾몄쓽愿�由� CSS */

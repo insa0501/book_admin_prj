@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/common/css/admin_mgr.css=UTF-8
 encoding//src/kr/co/sist/admin/book/dao/AdminBookDAO.java=UTF-8
 encoding//src/kr/co/sist/admin/book/service/BookListService.java=UTF-8
 encoding//src/log4j.properties=UTF-8

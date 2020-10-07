@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_mgr.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel = "stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
+    <style type="text/css">
+    .addBook{ width:100px; height:30px; display: block; border-radius: 6px; color:#007BFF;
+    			border:1px solid #dee2e6; background-color: #FFFFFF;}
+    </style>
+    
     <!-- JS -->
     <script type="text/javascript">
     
@@ -27,29 +32,14 @@
     	});//click
     });//ready
     </script>
-    ${insertFlag eq 1 ? '<script>alert("도서가 추가되었습니다.");</script>' : '' }
-    ${updateFlag eq 1 ? '<script>alert("도서가 변경되었습니다.");</script>' : '' }
   </head>
   <body>
   
  
     <!-- header -->
-    <section class="section_header">
-      <div class="header_nav nav-up" id="header_nav">
-        <div class="nav_logo">BOOKS</div>
-        <ul class="nav_menu">
-          <li class="nav_"><a href="http://localhost/book_admin_prj/book_list.do">도서관리</a></li>
-          <li class="nav_">주문관리</li>
-          <li class="nav_"><a href="http://localhost/book_admin_prj/user_list.do">회원관리</a></li>
-          <li class="nav_">문의관리</li>
-        </ul>
-        <div class="nav_user_icons">
-        	<span><a href="http://localhost/book_admin_prj/admin_pass_check_form.do">비밀번호변경</a></span>
-          <span><a href="http://localhost/book_admin_prj/admin_logout.do"><i class="fas fa-sign-in-alt"></i></a></span>
-          <!-- <span><i class="far fa-user"></i></span> -->
-        </div>
-      </div>
-    </section>
+	<%-- <jsp:include page="http://localhost/book_admin_prj/common/jsp/menu.jsp"/> --%>
+	<%-- <jsp:include page="../../../common/jsp/menu.jsp"/> --%>
+	<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
     <!-- header end -->
     <!--main section-->
     <section class="section_main">
@@ -127,8 +117,8 @@
      	</ul>
      </nav>
      
-     <div class="">
-     	<input type="button" value="도서추가" onclick="javascript:location.href='add_book.do';"/>
+     <div style="margin-top:5px;">
+     	<input type="button" class="addBook" value="도서추가" onclick="javascript:location.href='add_book.do';"/>
      </div>
     </section>
     <!--main end-->

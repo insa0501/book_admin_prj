@@ -51,7 +51,16 @@ public class AdminBookController {
 		sblVO.setStartNum(startNum);
 		
 		//페이지 하단의 페이지 이동
-		PageNationVO pnv = new PageNationVO("", currentPage, totalPage);
+		//검색데이터, 검색타입, 현재페이지, 전체페이지
+		StringBuilder searchData = new StringBuilder();
+		if( sblVO.getSelectData() != null && !"".equals(sblVO.getSelectData()) ) {
+			searchData
+			.append("selectType=")
+			.append(sblVO.getSelectType())
+			.append("&selectData=")
+			.append(sblVO.getSelectData());
+		}
+		PageNationVO pnv = new PageNationVO(searchData.toString(), currentPage, totalPage);
 		String pageNation = bls.pageNation(pnv);
 		model.addAttribute("page_nation",pageNation);
 		
@@ -142,7 +151,7 @@ public class AdminBookController {
 		if( mr.getParameter("book_activity") != null ) {
 			book_activity = "Y";
 		}
-		//img는 업로드된 파일명을 받는다.
+		//img는 업로드된 파일명을 받는다 카톡을 열어주세여ㅛ
 		String book_img = mr.getParameter("book_img");
 		if( mr.getFilesystemName("upfile") != null && !"".equals(mr.getFilesystemName("upfile")) ) {
 			book_img = mr.getFilesystemName("upfile");

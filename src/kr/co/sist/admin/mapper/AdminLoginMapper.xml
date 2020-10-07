@@ -10,7 +10,7 @@
   </select>
   <update id="updateAdminPass" parameterType="kr.co.sist.admin.login.vo.UpdateAdminPassVO">
   	update admin 
-  	set    admin_pass = #{ admin_pass }
-  	where  admin_id = #{ admin_id }
+  	set    admin_pass = #{admin_pass}
+  	where  admin_id = #{admin_id}
   </update>
 </mapper>

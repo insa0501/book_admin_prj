@@ -74,9 +74,10 @@ public class AdminLoginDAO {
 	 */
 	public int updateAdminPass(UpdateAdminPassVO uapVO) {
 		int cnt = 0;
-		
-		cnt = getSqlSession().update("kr.co.sist.admin.login.updateAdminPass", uapVO);
-		
+		SqlSession ss = getSqlSession();
+		cnt = ss.update("kr.co.sist.admin.login.updateAdminPass", uapVO);
+		ss.commit();
+		ss.close();
 		return cnt;
 	} //updateAdminPass
 	

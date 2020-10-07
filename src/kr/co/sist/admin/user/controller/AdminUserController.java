@@ -56,7 +56,16 @@ public class AdminUserController {
 		sulVO.setStartNum(startNum);
 		
 		//페이지 하단의 페이지 이동
-		PageNationVO pnVO = new PageNationVO("", currentPage, totalPage);
+		//검색데이터, 검색타입, 현재페이지, 전체페이지
+		StringBuilder searchData = new StringBuilder();
+		if( sulVO.getSelectData() != null && !"".equals(sulVO.getSelectData()) ) {
+			searchData
+			.append("selectType=")
+			.append(sulVO.getSelectType())
+			.append("&selectData=")
+			.append(sulVO.getSelectData());
+		}
+		PageNationVO pnVO = new PageNationVO(searchData.toString(), currentPage, totalPage);
 		String pageNation = uls.pageNation(pnVO);
 		model.addAttribute("page_nation",pageNation);
 		

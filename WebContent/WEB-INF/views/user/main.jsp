@@ -22,8 +22,6 @@
     <style type="text/css">
     	td{ text-align: center; border-bottom: 1px solid #d9d9d9;}
     </style>
-    ${changeFlag eq 1 ? '<script>alert("유저 정보가 변경되었습니다.");</script>' : '' }
-    ${deleteFlag eq 1 ? '<script>alert("탈퇴가 완료되었습니다.");</script>' : '' }
     <script type="text/javascript">
     $(function(){
     	$("search").click(function(){
@@ -40,21 +38,7 @@
   </head>
   <body>
     <!-- header -->
-    <section class="section_header">
-      <div class="header_nav nav-up" id="header_nav">
-        <div class="nav_logo">BOOKS</div>
-        <ul class="nav_menu">
-          <li class="nav_"><a href="http://localhost/book_admin_prj/book_list.do">도서관리</a></li>
-          <li class="nav_">주문관리</li>
-          <li class="nav_"><a href="http://localhost/book_admin_prj/user_list.do">회원관리</a></li>
-          <li class="nav_">문의관리</li>
-        </ul>
-        <div class="nav_user_icons">
-          <span><i class="fas fa-sign-in-alt"></i></span>
-          <!-- <span><i class="far fa-user"></i></span> -->
-        </div>
-      </div>
-    </section>
+	<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
     <!-- header end -->
     <!--main section-->
     <section class="section_main">

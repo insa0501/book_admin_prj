@@ -3,11 +3,15 @@ package kr.co.sist.admin.login.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.sist.admin.login.service.AdminLoginService;
@@ -92,8 +96,17 @@ public class AdminLoginController {
 	 * @return 관리자 비밀번호 변경
 	 */
 	@RequestMapping(value="/admin_pass_check_form.do", method=GET)
-	public String adminPassCheck() {
-		return "login/admin_change_pw";
+	public String adminPassCheck(HttpSession session,Model model) {
+		String admin_id = (String)session.getAttribute("admin_id");
+		
+		if( admin_id != null && !"".equals(admin_id) ) {
+			//로그인하고 비밀번호 변경을 온 경우 
+			model.addAttribute("admin_id",admin_id);
+			return "login/admin_change_pw";
+		}
+		//로그인을 하지 않고 비밀번호 변경을 브라우저에 검색하여 온 경우 로그인페이지로 이동
+		return "redirect:admin_logout.do";
+		
 	} // adminPassCheck
 	
 	/**
@@ -101,8 +114,13 @@ public class AdminLoginController {
 	 * @param uapVO
 	 * @return 관리자 메인
 	 */
-	@RequestMapping(value="/change_admin_pass.do", method=POST)
+	@RequestMapping(value="/change_admin_pass.do", method= POST)
+	@ResponseBody
 	public String changeAdminPass(UpdateAdminPassVO uapVO) {
-		return "redirect:admin_logout.do";
+		//업무로직을 구현한 클래스 객체화
+		AdminLoginService als = new AdminLoginService();
+		//해당 아이디에 비밀번호를 바꾸기 위해 id와 pw를 받는다.
+		int result = als.changeAdminPass(uapVO);
+		return String.valueOf(result);
 	} // changeAdminPass
 } // class

@@ -6,7 +6,6 @@ ${user_deleteFlag eq 1 ? 'alert("탈퇴가 완료되었습니다.");window.locat
 
 ${book_insertFlag eq 1 ? 'alert("도서가 추가되었습니다.");window.location.replace("book_list.do");' : '' }
 ${book_updateFlag eq 1 ? 'alert("도서가 변경되었습니다.");window.location.replace("book_list.do");' : '' }
-${book_updateFlag eq 1 ? 'alert("도서가 변경되었습니다.");window.location.replace("book_list.do");' : '' }
 
 </script>
 
