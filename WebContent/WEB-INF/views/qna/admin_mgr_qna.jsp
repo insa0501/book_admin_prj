@@ -61,9 +61,8 @@
     			} // end if
     		}) //keydown
     		
-    		
     		$("#selectType").change(function(){
-   				var output = "<input class='form-control form-control-lg' type='text' id='selectData'/>";
+   				var output = "<input class='form-control form-control-lg' type='text' id='selectData' name='selectData'/>";
    				var keywordDiv = document.getElementById("keywordDiv");
    				
     			if($("#selectType").val() == 3) {
@@ -114,7 +113,15 @@
 	          </div>
 	
 	          <div class="keyword" id="keywordDiv">
-	            <input type="text" class="form-control form-control-lg" id="selectData" name="selectData" value="${ param.selectData }"/>
+	            <c:if test="${ param.selectType ne '3' }">
+	            	<input type="text" class="form-control form-control-lg" id="selectData" name="selectData" value="${ param.selectData }"/>
+	            </c:if>
+	          	<c:if test="${ param.selectType eq '3' }">
+	          		<select id="selectData" name="selectData" class="custom-select">
+    					<option value='N' ${ param.selectData eq 'N' ? "selected='selected'" : "" }>미완료</option>
+    					<option value='Y' ${ param.selectData eq 'Y' ? "selected='selected'" : "" }>완료</option>
+    				</select>
+	          	</c:if>
 	          </div>
 	          <div class="search_btn">
 	            <button type="button" id="searchBtn" class="btn btn-dark">검색</button>
