@@ -55,7 +55,9 @@ public class UserListDAO {
 	}//getSqlSession
 	
 	/**
-	 * 회원정보 총 개수 구하기
+	 * Method : 회원정보 총 개수 구하기
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param sdVO
 	 * @return
 	 */
@@ -73,7 +75,9 @@ public class UserListDAO {
 	}//selectUserCount
 	
 	/**
-	 * 회원정보 리스트
+	 * Method : 회원정보 리스트
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param sdVO
 	 * @param olrVO
 	 * @return
@@ -89,7 +93,9 @@ public class UserListDAO {
 	}//selectUserList
 	
 	/**
-	 * 회원 상세 정보
+	 * Method : 회원 상세 정보
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param user_id
 	 * @return
 	 */
@@ -104,7 +110,9 @@ public class UserListDAO {
 	}//selectUserDetail
 	
 	/**
-	 * 탈퇴한 회원 상세 정보
+	 * Method : 탈퇴한 회원 상세 정보
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param user_id
 	 * @return
 	 */

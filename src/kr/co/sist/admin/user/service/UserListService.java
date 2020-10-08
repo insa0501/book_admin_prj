@@ -13,7 +13,9 @@ import kr.co.sist.admin.user.vo.SelectUserListVO;
 public class UserListService {
 
 	/**
-	 * 회원정보 리스트
+	 * Method : 회원정보 리스트
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param sdVO
 	 * @param ulrVO
 	 * @return
@@ -26,7 +28,9 @@ public class UserListService {
 	}//searchUserList
 	
 	/**
-	 * 회원상세정보
+	 * Method : 회원상세정보
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param user_id
 	 * @return
 	 */
@@ -37,7 +41,9 @@ public class UserListService {
 		return udDomain;
 	}//searchUserDetail
 	/**
-	 * 탈퇴한 회원 상세 정보
+	 * Method : 탈퇴한 회원 상세 정보
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param user_id
 	 * @return
 	 */
@@ -56,7 +62,9 @@ public class UserListService {
 	}//searchUserResData
 	
 	/**
-	 * 전체 원글의 수 : DB사용
+	 * Method : 전체 원글의 수 : DB사용
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public int totalCount(SelectUserListVO sulVO) {
@@ -77,7 +85,9 @@ public class UserListService {
 	}//pageScale
 	
 	/**
-	 * 총 페이지수
+	 * Method : 총 페이지수
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param totalCount
 	 * @param pageScale
 	 * @return
@@ -89,7 +99,9 @@ public class UserListService {
 	}//totalPage
 	
 	/**
-	 * 시작번호.
+	 * Method : 시작번호.
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public int startNum( int currentPage,int pageScale) {
@@ -99,7 +111,9 @@ public class UserListService {
 	}//startNum
 	
 	/**
-	 * 끝번호.
+	 * Method : 끝번호.
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public int endNum(int startNum, int pageScale) {
@@ -109,7 +123,9 @@ public class UserListService {
 	}//totalCount
 	
 	/**
-	 * 글이 여러개 있을 때 이동하기 위한 인덱스리스트.
+	 * Method : 글이 여러개 있을 때 이동하기 위한 인덱스리스트.
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param pnVO
 	 * @return
 	 */

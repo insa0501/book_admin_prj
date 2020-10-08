@@ -19,7 +19,9 @@ public class AdminLoginService {
 	} // adminLogin()
 	
 	/**
-	 * 관리자 비밀번호 변경
+	 * Method : 관리자 비밀번호 변경
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param uapVO
 	 * @return
 	 */

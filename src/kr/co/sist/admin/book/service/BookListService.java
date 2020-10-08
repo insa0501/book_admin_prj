@@ -10,7 +10,9 @@ import kr.co.sist.admin.book.vo.SelectBookListVO;
 
 public class BookListService {
 	/**
-	 * 도서 리스트를 얻는 일 
+	 * Method : 도서 리스트를 얻는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08 
 	 * @param brVO
 	 * @param sdVO
 	 * @return
@@ -76,7 +78,9 @@ public class BookListService {
 	}//pageNation
 	
 	/**
-	 * 도서의 전체 갯수
+	 * Method : 도서의 전체 갯수
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public int totalCount(SelectBookListVO sblVO) {
@@ -87,7 +91,9 @@ public class BookListService {
 	}//totalCount
 	
 	/**
-	 * 보여줄 도서의 갯수
+	 * Method : 보여줄 도서의 갯수
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public int pageScale() {
@@ -96,7 +102,9 @@ public class BookListService {
 	}
 	
 	/**
-	 * 보여줄 갯수
+	 * Method : 보여줄 갯수
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param totalCount
 	 * @param pageScale
 	 * @return
@@ -108,7 +116,9 @@ public class BookListService {
 	}
 	
 	/**
-	 * 한페이지에 보여줄 시작 번호
+	 * Method : 한페이지에 보여줄 시작 번호
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param currentPage
 	 * @param pageScale
 	 * @return
@@ -119,7 +129,9 @@ public class BookListService {
 	}
 	
 	/**
-	 * 한페이지에 보여줄 마지막 번호
+	 * Method : 한페이지에 보여줄 마지막 번호
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param startNum
 	 * @param pageScale
 	 * @return

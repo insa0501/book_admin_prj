@@ -7,7 +7,9 @@ import kr.co.sist.admin.user.vo.UpdateUserVO;
 public class UserDetailService {
 
 	/**
-	 * 회원정보 변경
+	 * Method : 회원정보 변경
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param uuVO
 	 * @return
 	 */
@@ -20,7 +22,9 @@ public class UserDetailService {
 	}//changeUser
 	
 	/**
-	 * 회원 탈퇴
+	 * Method : 회원 탈퇴
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param uurVO
 	 * @return
 	 */

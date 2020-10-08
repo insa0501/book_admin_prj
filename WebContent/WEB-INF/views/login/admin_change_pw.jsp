@@ -50,13 +50,13 @@
     		$.ajax({
     			url:"http://localhost/book_admin_prj/change_admin_pass.do",
     			type:"POST",
-    			dataType:"JSON",
+    			dataType:"TEXT",
     			data:{admin_id : $("#admin_id").val(), admin_pass : $("#pass1").val() },
     			error : function( xhr ){
     				alert("에러");
     				console.log(xhr.status+" / "+xhr.statusText);
     			},
-    			success : function( jsonObj ){
+    			success : function( text ){
     				alert("비밀번호가 변경되었습니다.");
     				alert("재로그인이 필요합니다.");
     				location.replace("http://localhost/book_admin_prj/admin_logout.do");

@@ -23,7 +23,9 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * 싱글턴을 객체를 위한 method
+	 * Method : 싱글턴을 객체를 위한 method
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public static AdminBookDAO getInstance() {
@@ -34,7 +36,9 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * SqlSession 설정
+	 * Method : SqlSession 설정
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @return
 	 */
 	public static SqlSession getSqlSession() {
@@ -58,7 +62,9 @@ public class AdminBookDAO {
 	
 	
 	/**
-	 * 검색데이터와 현재페이지, 범위를 받아 보여줄 도서의 갯수를 받아오는 일
+	 * Method : 검색데이터와 현재페이지, 범위를 받아 보여줄 도서의 갯수를 받아오는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param sdVO
 	 * @return
 	 */
@@ -72,7 +78,9 @@ public class AdminBookDAO {
 	}
 
 	/**
-	 * 검색데이터와 현재페이지, 범위를 받아 보여주는 도서를 받아오는 일
+	 * Method : 검색데이터와 현재페이지, 범위를 받아 보여주는 도서를 받아오는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param brVO
 	 * @param sdVO
 	 * @return
@@ -86,7 +94,9 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * 도서를 추가하는 일
+	 * Method : 도서를 추가하는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param bmVO
 	 */
 	public int insertBook(BookModifyVO bmVO) {
@@ -99,7 +109,9 @@ public class AdminBookDAO {
 	}//insertBook
 	
 	/**
-	 * 도서 정보를 변경하는 일
+	 * Method : 도서 정보를 변경하는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param bmVO
 	 * @return
 	 */
@@ -114,7 +126,9 @@ public class AdminBookDAO {
 	}
 	
 	/**
-	 * 도서의 isbn을 받아 해당 도서의 상세정보를 보여주는 일
+	 * Method : 도서의 isbn을 받아 해당 도서의 상세정보를 보여주는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param book_isbn
 	 * @return
 	 */

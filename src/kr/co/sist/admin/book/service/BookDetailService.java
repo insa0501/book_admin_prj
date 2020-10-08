@@ -6,7 +6,9 @@ import kr.co.sist.admin.book.vo.BookModifyVO;
 
 public class BookDetailService {
 	/**
-	 * 도서를 추가하는 일
+	 * Method : 도서를 추가하는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param bmVO
 	 */
 	public int  addBook(BookModifyVO bmVO) {
@@ -15,7 +17,9 @@ public class BookDetailService {
 	}
 	
 	/**
-	 * 도서 정보를 변경하는 일
+	 * Method : 도서 정보를 변경하는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param bmVO
 	 * @return
 	 */
@@ -27,7 +31,9 @@ public class BookDetailService {
 	}
 	
 	/**
-	 * 해당 도서의 상세정보를 얻는 일
+	 * Method : 해당 도서의 상세정보를 얻는 일
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param book_isbn
 	 * @return
 	 */

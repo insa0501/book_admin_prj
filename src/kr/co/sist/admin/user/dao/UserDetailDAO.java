@@ -51,7 +51,9 @@ public class UserDetailDAO {
 	}//getSqlSession
 	
 	/**
-	 * 회원정보 변경
+	 * Method : 회원정보 변경
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param uoVO
 	 * @return
 	 */
@@ -67,7 +69,9 @@ public class UserDetailDAO {
 	}//updateUser
 	
 	/**
-	 * 회원 탈퇴
+	 * Method : 회원 탈퇴
+	 * 작성자 : 김효준
+	 * 변경이력 : 2020-10-08
 	 * @param uurVO
 	 * @return
 	 */
