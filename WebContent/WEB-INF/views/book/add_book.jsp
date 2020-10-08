@@ -8,6 +8,7 @@
 <!-- <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/add_detail_book.css"> -->
 <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
 <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_add_detail_book.css">
+<link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
 
 
 <title>Insert title here</title>

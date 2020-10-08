@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_mgr.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css" />
+    <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
     <!-- JS -->
     <style type="text/css">
     	td{ text-align: center; border-bottom: 1px solid #d9d9d9;}
