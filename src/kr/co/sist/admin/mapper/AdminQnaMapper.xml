@@ -22,27 +22,30 @@
 		</where>
 	</select>
 	<select id="qnaList" resultType="kr.co.sist.admin.qna.domain.QnaListDomain" parameterType="kr.co.sist.admin.qna.vo.SelectQnaListVO">
-		select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, 
-				to_char(QNA_INPUT_DATE, 'yyyy-mm-dd / hh24:mm') QNA_INPUT_DATE, 
-				nvl2(QNA_REPLY_DATE, '완료', '미완료') qna_status
-		from   qna
-		<where>
-		  	<if test="selectData neq null">
-				<choose>
-					<when test="selectType eq 1">user_id = #{ selectData }</when>
-					<when test="selectType eq 2">qna_content like '%'||#{ selectData }||'%'</when>
-					<when test="selectType eq 3">
-						<if test="selectData.equals('N')">
-							qna_reply_date is null
-						</if>
-						<if test="selectData.equals('Y')">
-							qna_reply_date is not null
-						</if>
-					</when>
-				</choose>
-			</if>
-		</where>
-		order by qna_no desc
+		select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, QNA_INPUT_DATE, qna_status, r_num
+		from   (select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, QNA_INPUT_DATE, qna_status, rownum r_num
+				from   (select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, 
+								to_char(QNA_INPUT_DATE, 'yyyy-mm-dd / hh24:mm') QNA_INPUT_DATE, 
+								nvl2(QNA_REPLY_DATE, '완료', '미완료') qna_status
+						from   qna
+						<where>
+						  	<if test="selectData neq null">
+								<choose>
+									<when test="selectType eq 1">user_id = #{ selectData }</when>
+									<when test="selectType eq 2">qna_content like '%'||#{ selectData }||'%'</when>
+									<when test="selectType eq 3">
+										<if test="selectData.equals('N')">
+											qna_reply_date is null
+										</if>
+										<if test="selectData.equals('Y')">
+											qna_reply_date is not null
+										</if>
+									</when>
+								</choose>
+							</if>
+						</where>
+						order by qna_no desc) )   
+		where r_num between #{ startNum } and #{ endNum }
 	</select>
 	<select id="qnaDetail" resultType="kr.co.sist.admin.qna.domain.QnaDetailDomain" parameterType="int">
 		select QNA_NO, USER_ID, QNA_SUBJECT, QNA_CONTENT, QNA_TYPE, QNA_ANSWER, 
