@@ -79,7 +79,8 @@
         </div>
       </div>
     </section> -->
-    <c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
+    <%-- <c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/> 세션을 못갖고 온다--%>
+    <jsp:include page="../../../common/jsp/menu.jsp"/>
     <!-- header end -->
     <!--main section-->
     <section class="section_main">
