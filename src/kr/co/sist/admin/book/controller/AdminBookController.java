@@ -104,7 +104,15 @@ public class AdminBookController {
 			book_activity = "Y";
 		}
 		//img는 업로드된 파일명을 받는다.
-		String book_img = mr.getFilesystemName("book_img");
+		//
+		String book_img = "http://localhost/book_admin_prj/common/images/book/"+mr.getFilesystemName("book_img");
+		System.err.println("------------------"+mr.getFilesystemName("book_img"));
+		
+		if(mr.getFilesystemName("book_img") == null) {
+			System.err.println("------------------이미지널");
+			book_img = mr.getParameter("img_link");
+		}
+		System.err.println("------------------"+book_img);
 		int book_price = Integer.parseInt(mr.getParameter("book_price"));
 		int book_stock = Integer.parseInt(mr.getParameter("book_stock"));
 		//데이터베이스에 처리하기 위해 VO에 파라메터 값을 넣는다.
@@ -151,10 +159,10 @@ public class AdminBookController {
 		if( mr.getParameter("book_activity") != null ) {
 			book_activity = "Y";
 		}
-		//img는 업로드된 파일명을 받는다 카톡을 열어주세여ㅛ
+		//img는 업로드된 파일명을 받는다 
 		String book_img = mr.getParameter("book_img");
 		if( mr.getFilesystemName("upfile") != null && !"".equals(mr.getFilesystemName("upfile")) ) {
-			book_img = mr.getFilesystemName("upfile");
+			book_img = "http://localhost/book_admin_prj/common/images/book/"+mr.getFilesystemName("upfile");
 		}
 		System.out.println(book_img);
 		int book_price = Integer.parseInt(mr.getParameter("book_price"));

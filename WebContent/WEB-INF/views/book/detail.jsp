@@ -104,7 +104,7 @@
 </head>
 <body>
 <!-- header -->
-<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
+<jsp:include page="../../../common/jsp/menu.jsp"/>
 <!-- header end -->
  
   <div id="container">
@@ -122,7 +122,7 @@
         
           <div class="bookImgDiv">
               <div class="bookImg">
-                   <img src="http://localhost/book_admin_prj/common/images/book/${book_detail.book_img }" id="preview"><br/>
+                   <img src="${book_detail.book_img }"  onerror="this.src='common/images/error/no_img.png'" id="preview"><br/>
               </div>
               <div>
                 <input type="file" id="upfile" name="upfile" value = "이미지 선택">

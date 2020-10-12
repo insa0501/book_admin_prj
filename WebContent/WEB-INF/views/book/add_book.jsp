@@ -24,7 +24,7 @@
 
  $(function () {
 	$("#addBookBtn").click(function(){
-		if( $("#book_img").val() == ""){
+		if( $("#book_img").val() == "" && $("#img_link").val() == ""){
 			alert("도서 이미지를 설정해주세요.");
 			return;
 		}
@@ -60,12 +60,14 @@
 			alert("도서 정보를 설정해주세요.");
 			return;
 		}
-		
 		$("#add_frm").submit();
-	});
+		
+	});//click
+	
 	 $("#closeBtn").click(function(){
 		 location.href="http://localhost/book_admin_prj/book_list.do"
 	 });//click
+	 
 	 $("#book_img").change(function(select_file){
 		var check_img = $("#book_img").val();
 		 var start_num = check_img.lastIndexOf('.')+1;
@@ -85,20 +87,28 @@
 		 }
 	 });//change
 	 
+	 $("#search_book").click(function(){
+		 var top=window.screenY+200;﻿
+		 var left=window.screenX+150;
+		 window.open("common/jsp/search_book.jsp", "search", "width=454px, height=520px,top="+top+", left="+left);
+	 });//click
+	 
  });//ready
 
-
+	 function searchBookImg(){
+		 $("#preview").prop('src',$("#img_link").val());
+		 //var files = document.getElementById("#book_img");
+		 //files[0].select();
+		 //document.selection.clear;
+		 $("#book_img").val("");
+ 	}//change
 
 </script>
 </head>
 <body>
 <!-- header -->
-<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
+<jsp:include page="../../../common/jsp/menu.jsp"/>
 <!-- header end -->
-
-
-
- 
   <div id="container">
      <div id = "bookaddBody">
      
@@ -114,10 +124,11 @@
         
           <div class="bookImgDiv">
               <div class="bookImg">
-                   <img src="../common/images/ex_book.png" id="preview"><br/>
+                   <img src="common/images/error/no_img.png" onerror="this.src='common/images/error/no_img.png'" id="preview"><br/>
               </div>
               <div>
                 <input type="file" id="book_img" name="book_img" value = "이미지 선택">
+                <input type="hidden" id="img_link" name="img_link"/>
               </div>
          </div>
          
@@ -161,13 +172,18 @@
            </table>
            </div> 
        
+       
            
            <div class="bookInfoDiv">
+           	<div style="margin-bottom: 10px;">
+       			<input type="button" id="search_book" value="도서검색"/>
+       		</div>	
+       		
             <div id="bookIntroDiv"><h3>도서소개</h3></div>
                 
                  <textarea  name="book_info" id="book_info" ></textarea> 
               <div id="buttonGrop" >
-                <input type="submit" value="추가"   id="addBookBtn" name="addBookBtn"/>
+                <input type="button" value="추가"   id="addBookBtn" name="addBookBtn"/>
 			    <input type="button" value="취소"   id="closeBtn" name="closeBtn"/>
               </div>
            </div>

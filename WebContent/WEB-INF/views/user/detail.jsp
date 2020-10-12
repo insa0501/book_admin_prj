@@ -131,7 +131,7 @@
   </head>
   <body>
     <!-- header -->
-	<c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
+    <jsp:include page="../../../common/jsp/menu.jsp"/>
     <!-- header end -->
     <!-- '회원'상태의 회원상세 페이지에서 탈퇴가 눌릴 경우 btn_group의 class 에 hidden이 추가 되어야함 -->
     <!-- 탈퇴처리 JavaScript는 res.js에서 -->
