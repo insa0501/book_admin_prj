@@ -62,13 +62,34 @@ public class UserListService {
 	}//searchUserResData
 	
 	/**
-	 * Method : 전체 원글의 수 : DB사용
+	 * Method : 전체 원글의 수 : DB사용 
 	 * 작성자 : 김효준
 	 * 변경이력 : 2020-10-08
+	 * 변경이력 : 2020-10-12
+	 * 변경내용 : 브라우저에서 selectType을 임의로 수정했을때의 처리
 	 * @return
 	 */
 	public int totalCount(SelectUserListVO sulVO) {
 		int totalCnt=0; 
+		
+		if(sulVO.getSelectData() != null && !"".equals(sulVO.getSelectData()) && sulVO.getSelectType() == null ) {
+			sulVO.setSelectType("user_id");
+		}
+		
+		if(sulVO.getSelectType() != null && !"".equals(sulVO.getSelectType())) {
+			boolean flag = false;
+			String[] arr = {"user_id","user_name","user_phone","user_addr1","user_status"};
+			for(int i=0; i<arr.length; i++) {
+				if(sulVO.getSelectType().equals(arr[i])){
+					flag = true;
+				}//end if
+			}//end for
+			if(!flag) {
+				sulVO.setSelectType("user_id");
+			}
+		}//end if
+		
+		
 		UserListDAO ulDAO = UserListDAO.getInstance();
 		totalCnt = ulDAO.selectUserCount(sulVO);
 		return totalCnt;

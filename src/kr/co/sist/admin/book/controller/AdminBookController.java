@@ -26,7 +26,22 @@ import kr.co.sist.admin.book.vo.SelectBookListVO;
 @Controller
 public class AdminBookController {
 	@RequestMapping(value="/book_list.do", method= {GET,POST})
-	public String selectBookList(SelectBookListVO sblVO, String updateFlag, String insertFlag , Model model) {
+	public String selectBookList(SelectBookListVO sblVO , Model model) {
+		if( sblVO.getSelectType() != null && !"".equals(sblVO.getSelectType()) ) {
+			boolean flag = false;
+			String[] selectType = {"book_isbn", "book_name", "book_price", "book_writer", "book_company", "book_date", "book_stock", "book_activity"};
+			for(int i=0; i<selectType.length; i++) {
+				if( sblVO.getSelectType().equals(selectType[i])) {
+					flag = true;
+					break;
+				}//end if
+			}//end for
+			if(!flag) {
+				sblVO.setSelectType("book_name");
+			}
+		} else {
+			sblVO.setSelectType("book_name");
+		}
 		//도서 리스트를 조회 업무로직을 구현한 클래스
 		BookListService bls = new BookListService();
 		//전체 게시물 수
@@ -66,9 +81,6 @@ public class AdminBookController {
 		
 		List<BookListDomain> list = bls.selectBookList(sblVO);
 		model.addAttribute("book_list",list);
-		
-		model.addAttribute("insertFlag",insertFlag);
-		model.addAttribute("updateFlag",updateFlag);
 		
 		return "book/main";
 	}

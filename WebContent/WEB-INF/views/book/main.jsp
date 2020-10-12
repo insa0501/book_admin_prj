@@ -63,7 +63,7 @@
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" type="text" name="selectData" value="${param.selectData }" />
+            <input class="form-control form-control-lg search_text" type="text" name="selectData" value="${param.selectData }" />
           </div>
           <div class="search_btn">
             <button type="button" class="btn btn-dark" id="search">검색</button>

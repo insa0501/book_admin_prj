@@ -25,13 +25,13 @@
     </style>
     <script type="text/javascript">
     $(function(){
-    	$("search").click(function(){
-    		$("frm").submit();
+    	$("#search").click(function(){
+    		$("#frm").submit();
     	});//click
     	
-    	$("selectData").keydown(function(key){
+    	$("#selectData").keydown(function(key){
     		if( key.which == 13 || key.keyCode == 13 ){
-    			$("frm").submit();
+    			$("#frm").submit();
     		}
     	})//keydown
     });//ready
@@ -46,7 +46,7 @@
       <div class="content_wrap">
         <div class="content_title">회원 관리</div>
         
-        <form action="user_list.do" method="GET" name="frm">
+        <form action="user_list.do" method="GET" name="frm" id="frm">
         <div class="search">
           <div class="select_type">
             <select class="custom-select" name="selectType">
@@ -59,7 +59,7 @@
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" type="text" id="selectData" name="selectData" value="${param.selectData }"/>
+            <input class="form-control form-control-lg search_text" type="text" id="selectData" name="selectData" value="${param.selectData }"/>
           </div>
           <div class="search_btn">
             <button type="button" class="btn btn-dark" id="search">검색</button>
@@ -79,7 +79,11 @@
             </thead>
             <tbody>
             <c:if test="${empty user_list or user_list eq null }">
+            	<tr>
+            	<td colspan="5">
             	<strong>유저 정보가 존재하지 않습니다.</strong>
+            	</td>
+            	</tr>
             </c:if>
             <c:forEach var="ul" items="${user_list }">
             	<tr>
