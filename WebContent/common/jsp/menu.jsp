@@ -11,7 +11,7 @@
       <div class="header_nav nav-up" id="header_nav">
         <div class="nav_logo">BOOKS</div>
         <ul class="nav_menu">
-          <li class="nav_"><a href="http://localhost/book_admin_prj/book_list.do">도서관리</a><c:out value="${ sessionScope.admin_id }"/></li>
+          <li class="nav_"><a href="http://localhost/book_admin_prj/book_list.do">도서관리</a></li>
           <li class="nav_"><a href="http://localhost/book_admin_prj/order_list.do">주문관리</a></li>
           <li class="nav_"><a href="http://localhost/book_admin_prj/user_list.do">회원관리</a></li>
           <li class="nav_"><a href="http://localhost/book_admin_prj/qna_list.do">문의관리</a></li>
