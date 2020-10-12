@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.sist.admin.login.service.AdminLoginService;
@@ -28,8 +29,14 @@ public class AdminLoginController {
 	@RequestMapping(value="/admin_index.do", method={GET,POST})
 	public String adminLoginForm(HttpSession session) {
 		
-		System.out.println("adminLoginForm " + (String)session.getAttribute("admin_id"));
-		return "login/admin_login";
+		String adminLoginUrl = "login/admin_login";
+		System.out.println("adminLoginForm : " + (String)session.getAttribute("admin_id"));
+		
+		if ( session.getAttribute("admin_id") != null ) {
+			adminLoginUrl = "redirect:book_list.do";
+		} // end if
+		
+		return adminLoginUrl;
 	} // adminLoginForm()
 	
 	/**
@@ -88,7 +95,11 @@ public class AdminLoginController {
 	@RequestMapping(value="/admin_logout.do", method=GET)
 	public String adminLogout(SessionStatus ss, HttpSession hs) {
 		hs.removeAttribute("admin_id");
-		return "login/admin_login";
+		
+		//ss.setComplete(); // 적용이 안된다
+		//return "forward:admin_index.do";
+		
+		return "redirect:admin_index.do";
 	} // adminLogout()
 	
 	/**

@@ -4,13 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-	<c:if test="${ sessionScope.admin_id ne null}">
+	<%-- <c:if test="${ sessionScope.admin_id ne null }">
     	<script type="text/javascript">
     		//location.replace("book_list.do");
     		location.replace("order_list.do");
     	</script>
-    </c:if>
+    </c:if> --%>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 로그인👍</title>
@@ -72,16 +71,16 @@
 <section class="section_header">
     <div class="header_nav nav-up" id="header_nav">
       <div class="nav_logo">BOOKS</div>
-      <ul class="nav_menu">
+      <!-- <ul class="nav_menu">
         <li class="nav_">도서관리</li>
         <li class="nav_">주문관리</li>
         <li class="nav_">회원관리</li>
         <li class="nav_">문의관리</li>
-      </ul>
-      <div class="nav_user_icons">
+      </ul> -->
+      <!-- <div class="nav_user_icons">
         <span><i class="fas fa-sign-in-alt"></i></span>
-        <!-- <span><i class="far fa-user"></i></span> -->
-      </div>
+        <span><i class="far fa-user"></i></span>
+      </div> -->
     </div>
   </section>
   <!-- header end -->

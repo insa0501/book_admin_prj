@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<c:if test="${ sessionScope.admin_id eq null}">
+  	<%-- <c:if test="${ sessionScope.admin_id eq null}">
 		<script type="text/javascript">location.href="admin_index.do";</script>
-	</c:if>
+	</c:if> --%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>도서관리</title>

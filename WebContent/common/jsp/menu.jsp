@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="상단 메뉴 공통디자인"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <section class="section_header">
+	<script type="text/javascript">
+		<c:if test="${ empty sessionScope.admin_id }">
+			location.replace("admin_index.do");    		
+	   	</c:if>
+	</script> -->
       <div class="header_nav nav-up" id="header_nav">
         <div class="nav_logo">BOOKS</div>
         <ul class="nav_menu">
