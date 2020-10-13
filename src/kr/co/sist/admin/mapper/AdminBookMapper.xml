@@ -5,7 +5,14 @@
 	select count(*) cnt 
 	from book
 	<if test="selectData != null">
-	where ${selectType} like '%'||#{selectData}||'%'
+		<choose>
+			<when test="selectType == 'book_date'">
+				where to_char(${selectType},'yyyy-mm-dd') like '%'||#{selectData}||'%'
+			</when>
+			<otherwise>
+				where ${selectType} like '%'||#{selectData}||'%'
+			</otherwise>
+		</choose>
 	</if>
 </select>
 
@@ -15,7 +22,14 @@ from(select book_isbn, book_name, book_company, book_writer, book_country, book_
 		from(select book_isbn, book_name, book_company, book_writer, book_country, book_price, book_date, book_stock, book_activity
 				from book
 				<if test="selectData != null">
-				where ${selectType} like '%'||#{selectData}||'%'
+					<choose>
+						<when test="selectType == 'book_date'">
+							where to_char(${selectType},'yyyy-mm-dd') like '%'||#{selectData}||'%'
+						</when>
+						<otherwise>
+							where ${selectType} like '%'||#{selectData}||'%'
+						</otherwise>
+					</choose>
 				</if>
 				order by book_date desc))
 where r_num between #{startNum} and #{endNum}
