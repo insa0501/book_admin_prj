@@ -92,10 +92,6 @@
 		 }
 	 });//change
 	 
-	 function fileUpload(input){
-		 
-	 }
-	 
  });//ready
 
 

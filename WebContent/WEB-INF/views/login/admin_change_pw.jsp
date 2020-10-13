@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css">
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_change_pw.css">
+    <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
 	<style type="text/css">
 	 #pwBtn:hover{cursor: pointer;}
 	</style>
@@ -65,28 +66,18 @@
     		
     	});//click
     });//ready
+    
+    window.onload=function(){
+    	$(".nav_user_icons").html('<span><a href="http://localhost/book_admin_prj/admin_logout.do"><i class="fas fa-sign-in-alt"></i></a></span>');
+    }
     </script>
 </head>
 
 <body>
 
-<!-- header -->
-<section class="section_header">
-    <div class="header_nav nav-up" id="header_nav">
-      <div class="nav_logo">BOOKS</div>
-      <ul class="nav_menu">
-        <li class="nav_">도서관리</li>
-        <li class="nav_">주문관리</li>
-        <li class="nav_">회원관리</li>
-        <li class="nav_">문의관리</li>
-      </ul>
-      <div class="nav_user_icons">
-        <span><i class="fas fa-sign-in-alt"></i></span>
-        <!-- <span><i class="far fa-user"></i></span> -->
-      </div>
-    </div>
-  </section>
-  <!-- header end -->
+	<!-- header -->
+	<jsp:include page="../../../common/jsp/menu.jsp"/>
+  	<!-- header end -->
 
 
     <!-- main section -->

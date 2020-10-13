@@ -96,7 +96,6 @@ public class AdminBookController {
 		int maxSize = 1024 * 1024 * 10;
 		//업로드를 수행할 MultipartRequest 생성
 		MultipartRequest mr = new MultipartRequest(request, path, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-		
 		//VO에 넣어주기 위한 파라메터 정리
 		String book_isbn = mr.getParameter("book_isbn");
 		String book_name = mr.getParameter("book_name");

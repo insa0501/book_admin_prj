@@ -41,6 +41,7 @@ public class BookDetailService {
 		BookDetailDomain bdd = null;
 		AdminBookDAO abDAO = AdminBookDAO.getInstance();
 		bdd = abDAO.selectBookDetail(book_isbn);
+		
 		return bdd;
 	}
 }
