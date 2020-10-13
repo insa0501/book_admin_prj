@@ -34,10 +34,7 @@
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_mgr.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css" />
-    <style type="text/css">
-    	a { color:#333; }
-    	a:hover { color:#333; font-weight:bold; }
-    </style>
+    <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
     <!-- JS -->
     <script type="text/javascript">
     	$(function(){
@@ -115,7 +112,7 @@
 	
 	          <div class="keyword" id="keywordDiv">
 	            <c:if test="${ param.selectType ne '3' }">
-	            	<input type="text" class="form-control form-control-lg" id="selectData" name="selectData" value="${ param.selectData }"/>
+	            	<input type="text" class="form-control form-control-lg search_text" id="selectData" name="selectData" value="${ param.selectData }"/>
 	            </c:if>
 	          	<c:if test="${ param.selectType eq '3' }">
 	          		<select id="selectData" name="selectData" class="custom-select">

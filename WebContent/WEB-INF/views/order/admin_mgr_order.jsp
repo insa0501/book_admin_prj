@@ -34,13 +34,30 @@
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_mgr.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css" />
-    <style type="text/css">
-    	a { color:#333; }
-    	a:hover { color:#333; font-weight:bold; }
-    </style>
+    <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
     <!-- JS -->
     <script type="text/javascript">
     	$(function() {
+    		function valueChk() {
+    			var selectData = $("#selectData").val(); 
+
+    			/* if($("#selectType").val() == 1) {
+    				var checkNum = /^[0-9]+$/;
+    				if (selectData.test(checkNum)) {
+    					alert("주문번호는 숫자로만 이루어져 있습니다.");
+    				} // end if
+    				
+    			} // end if */
+    			
+    			if($("#selectType").val() == 2) {
+    				
+    			} // end if
+    			if($("#selectType").val() == 3) {
+    				
+    			} // end if
+    			
+    		} // valueChk
+    		
     		function nullChk() {
     			if($("#selectData").val() == "") {
     				alert("값이 입력되지 않았습니다.");
@@ -50,7 +67,8 @@
     		} // nullChk()
     		
     		$("#searchBtn").click(function(){
-    			nullChk();	
+    			nullChk();
+    			valueChk();
     		}) // click
     		$("#selectData").keydown(function() {
     			if (window.event.which == 13) {
@@ -89,7 +107,7 @@
         <form action="order_list.do" method="get" name="orderFrm">
         <div class="search">
           <div class="select_type">
-            <select name="selectType" class="custom-select">
+            <select name="selectType" id="selectType" class="custom-select">
               <option value="1" ${ param.selectType eq '1' ? "selected='selected'":"" }>주문번호</option>
               <option value="2" ${ param.selectType eq '2' ? "selected='selected'":"" }>도서명</option>
               <option value="3" ${ param.selectType eq '3' ? "selected='selected'":"" }>주문아이디</option>
@@ -97,7 +115,7 @@
           </div>
 
           <div class="keyword">
-            <input class="form-control form-control-lg" id="selectData" name="selectData" type="text" value="${ param.selectData }"/>
+            <input class="form-control form-control-lg search_text" id="selectData" name="selectData" type="text" value="${ param.selectData }"/>
           </div>
           <div class="search_btn">
             <button type="button" class="btn btn-dark" id="searchBtn" name="searchBtn">검색</button>

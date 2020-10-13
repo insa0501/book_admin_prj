@@ -5,13 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css" />
 <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_order_detail_info.css">
+<link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
 <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
- 
+<link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
 <title>Insert title here</title>
-<style type="text/css">
- 
-</style>
+<!-- <style type="text/css">
+    	a { color:#333; }
+    	a:hover { color:#333; font-weight:bold; }
+</style> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
  <script src="header.js"></script>

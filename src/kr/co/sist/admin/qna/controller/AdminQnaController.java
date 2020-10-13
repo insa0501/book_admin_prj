@@ -48,8 +48,8 @@ public class AdminQnaController {
 		System.out.println("totalCount : " + totalCount);
 		System.out.println("pageScale : " + pageScale);
 		System.out.println("totalPage : " + totalPage);
-		System.out.println(selectType);
-		System.out.println(selectData);
+		System.out.println("selectType : " + selectType);
+		System.out.println("selectData : " + selectData);
 		
 		sqlVO.setStartNum(startNum); // 페이지의 주문내역 시작번호
 		sqlVO.setEndNum(endNum); // 끝번호
@@ -112,7 +112,7 @@ public class AdminQnaController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/delete_qna.do", method=GET)
+	@RequestMapping(value="/delete_qna.do", method= {GET, POST})
 	public String deleteQna(int qna_no, Model model) {
 		
 		QnaDetailService qds = new QnaDetailService();

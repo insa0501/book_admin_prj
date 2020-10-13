@@ -30,14 +30,12 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
       />
-      <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css" />
+    <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/admin_mgr_qna_detail.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
     <link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/common_header_footer.css" />
-    <style type="text/css">
-    	a { color:#333; }
-    	a:hover { color:#333; font-weight:bold; }
-    </style>
+    <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
     	$(function() {
@@ -103,7 +101,7 @@
             </div>
           </div>
         </section> -->
-        <c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/>
+        <%-- <c:import url="http://localhost/book_admin_prj/common/jsp/menu.jsp"/> --%>
         <jsp:include page="../../../common/jsp/menu.jsp"/>
         <!-- header end -->
   	<div id="container">
