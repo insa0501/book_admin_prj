@@ -46,11 +46,13 @@
 				alert("비밀번호를 입력해주세요");
 				return;
 			} // end if
-				
-				loginFrm.submit(); 
+			
+			loginFrm.submit();
+			
 		}//loginCheck
 		
     	$(function() {
+    		
     		$("#admin_pass").keydown(function() {
     			if (window.event.which == 13) {
     				loginCheck();
@@ -95,7 +97,7 @@
                     <input type="button" class="login_btn" name="login_btn" id="login_btn" value="관리자 로그인" style="cursor:pointer">
                     <input type="password" class="input_pass" name="admin_pass" id="admin_pass" tabindex="2" />
                     <span>
-                        <input type="checkbox" id="remember_chk" class="remember_chk" value="remember">
+                        <input type="checkbox" name="remember_chk" id="remember_chk" class="remember_chk">
                         <label for="remember_chk">아이디 기억</label>
                     </span>
                 </form><%-- 로그인 실패 메시지 --%>

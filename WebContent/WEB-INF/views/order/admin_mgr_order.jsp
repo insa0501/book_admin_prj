@@ -38,42 +38,51 @@
     <!-- JS -->
     <script type="text/javascript">
     	$(function() {
+    		
+    		<%-- 주문번호가 Number기 때문에 검색 시 다른 데이터형은 검색을 막기 위해 정규식을 사용하여 체크한다. --%>
     		function valueChk() {
     			var selectData = $("#selectData").val(); 
+   				var flag = true;
 
-    			/* if($("#selectType").val() == 1) {
-    				var checkNum = /^[0-9]+$/;
-    				if (selectData.test(checkNum)) {
+   				if($("#selectType").val() == 1) {
+    				if (!new RegExp(/^[0-9]+$/).test(selectData)) {
     					alert("주문번호는 숫자로만 이루어져 있습니다.");
+    					flag = false;
     				} // end if
-    				
-    			} // end if */
-    			
-    			if($("#selectType").val() == 2) {
-    				
+    				return flag;
     			} // end if
-    			if($("#selectType").val() == 3) {
-    				
-    			} // end if
-    			
     		} // valueChk
     		
+    		<%-- 공백이 들어오면 검색이 되지 않게 한다. --%>
     		function nullChk() {
+    			var flag = true;
     			if($("#selectData").val() == "") {
     				alert("값이 입력되지 않았습니다.");
-    				return;
+    				flag = false;
     			} // end if
-    			orderFrm.submit();
+    			return flag;
     		} // nullChk()
     		
+    		<%-- 검색버튼 click --%>
     		$("#searchBtn").click(function(){
-    			nullChk();
-    			valueChk();
-    		}) // click
-    		$("#selectData").keydown(function() {
-    			if (window.event.which == 13) {
-    				nullChk();
+    			if (nullChk()) {
+					if(valueChk()) {
+		    			orderFrm.submit();
+					} // end if
     			} // end if
+    		}) // click
+    		
+    		<%-- Enter키가 눌릴경우 검색기능 작동 --%>
+    		$("#selectData").keydown(function() {
+    			
+    			if (window.event.which == 13) {
+    				if (nullChk()) {
+    					if(valueChk()) {
+    		    			orderFrm.submit();
+    					} // end if
+        			} // end if
+    			} // end if
+    			
     		}) //keydown
     		
     	}) //ready

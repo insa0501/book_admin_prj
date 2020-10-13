@@ -22,11 +22,11 @@
 		</where>
 	</select>
 	<select id="qnaList" resultType="kr.co.sist.admin.qna.domain.QnaListDomain" parameterType="kr.co.sist.admin.qna.vo.SelectQnaListVO">
-		select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, QNA_INPUT_DATE, qna_status, r_num
+		select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, 
+				to_char(QNA_INPUT_DATE, 'yyyy-mm-dd / hh24:mm') QNA_INPUT_DATE, 
+				nvl2(qna_status, '완료', '미완료') qna_status, r_num
 		from   (select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, QNA_INPUT_DATE, qna_status, rownum r_num
-				from   (select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, 
-								to_char(QNA_INPUT_DATE, 'yyyy-mm-dd / hh24:mm') QNA_INPUT_DATE, 
-								nvl2(QNA_REPLY_DATE, '완료', '미완료') qna_status
+				from   (select qna_no, USER_ID, QNA_SUBJECT, QNA_TYPE, QNA_INPUT_DATE, QNA_REPLY_DATE qna_status
 						from   qna
 						<where>
 						  	<if test="selectData neq null">

@@ -70,6 +70,8 @@ public class OrderListDAO {
 		SqlSession ss = getSqlSession();
 		cnt = ss.selectOne("kr.co.sist.admin.order.orderListCnt", solVO);
 		
+		ss.close();
+		
 		return cnt;
 	}//selectOrderCount
 	
@@ -85,6 +87,8 @@ public class OrderListDAO {
 		
 		SqlSession ss = getSqlSession();
 		list = ss.selectList("kr.co.sist.admin.order.orderList", solVO);
+		
+		ss.close();
 		
 		return list;
 	}//selectOrderList

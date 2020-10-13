@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css" />
+<link rel = "stylesheet" href="http://localhost/book_admin_prj/common/css/reset.css" />
 <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_order_detail_info.css">
-<link rel="stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
+<link rel = "stylesheet" href="http://localhost/book_admin_prj/common/css/main.css" />
 <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/common_header_footer.css">
 <link rel = "stylesheet" type="text/css" href="http://localhost/book_admin_prj/common/css/admin_link.css">
 <title>Insert title here</title>

@@ -45,11 +45,13 @@ public class AdminQnaController {
 		String selectType = sqlVO.getSelectType();
 		String selectData = sqlVO.getSelectData();
 		
-		System.out.println("totalCount : " + totalCount);
-		System.out.println("pageScale : " + pageScale);
-		System.out.println("totalPage : " + totalPage);
-		System.out.println("selectType : " + selectType);
-		System.out.println("selectData : " + selectData);
+		/*
+		 * System.out.println("totalCount : " + totalCount);
+		 * System.out.println("pageScale : " + pageScale);
+		 * System.out.println("totalPage : " + totalPage);
+		 * System.out.println("selectType : " + selectType);
+		 * System.out.println("selectData : " + selectData);
+		 */
 		
 		sqlVO.setStartNum(startNum); // 페이지의 주문내역 시작번호
 		sqlVO.setEndNum(endNum); // 끝번호

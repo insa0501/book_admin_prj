@@ -30,7 +30,7 @@
   	select ORDER_NO, to_char(order_date, 'yyyy-mm-dd hh24:mi') ORDER_DATE, USER_ID, ORDER_PRICE, ORDER_STATUS, book_name
 	from (select ORDER_NO, ORDER_DATE, USER_ID, ORDER_PRICE, ORDER_STATUS, book_name, rownum r_num
 			from (select ol.ORDER_NO,ol.ORDER_DATE,ol.USER_ID,ol.ORDER_PRICE,ol.ORDER_STATUS, sel.book_name
-					from   order_list ol,  (select ol.order_no, listagg(bk.book_name, '/') within group(order by bk.book_name) book_name
+					from   order_list ol,  (select ol.order_no, listagg(bk.book_name, ' / ') within group(order by bk.book_name) book_name
 											from   order_book ob, order_list ol, book bk
 											where  (ob.book_isbn=bk.book_isbn and ob.order_no=ol.order_no)
 											group by ol.order_no) sel

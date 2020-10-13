@@ -39,6 +39,7 @@
     <script type="text/javascript">
     	$(function(){
     		
+    		<%-- 검색 텍스트 박스 공백 체크 --%>
     		function nullChk() {
     			if($("#selectData").val() == "") {
     				alert("값이 입력되지 않았습니다.");
@@ -48,18 +49,22 @@
     			qnaFrm.submit();
     		} // nullChk()
     		
+    		
+    		<%-- 검색버튼 클릭 작동 --%>
     		$("#searchBtn").click(function(){
     			nullChk();	
     		}) // click
     		
+    		<%-- 검색 텍스트 박스 Enter키 누를때 검색 작동 --%>
     		$("#selectData").keydown(function() {
     			if (window.event.which == 13) {
     				nullChk();
     			} // end if
     		}) //keydown
     		
+    		<%-- 검색타입에 따라 유동적으로 검색부분이 바뀌도록 하는 function --%>
     		$("#selectType").change(function(){
-   				var output = "<input class='form-control form-control-lg' type='text' id='selectData' name='selectData'/>";
+   				var output = "<input class='form-control form-control-lg search_text' type='text' id='selectData' name='selectData'/>";
    				var keywordDiv = document.getElementById("keywordDiv");
    				
     			if($("#selectType").val() == 3) {

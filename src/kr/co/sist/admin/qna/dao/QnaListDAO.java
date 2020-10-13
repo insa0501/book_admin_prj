@@ -64,6 +64,8 @@ public class QnaListDAO {
 		SqlSession ss = getSqlSession();
 		cnt = ss.selectOne("kr.co.sist.admin.qna.qnaListCnt", sqlVO);
 		
+		ss.close();
+		
 		return cnt;
 	}//selectQnaCount
 	
@@ -79,6 +81,8 @@ public class QnaListDAO {
 		SqlSession ss = getSqlSession();
 		list = ss.selectList("kr.co.sist.admin.qna.qnaList", sqlVO);
 		
+		ss.close();
+		
 		return list;
 	}//selectQnaList
 	
@@ -92,6 +96,8 @@ public class QnaListDAO {
 		
 		SqlSession ss = getSqlSession();
 		qdd = ss.selectOne("kr.co.sist.admin.qna.qnaDetail", qna_no);
+		
+		ss.close();
 		
 		return qdd;
 	}//selectQnaDetail
