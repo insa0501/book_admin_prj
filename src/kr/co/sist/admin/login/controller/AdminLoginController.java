@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.sist.admin.login.service.AdminLoginService;
 import kr.co.sist.admin.login.vo.AdminLoginVO;
@@ -26,16 +27,17 @@ public class AdminLoginController {
 	 * 관리자 로그인 (관리자 메인)
 	 * @return 관리자 로그인 처리
 	 */
-	@RequestMapping(value="/admin_index.do", method={GET,POST})
+	@RequestMapping(value="/admin_index.do", method= { GET, POST} )
 	public String adminLoginForm(HttpSession session) {
 		
+		//String adminLoginUrl = "forward:admin_login_process.do";
 		String adminLoginUrl = "login/admin_login";
-		System.out.println("adminLoginForm : " + (String)session.getAttribute("admin_id"));
+		//System.out.println("adminLoginForm : " + (String)session.getAttribute("admin_id"));
 		
-		if ( session.getAttribute("admin_id") != null ) {
-			adminLoginUrl = "redirect:book_list.do";
-		} // end if
-		
+		/*
+		 * if ( session.getAttribute("admin_id") == null ) { //adminLoginUrl =
+		 * "redirect:book_list.do"; adminLoginUrl = "login/admin_login"; } // end if
+		 */		
 		return adminLoginUrl;
 	} // adminLoginForm()
 	
@@ -46,37 +48,30 @@ public class AdminLoginController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin_login_process.do", method= {GET,POST} )
+	@RequestMapping(value="/admin_login_process.do", method= {GET, POST} )
 	public String adminLogin(HttpSession session, AdminLoginVO alVO, Model model) {
 		
-		String url = "forward:admin_index.do";
+		String url = "login/admin_login";
+		String sessionChk = (String) session.getAttribute("admin_id");
 		
-		String ssCheck = (String) session.getAttribute("admin_id");
-		System.out.println("ssCheck " + ssCheck);
+		System.out.println("ssCheck " + sessionChk);
 		
-		AdminLoginService als = new AdminLoginService();
-		String admin_id = als.adminLogin(alVO);
-		
-		model.addAttribute("login_flag", "fail");
-		
-		if (admin_id != null) {
-			session.setAttribute("admin_id", admin_id);
-			model.addAttribute("admin_id", admin_id);
-			model.addAttribute("login_flag", "success");
-		} // end if
-		
-		/*
-		 * if (admin_id != null) {
-		 * 
-		 * session.setAttribute("admin_id", admin_id); model.addAttribute("admin_id",
-		 * admin_id);
-		 * 
-		 * url = "redirect:book_list.do"; } // end if
-		 */		
-		if (ssCheck != null) {	
-			//url = "redirect:book_list.do";				
-			url = "redirect:order_list.do";				
-		} // end if
+		if (sessionChk != null) {	
+			url = "redirect:book_list.do";				
+		} else {
+			AdminLoginService als = new AdminLoginService();
+			String admin_id = als.adminLogin(alVO);
+			
+			model.addAttribute("login_flag", "fail");
+			
+			if (admin_id != null) {
+				session.setAttribute("admin_id", admin_id);
+				model.addAttribute("login_flag", "success");
+				
+				url = "forward:book_list.do";
+			} // end if
+			
+		} // end else
 		
 		System.out.println(url);
 		return url;
@@ -92,7 +87,7 @@ public class AdminLoginController {
 	 * @param SessionStatus
 	 * @return 관리자 메인
 	 */
-	@RequestMapping(value="/admin_logout.do", method=GET)
+	@RequestMapping(value="/admin_logout.do", method= { GET, POST} )
 	public String adminLogout(SessionStatus ss, HttpSession hs) {
 		hs.removeAttribute("admin_id");
 		
@@ -100,13 +95,14 @@ public class AdminLoginController {
 		//return "forward:admin_index.do";
 		
 		return "redirect:admin_index.do";
+		//return "login/admin_login";
 	} // adminLogout()
 	
 	/**
 	 * 관리자 비밀번호 확인
 	 * @return 관리자 비밀번호 변경
 	 */
-	@RequestMapping(value="/admin_pass_check_form.do", method=GET)
+	@RequestMapping(value="/admin_pass_check_form.do", method=POST)
 	public String adminPassCheck(HttpSession session,Model model) {
 		String admin_id = (String)session.getAttribute("admin_id");
 		

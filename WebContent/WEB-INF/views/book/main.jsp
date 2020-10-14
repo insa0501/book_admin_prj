@@ -28,6 +28,19 @@
     <script type="text/javascript">
     
     $(function(){
+    	<%--2020_10_13 김홍석 : 아이디 기억 추가--%>
+     	<c:choose>
+    		<c:when test="${ login_flag eq 'success' and param.remember_chk eq 'on'}">
+     			var id = "<c:out value="${ sessionScope.admin_id }"/>";
+				localStorage.setItem("admin_id", id);
+    		</c:when> 
+     		<c:otherwise>
+     			if (localStorage.getItem("admin_id").hasOwnProperty) {
+					localStorage.clear();
+    			}  // endif		
+    		</c:otherwise>
+    	</c:choose>
+    	
     	$("#search").click(function(){
     		$("#search_frm").submit();
     	});//click
@@ -46,6 +59,7 @@
     <section class="section_main">
       <div class="content_wrap">
         <div class="content_title">도서관리</div>
+
         
         <form action="http://localhost/book_admin_prj/book_list.do" method="GET" name="search_frm" id="search_frm" >
         <div class="search">

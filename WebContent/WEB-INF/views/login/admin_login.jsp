@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%-- <c:if test="${ sessionScope.admin_id ne null }">
+	<c:if test="${ sessionScope.admin_id != null }">
     	<script type="text/javascript">
-    		//location.replace("book_list.do");
-    		location.replace("order_list.do");
+    		location.replace("book_list.do");
+    		//location.replace("order_list.do");
     	</script>
-    </c:if> --%>
+    </c:if>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 로그인👍</title>
@@ -52,6 +52,15 @@
 		}//loginCheck
 		
     	$(function() {
+    		<%-- 2020_10_14 김홍석 : 아이디기억 start.
+    			storage에 아이디가 있다면 아이디가 textbox에 입력되고 
+    			아이디기억에 체크되도록 추가 --%>
+    		var admin_id = localStorage.getItem("admin_id");
+    		if ( admin_id != null ) {
+    			$("#admin_id").val(admin_id);
+    			$("#remember_chk").prop('checked', true);
+    		} // end if
+    		<%-- 2020_10_14 김홍석 : 아이디 기억 end. --%>
     		
     		$("#admin_pass").keydown(function() {
     			if (window.event.which == 13) {
