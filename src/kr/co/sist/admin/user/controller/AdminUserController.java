@@ -24,7 +24,7 @@ import kr.co.sist.admin.user.vo.UpdateUserVO;
 public class AdminUserController {
 	
 	/**
-	 * 회원정보 리스트 페이지
+	 * 회원정보 리스트 페이지a
 	 * @param currentPage
 	 * @param sdVO
 	 * @param model
