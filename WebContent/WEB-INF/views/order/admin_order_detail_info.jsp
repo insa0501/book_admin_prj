@@ -25,8 +25,7 @@
 	 
 	$("#acceptBtn").click(function() {
 		location.href="order_list.do";
-	}) // click
-	
+	}) // click	
 	
 	$("#updateBtn").click(function(){
 		
