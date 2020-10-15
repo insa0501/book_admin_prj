@@ -82,12 +82,4 @@ public class AdminLoginDAO {
 		ss.close();
 		return cnt;
 	} //updateAdminPass
-	
-	public static void main(String[] args) {
-		AdminLoginVO a = new AdminLoginVO();
-		a.setAdmin_id("admin1");
-		a.setAdmin_pass("1234");
-		
-		System.out.println(new AdminLoginDAO().selectAdminId(a));
-	} 
 } // class

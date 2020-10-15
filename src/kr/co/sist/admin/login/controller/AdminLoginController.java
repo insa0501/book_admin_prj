@@ -30,14 +30,8 @@ public class AdminLoginController {
 	@RequestMapping(value="/admin_index.do", method= { GET, POST} )
 	public String adminLoginForm(HttpSession session) {
 		
-		//String adminLoginUrl = "forward:admin_login_process.do";
 		String adminLoginUrl = "login/admin_login";
-		//System.out.println("adminLoginForm : " + (String)session.getAttribute("admin_id"));
 		
-		/*
-		 * if ( session.getAttribute("admin_id") == null ) { //adminLoginUrl =
-		 * "redirect:book_list.do"; adminLoginUrl = "login/admin_login"; } // end if
-		 */		
 		return adminLoginUrl;
 	} // adminLoginForm()
 	
@@ -53,8 +47,6 @@ public class AdminLoginController {
 		
 		String url = "login/admin_login";
 		String sessionChk = (String) session.getAttribute("admin_id");
-		
-		System.out.println("ssCheck " + sessionChk);
 		
 		if (sessionChk != null) {	
 			url = "redirect:book_list.do";				
@@ -73,7 +65,6 @@ public class AdminLoginController {
 			
 		} // end else
 		
-		System.out.println(url);
 		return url;
 	} // adminLogin()
 	

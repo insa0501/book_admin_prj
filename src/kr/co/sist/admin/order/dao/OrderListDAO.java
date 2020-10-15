@@ -111,14 +111,4 @@ public class OrderListDAO {
 		return odd;
 	}//selectOrderDetail
 	
-	public static void main(String[] args) {
-//		SelectOrderListVO solVO = new SelectOrderListVO();
-//		solVO.setSelectType("2");
-//		solVO.setSelectData("¹ÝÂ¦");
-//		System.out.println(new OrderListDAO().selectOrderListCount(solVO));
-		OrderListDAO ol = new OrderListDAO();
-		OrderDetailDomain odd = ol.selectOrderDetail(2);
-		
-		System.out.println(new OrderListDAO().getInstance().selectOrderDetail(2).getOrder_price());
-	}
 }//class

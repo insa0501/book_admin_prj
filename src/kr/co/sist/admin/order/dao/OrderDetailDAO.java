@@ -89,13 +89,4 @@ public class OrderDetailDAO {
 		return cnt;
 	}//deleteOrder
 	
-	public static void main(String[] args) {
-//		UpdateOrderVO uoVO = new UpdateOrderVO();
-//		uoVO.setOrder_no(3);
-//		uoVO.setOrder_status("1");
-//		
-		System.out.println(new OrderDetailDAO().getInstance().deleteOrder(4));
-		
-		
-	} // main
 }//class

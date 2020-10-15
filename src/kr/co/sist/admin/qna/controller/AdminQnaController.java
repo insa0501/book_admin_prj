@@ -44,15 +44,6 @@ public class AdminQnaController {
 		int endNum = qls.endNum(startNum, pageScale);
 		String selectType = sqlVO.getSelectType();
 		String selectData = sqlVO.getSelectData();
-		
-		/*
-		 * System.out.println("totalCount : " + totalCount);
-		 * System.out.println("pageScale : " + pageScale);
-		 * System.out.println("totalPage : " + totalPage);
-		 * System.out.println("selectType : " + selectType);
-		 * System.out.println("selectData : " + selectData);
-		 */
-		
 		sqlVO.setStartNum(startNum); // 페이지의 주문내역 시작번호
 		sqlVO.setEndNum(endNum); // 끝번호
 		
@@ -63,7 +54,6 @@ public class AdminQnaController {
 		
 		List<QnaListDomain> list = qls.searchQnaList(sqlVO); // DB내역을 조회하여 리스트에 저장
 		model.addAttribute("qna_list", list);
-		//session.setAttribute("qna_currentPage", currentPage);
 		
 		return "qna/admin_mgr_qna";
 	}//selectQnaList
