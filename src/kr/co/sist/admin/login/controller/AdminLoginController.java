@@ -101,8 +101,10 @@ public class AdminLoginController {
 	/**
 	 * 관리자 비밀번호 확인
 	 * @return 관리자 비밀번호 변경
+	 * 변경일자 : 2020.10.15
+	 * 변경내용 : POST방식으로 변경화면으로 이동되서 GET 추가.
 	 */
-	@RequestMapping(value="/admin_pass_check_form.do", method=POST)
+	@RequestMapping(value="/admin_pass_check_form.do", method= {POST,GET})
 	public String adminPassCheck(HttpSession session,Model model) {
 		String admin_id = (String)session.getAttribute("admin_id");
 		

@@ -3,9 +3,11 @@ package kr.co.sist.admin.book.dao;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -71,7 +73,6 @@ public class AdminBookDAO {
 	public int selectBookCnt(SelectBookListVO sblVO) {
 		int cnt = 0;
 		SqlSession ss = getSqlSession();
-		
 		cnt = ss.selectOne("kr.co.sist.admin.book.bookCnt", sblVO);
 		ss.close();
 		return cnt;
@@ -99,7 +100,7 @@ public class AdminBookDAO {
 	 * 변경이력 : 2020-10-08
 	 * @param bmVO
 	 */
-	public int insertBook(BookModifyVO bmVO) {
+	public int insertBook(BookModifyVO bmVO) throws PersistenceException {
 		int cnt=0;
 		SqlSession ss = getSqlSession();
 		cnt=ss.insert("kr.co.sist.admin.book.bookInsert",bmVO);

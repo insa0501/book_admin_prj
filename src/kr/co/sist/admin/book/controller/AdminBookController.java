@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +43,11 @@ public class AdminBookController {
 		} else {
 			sblVO.setSelectType("book_name");
 		}
+		//도서검색 N,Y 처리
+		if("book_activity".equals(sblVO.getSelectType())) {
+			String setData = "활성화".equals(sblVO.getSelectData()) ? "Y" : "N";
+			sblVO.setSelectData(setData);
+		}
 		//도서 리스트를 조회 업무로직을 구현한 클래스
 		BookListService bls = new BookListService();
 		//전체 게시물 수
@@ -69,18 +75,26 @@ public class AdminBookController {
 		//검색데이터, 검색타입, 현재페이지, 전체페이지
 		StringBuilder searchData = new StringBuilder();
 		if( sblVO.getSelectData() != null && !"".equals(sblVO.getSelectData()) ) {
-			searchData
-			.append("selectType=")
-			.append(sblVO.getSelectType())
-			.append("&selectData=")
-			.append(sblVO.getSelectData());
+			if("book_activity".equals(sblVO.getSelectType())){
+				searchData
+				.append("selectType=")
+				.append(sblVO.getSelectType())
+				.append("&selectData=")
+				.append("Y".equals(sblVO.getSelectData()) ? "활성화" : "비활성화");
+			}else {
+				searchData
+				.append("selectType=")
+				.append(sblVO.getSelectType())
+				.append("&selectData=")
+				.append(sblVO.getSelectData());
+			}
 		}
-		PageNationVO pnv = new PageNationVO(searchData.toString(), currentPage, totalPage);
-		String pageNation = bls.pageNation(pnv);
-		model.addAttribute("page_nation",pageNation);
 		
 		List<BookListDomain> list = bls.selectBookList(sblVO);
 		model.addAttribute("book_list",list);
+		PageNationVO pnv = new PageNationVO(searchData.toString(), currentPage, totalPage);
+		String pageNation = bls.pageNation(pnv);
+		model.addAttribute("page_nation",pageNation);
 		
 		return "book/main";
 	}
@@ -90,6 +104,9 @@ public class AdminBookController {
 	}
 	@RequestMapping(value="/insert_book.do", method=POST)
 	public String insertBook(HttpServletRequest request,Model model )  throws IOException  {
+		//로그인된 아이디 : 도서를 추가하는 어드민 식별
+		HttpSession hs = request.getSession();
+		String admin_id = (String)hs.getAttribute("admin_id");
 		//업로드 파일이 저장될 폴더의 경로
 		String path = "C:/Users/sist34/git/book_admin_prj/WebContent/common/images/book";
 		//업로드 파일의 크기(byte)
@@ -117,25 +134,23 @@ public class AdminBookController {
 		//img는 업로드된 파일명을 받는다.
 		//
 		String book_img = "http://localhost/book_admin_prj/common/images/book/"+mr.getFilesystemName("book_img");
-		System.err.println("------------------"+mr.getFilesystemName("book_img"));
 		
 		if(mr.getFilesystemName("book_img") == null) {
-			System.err.println("------------------이미지널");
 			book_img = mr.getParameter("img_link");
 		}
-		System.err.println("------------------"+book_img);
 		int book_price = Integer.parseInt(mr.getParameter("book_price"));
 		int book_stock = Integer.parseInt(mr.getParameter("book_stock"));
 		//데이터베이스에 처리하기 위해 VO에 파라메터 값을 넣는다.
 		BookModifyVO bmVO = new BookModifyVO(book_isbn, book_name, book_country, book_type_no, 
 				book_writer, book_company, book_date, book_info, book_best, book_activity, 
-				book_img, book_price, book_stock);
+				book_img,admin_id, book_price, book_stock);
 		
 		//도서를 추가하는 일을 하는 객체 생성
 		BookDetailService bds = new BookDetailService();
 		//도서를 추가하는 일
 		if( book_isbn != null && !"".equals(book_isbn)) {
 			int cnt=bds.addBook(bmVO);
+			System.out.println("예외처리가된"+cnt);
 			model.addAttribute("book_insertFlag", cnt);
 		}
 		

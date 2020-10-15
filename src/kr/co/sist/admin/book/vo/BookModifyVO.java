@@ -2,7 +2,7 @@ package kr.co.sist.admin.book.vo;
 
 public class BookModifyVO {
 	String book_isbn, book_name, book_country, book_type_no, book_writer, book_company, book_date, book_info,
-			book_best, book_activity, book_img;
+			book_best, book_activity, book_img,admin_id;
 	int book_price, book_stock;
 	public BookModifyVO() {
 	}
@@ -20,6 +20,26 @@ public class BookModifyVO {
 		this.book_best = book_best;
 		this.book_activity = book_activity;
 		this.book_img = book_img;
+		this.book_price = book_price;
+		this.book_stock = book_stock;
+	}
+	
+	public BookModifyVO(String book_isbn, String book_name, String book_country, String book_type_no,
+			String book_writer, String book_company, String book_date, String book_info, String book_best,
+			String book_activity, String book_img, String admin_id, int book_price, int book_stock) {
+		super();
+		this.book_isbn = book_isbn;
+		this.book_name = book_name;
+		this.book_country = book_country;
+		this.book_type_no = book_type_no;
+		this.book_writer = book_writer;
+		this.book_company = book_company;
+		this.book_date = book_date;
+		this.book_info = book_info;
+		this.book_best = book_best;
+		this.book_activity = book_activity;
+		this.book_img = book_img;
+		this.admin_id = admin_id;
 		this.book_price = book_price;
 		this.book_stock = book_stock;
 	}
@@ -100,6 +120,12 @@ public class BookModifyVO {
 	}
 	public void setBook_stock(int book_stock) {
 		this.book_stock = book_stock;
+	}
+	public String getAdmin_id() {
+		return admin_id;
+	}
+	public void setAdmin_id(String admin_id) {
+		this.admin_id = admin_id;
 	}
 	
 	

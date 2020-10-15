@@ -51,7 +51,7 @@ insert into book
 values ( #{book_isbn}, #{book_name}, #{book_country}, #{book_type_no}, #{book_writer}, 
 		#{book_company}, to_date(#{book_date}, 'yyyy-mm-dd'), #{book_info}, 
 		#{book_best},#{book_activity} , #{book_img},
-		#{book_price},#{book_stock}, sysdate, 'test')
+		#{book_price},#{book_stock}, sysdate, #{admin_id})
 </insert>
 
 <update id="bookUpdate" parameterType="kr.co.sist.admin.book.vo.BookModifyVO" >

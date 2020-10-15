@@ -1,5 +1,10 @@
 package kr.co.sist.admin.book.service;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import org.apache.ibatis.exceptions.PersistenceException;
+
 import kr.co.sist.admin.book.dao.AdminBookDAO;
 import kr.co.sist.admin.book.domain.BookDetailDomain;
 import kr.co.sist.admin.book.vo.BookModifyVO;
@@ -11,9 +16,16 @@ public class BookDetailService {
 	 * 변경이력 : 2020-10-08
 	 * @param bmVO
 	 */
-	public int  addBook(BookModifyVO bmVO) {
+	public int addBook(BookModifyVO bmVO) {
 		AdminBookDAO abDAO = AdminBookDAO.getInstance();
-		return abDAO.insertBook(bmVO);
+		int cnt = 0;
+		try {
+			cnt = abDAO.insertBook(bmVO);
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+			cnt = 0;
+		}
+		return cnt;
 	}
 	
 	/**
