@@ -173,7 +173,7 @@
           </div>
             
               <div id="buttonGrop">
-			    <input type="button" value="확인" id="closeBtn" name="acceptBtn"/>
+			    <input type="button" value="확인" id="acceptBtn" name="acceptBtn"/>
                 <input type="button" value="수정" id="updateBtn" name="updateBtn"/>
 			    <input type="button" value="삭제" id="deleteBtn" name="deleteBtn"/>
               </div>
