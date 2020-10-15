@@ -143,10 +143,4 @@ public class AdminBookDAO {
 		return bdd;
 	}//selectBookDetail
 	
-	public static void main(String[] args) {
-		String book_isbn = "9788-9745-6529-9";
-		BookDetailDomain book = AdminBookDAO.getInstance().selectBookDetail(book_isbn);
-		System.out.println(book.getBook_name());
-	}//main
-	
 }

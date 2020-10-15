@@ -150,7 +150,6 @@ public class AdminBookController {
 		//도서를 추가하는 일
 		if( book_isbn != null && !"".equals(book_isbn)) {
 			int cnt=bds.addBook(bmVO);
-			System.out.println("예외처리가된"+cnt);
 			model.addAttribute("book_insertFlag", cnt);
 		}
 		
@@ -190,7 +189,6 @@ public class AdminBookController {
 		if( mr.getFilesystemName("upfile") != null && !"".equals(mr.getFilesystemName("upfile")) ) {
 			book_img = "http://localhost/book_admin_prj/common/images/book/"+mr.getFilesystemName("upfile");
 		}
-		System.out.println(book_img);
 		int book_price = Integer.parseInt(mr.getParameter("book_price"));
 		int book_stock = Integer.parseInt(mr.getParameter("book_stock"));
 		//데이터베이스에 처리하기 위해 VO에 파라메터 값을 넣는다.
