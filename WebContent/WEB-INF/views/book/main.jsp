@@ -118,7 +118,7 @@
                 <td><c:out value="${book.book_company }"/></td>
                 <td><c:out value="${book.book_date }"/></td>
                 <td><c:out value="${book.book_stock }"/></td>
-                <td><c:out value="${book.book_activity }"/></td>
+                <td><c:out value="${book.book_activity eq 'Y' ?'활성화'  :'비활성화' }"/></td>
               </tr>
              </c:forEach>
             </tbody>
