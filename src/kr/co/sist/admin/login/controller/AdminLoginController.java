@@ -68,11 +68,6 @@ public class AdminLoginController {
 		return url;
 	} // adminLogin()
 	
-	@RequestMapping(value="/admin_book.do", method=POST)
-	public String skipLogin() {
-		return "book/admin_mgr_book";
-	} //skipLogin
-	
 	/**
 	 * 관리자 로그아웃
 	 * @param SessionStatus
