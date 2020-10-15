@@ -23,7 +23,7 @@
 
  $(function () {
 	 
-	$("#acceptBtn").click(function() {
+	$("#closeBtn").click(function() {
 		location.href="order_list.do";
 	}) // click	
 	
