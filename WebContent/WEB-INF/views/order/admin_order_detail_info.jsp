@@ -22,6 +22,11 @@
 <script type="text/javascript">
 
  $(function () {
+	 
+	$("#acceptBtn").click(function() {
+		location.href="order_list.do";
+	}) // click
+	
 	
 	$("#updateBtn").click(function(){
 		
@@ -169,7 +174,7 @@
           </div>
             
               <div id="buttonGrop">
-			    <input type="button" value="확인" id="closeBtn" name="closeBtn"/>
+			    <input type="button" value="확인" id="closeBtn" name="acceptBtn"/>
                 <input type="button" value="수정" id="updateBtn" name="updateBtn"/>
 			    <input type="button" value="삭제" id="deleteBtn" name="deleteBtn"/>
               </div>

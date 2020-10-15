@@ -39,6 +39,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
     	$(function() {
+    		$("#acceptBtn").click(function() {
+    			location.href="order_list.do";
+    		}) // click
+    		
    			$("#addReplyBtn").click(function() {
 				if (confirm("답변을 등록하시겠습니까?")) {
 					$.ajax({
