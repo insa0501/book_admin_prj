@@ -5,23 +5,20 @@
 .main_section {
   width: 80%;
   height: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding-top: 130px;
   align-items: center;
   margin: 0 auto;
 }
 
 .main_title {
-  width: 70%;
   font-size: 1.5em;
   font-weight: 600;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 13px;
+  border-bottom: 2px solid #949494;
 }
 
 .main_content {
-  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,10 +30,9 @@
 }
 
 table {
+	table-layout: fixed;
   margin-top: 20px;
   margin-bottom: 20px;
-  border: black;
-  border: 0.5px solid #666666;
   border-collapse: collapse;
 }
 
@@ -46,7 +42,7 @@ table tr {
   padding-bottom: 10px;
   padding-right: 20px;
   padding-left: 20px;
-  border: 0.5px solid #666666;
+  height: 50px;
 }
 
 .column {
@@ -57,10 +53,10 @@ table tr {
 }
 
 .content {
-  width: 300px;
+  width: 600px;
 }
 
-.addr {
+.addr, .name, .phone {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 10px;
@@ -82,6 +78,8 @@ table tr {
   margin-left: 15px;
   margin-top: 30px;
   margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1.8px solid #949494;
 }
 
 .res_content {
@@ -89,8 +87,9 @@ table tr {
 }
 
 .res_data {
-  width: 100%;
+  width: 99%;
   height: 100px;
+  padding-left: 15px;
 }
 
 .btn_group,
@@ -106,4 +105,13 @@ button {
 
 .hidden {
   display: none;
+}
+.name,
+.phone,
+.addr {
+  border: 1px solid #cecece;
+}
+
+.addr_btn {
+  height: 30px;
 }

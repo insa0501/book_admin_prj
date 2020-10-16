@@ -161,7 +161,7 @@
             <td class="column">주소</td>
             <td class="content" colspan="3">
               <input type="text" class="addr" id="zipcode" readonly="readonly" name="user_zipcode" value="${user_detail.user_zipcode }" />
-              <input type="button" value="우편번호검색" id="searchZip" /><br />
+              <input type="button" class="addr_btn" value="우편번호검색" id="searchZip" /><br />
               <input type="text" class="addr" id="addr1" readonly="readonly" name="user_addr1" value="${user_detail.user_addr1 }" />
               <input type="text" class="addr" id="addr2" name="user_addr2" value="${user_detail.user_addr2 }" />
             </td>

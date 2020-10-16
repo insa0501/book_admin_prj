@@ -13,25 +13,24 @@
 }
 
 .main_title {
-  width: 70%;
   font-size: 1.5em;
   font-weight: 600;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 13px;
+  border-bottom: 2px solid #949494;
 }
 
 .main_content {
-  width: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 table {
+  table-layout: fixed;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
-  border: black;
-  border: 0.5px solid #666666;
   border-collapse: collapse;
 }
 
@@ -41,21 +40,16 @@ table tr {
   padding-bottom: 10px;
   padding-right: 20px;
   padding-left: 20px;
-  border: 0.5px solid #666666;
 }
 
 .column {
   vertical-align: middle;
   text-align: center;
-  width: 140px;
   background-color: #cecece;
 }
 
-.q_title,
-.q_content {
-  font-weight: bold;
-  padding-bottom: 7px;
-  padding-top: 10px;
+.column {
+  width: 200px;
 }
 
 .que_content {
@@ -63,12 +57,14 @@ table tr {
 }
 
 .q_title_input {
-  width: 270px;
+  width: 300px;
+  border: white;
 }
 
 .q_content_input {
   width: 640px;
   height: 130px;
+  border: #949494;
 }
 
 .a_title {
@@ -76,15 +72,17 @@ table tr {
   font-weight: 600;
   margin-left: 15px;
   margin-top: 30px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border: white;
+  border-bottom: 1.5px solid #949494;
 }
 
-.q_content {
-}
 
 .a_content {
-  width: 100%;
+  width: 98%;
   height: 150px;
+  margin-left: 15px;
 }
 
 .btn_group {

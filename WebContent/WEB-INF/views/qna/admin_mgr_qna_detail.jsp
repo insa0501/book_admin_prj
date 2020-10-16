@@ -137,12 +137,15 @@
 	            <td class="content"><c:out value="${ qna_info.qna_reply_date ne null ? qna_info.qna_reply_date : '' }"/></td>
 	          </tr> 
 	          <tr>
-	            <td class="column">문의내용</td>
+	            <td class="column">제목</td>
 	            <td class="que_content" colspan="3">
-	                <div class="q_title">제목</div>
-	                <input type="text" class="q_title_input" readonly="readonly" value="<c:out value='${ qna_info.qna_subject }'/>"/><br>
-	                <div class="q_content">내용</div>
-	                <input type="text" class="q_content_input" readonly="readonly" value="<c:out value='${ qna_info.qna_content }'/>"/>
+	                <input type="text" class="q_title_input" readonly="readonly" value="<c:out value='${ qna_info.qna_subject }'/>"/>
+	            </td>
+			  </tr>	            
+			  <tr>
+	            <td class="column">내용</td>
+	            <td class="que_content" colspan="3">
+	                <textarea type="text" class="q_content_input" readonly="readonly"><c:out value='${ qna_info.qna_content }'/></textarea>
 	            </td>
 	          </tr>
 	        </table>
