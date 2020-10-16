@@ -37,6 +37,7 @@
 				data:"order_no=" + $("#order_no").val() + "&order_status=" + $("#order_status").val(),
 				dataType:"text",
 				error:function( xhr ){
+					alert("수정에 실패하였습니다.");
 					console.log(xhr.status + " / " + xhr.statusText);				
 				}, //error
 				success:function( ){
@@ -59,6 +60,7 @@
 				data:"order_no=" + $("#order_no").val(),
 				dataType:"text",
 				error:function( xhr ){
+					alert("삭제에 실패하였습니다.");
 					console.log(xhr.status + " / " + xhr.statusText);				
 				}, //error
 				success:function( text_data ){
